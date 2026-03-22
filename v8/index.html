@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --bg: #0f172a;
+      --primary: #e85d04;
+      --secondary: #f8961e;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+    }
+    
+    body {
+      font-family: 'Arial Black', 'Impact', sans-serif;
+      background: var(--bg);
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--primary);
+      padding: 1rem 2rem;
+    }
+    
+    .navbar-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    
+    .logo-text span:first-child { color: #fff; }
+    .logo-text span:last-child { color: var(--primary); }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover { color: #fff; }
+    
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(232, 93, 4, 0.4);
+    }
+    
+    .btn-primary:hover {
+      background: #c94d02;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(232, 93, 4, 0.6);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid var(--card-border);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      background: rgba(232, 93, 4, 0.1);
+    }
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    
+    .hero-text .highlight {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+    
+    .hero-text .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100px;
+      height: 4px;
+      background: var(--primary);
+    }
+    
+    .hero-text p {
+      font-size: 1.125rem;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    
+    .hero-cta { display: flex; gap: 1rem; }
+    
+    .hero-screenshot img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .social-proof {
+      background: var(--card-bg);
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+    
+    .social-proof p {
+      font-size: 0.875rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .logos-grid {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    
+    .logo-placeholder {
+      width: 120px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--card-border), var(--bg));
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #475569;
+    }
+    
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-header { margin-bottom: 4rem; }
+    .section-header h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; }
+    .section-header p { color: #94a3b8; font-size: 1.125rem; font-family: system-ui, -apple-system, sans-serif; }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--card-border);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      border-left-color: var(--primary);
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-card img { width: 100%; margin-bottom: 1.5rem; border-radius: 4px; }
+    .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .feature-card p { color: #94a3b8; font-size: 0.9375rem; font-family: system-ui, -apple-system, sans-serif; }
+    
+    .pricing-section { background: linear-gradient(180deg, var(--bg) 0%, #0d1424 100%); }
+    
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .pricing-toggle label { color: #94a3b8; font-weight: 600; }
+    
+    .toggle-switch {
+      width: 60px;
+      height: 30px;
+      background: var(--card-border);
+      border-radius: 30px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .toggle-switch.active::before { transform: translateX(30px); }
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background: var(--primary);
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s;
+    }
+    
+    .save-badge {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .pricing-card.featured {
+      border-color: var(--primary);
+      position: relative;
+    }
+    
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      padding: 0.25rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 20px;
+    }
+    
+    .pricing-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .pricing-card .plan-desc { color: #64748b; font-size: 0.875rem; margin-bottom: 1.5rem; font-family: system-ui, -apple-system, sans-serif; }
+    .price { font-size: 3.5rem; font-weight: 900; color: var(--primary); margin: 1rem 0; }
+    .price span { font-size: 1rem; color: #64748b; font-weight: 400; }
+    
+    .pricing-features { list-style: none; margin: 1.5rem 0; text-align: left; }
+    .pricing-features li { padding: 0.75rem 0; color: #cbd5e1; font-size: 0.9375rem; display: flex; align-items: center; gap: 0.75rem; font-family: system-ui, -apple-system, sans-serif; }
+    .pricing-features li::before { content: '✓'; color: var(--primary); font-weight: 900; }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+    }
+    
+    .testimonial-card p { font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.8; font-family: system-ui, -apple-system, sans-serif; font-style: italic; }
+    .testimonial-card p::before { content: '"'; color: var(--primary); font-size: 2rem; line-height: 0.5; margin-right: 0.5rem; }
+    
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+    .author-avatar { width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; }
+    .author-info h4 { font-weight: 700; font-size: 0.9375rem; }
+    .author-info p { font-size: 0.8125rem; color: #64748b; font-family: system-ui, -apple-system, sans-serif; }
+    
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      transition: background 0.3s;
+    }
+    
+    .faq-question:hover { background: rgba(232, 93, 4, 0.1); }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.5rem;
+      color: #94a3b8;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    
+    .faq-answer.active { padding: 0 1.5rem 1.5rem; }
+    .faq-icon { color: var(--primary); transition: transform 0.3s; }
+    .faq-question.active .faq-icon { transform: rotate(180deg); }
+    
+    .cta-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, var(--bg) 0%, #0d1424 100%);
+    }
+    
+    .cta-text h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .cta-text p { color: #94a3b8; margin-bottom: 2rem; font-family: system-ui, -apple-system, sans-serif; }
+    
+    .cta-form {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+    
+    .cta-form h3 { margin-bottom: 1.5rem; text-align: center; }
+    .cta-form input {
+      width: 100%;
+      padding: 0.875rem;
+      margin-bottom: 1rem;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    .cta-form input:focus { outline: none; border-color: var(--primary); }
+    .cta-form button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .cta-form button:hover { background: #c94d02; transform: translateY(-2px); }
+    
+    .footer {
+      border-top: 2px solid var(--card-border);
+      padding: 4rem 2rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-column h4 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: var(--primary); }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 0.5rem; }
+    .footer-column a { color: #64748b; text-decoration: none; font-size: 0.875rem; font-family: system-ui, -apple-system, sans-serif; transition: color 0.3s; }
+    .footer-column a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid var(--card-border); padding-top: 2rem; text-align: center; color: #64748b; font-size: 0.875rem; font-family: system-ui, -apple-system, sans-serif; }
+    
+    .slide-in-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .slide-in-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .slide-in-left.visible, .slide-in-right.visible { opacity: 1; transform: translateX(0); }
+    
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero-text p, .hero-cta { margin-left: auto; margin-right: auto; }
+      .hero-text h1 { text-align: center; }
+      .hero-text .highlight::after { left: 50%; transform: translateX(-50%); }
+      .features-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-section { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="logo">
+        <div class="logo-mark">CF</div>
+        <div class="logo-text"><span>Carton</span><span>Flow</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#for-3pl">For 3PLs</a>
+        <a href="https://app.cartonflow.io/login">Login</a>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text slide-in-left">
+        <h1>Your Freight.<br><span class="highlight">Fully Under Control.</span></h1>
+        <p>Enterprise-grade logistics visibility for e-commerce brands shipping at scale.</p>
+        <div class="hero-cta">
+          <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Get Started</a>
+          <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-screenshot slide-in-right">
+        <img src/screenshots/admin-dashboard.png" alt="Dashboard">
+      </div>
+    </div>
+  </section>
+
+  <div class="social-proof">
+    <p>Trusted by brands shipping 10,000+ units/month</p>
+    <div class="logos-grid">
+      <div class="logo-placeholder">BRAND A</div>
+      <div class="logo-placeholder">BRAND B</div>
+      <div class="logo-placeholder">BRAND C</div>
+      <div class="logo-placeholder">BRAND D</div>
+    </div>
+  </div>
+
+  <section id="features" class="section">
+    <div class="section-header slide-in-left">
+      <h2>Enterprise Capabilities</h2>
+      <p>Built for high-volume logistics operations</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card slide-in-left">
+        <img src/screenshots/admin-tracking.png" alt="Tracking">
+        <h3>Real-time Tracking</h3>
+        <p>Monitor every shipment with live updates and predictive ETAs.</p>
+      </div>
+      <div class="feature-card slide-in-left">
+        <img src/screenshots/3pl-rfq-auction.png" alt="RFQ">
+        <h3>Competitive RFQs</h3>
+        <p>Get multiple quotes from vetted 3PL providers.</p>
+      </div>
+      <div class="feature-card slide-in-left">
+        <img src/screenshots/admin-invoices.png" alt="Invoices">
+        <h3>Invoice Portal</h3>
+        <p>Centralized invoice management with automated reconciliation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section pricing-section">
+    <div class="section-header slide-in-left">
+      <h2>Enterprise Pricing</h2>
+      <p>Flexible plans for growing operations</p>
+    </div>
+    <div class="pricing-toggle slide-in-left">
+      <label>Monthly</label>
+      <div class="toggle-switch" id="pricingToggle"></div>
+      <label>Annual <span class="save-badge">Save 20%</span></label>
+    </div>
+    <div class="pricing-cards">
+      <div class="pricing-card slide-in-left">
+        <h3>Basic</h3>
+        <p class="plan-desc">For growing operations</p>
+        <div class="price" id="basicPrice">$79<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Up to 1,000 shipments/month</li>
+          <li>Real-time tracking</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+      </div>
+      <div class="pricing-card featured slide-in-left">
+        <h3>Pro</h3>
+        <p class="plan-desc">For scale operations</p>
+        <div class="price" id="proPrice">$129<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Unlimited shipments</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+          <li>API access</li>
+          <li>Custom integrations</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary" style="width: 100%;">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <div class="section-header slide-in-left">
+      <h2>Client Success</h2>
+      <p>See what customers say</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card slide-in-left">
+        <p>CartonFlow transformed our logistics. We saved thousands and improved team efficiency.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Sarah Chen</h4>
+            <p>COO, UrbanStyle</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card slide-in-left">
+        <p>The real-time visibility is unmatched. We finally make data-driven shipping decisions.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Marcus Johnson</h4>
+            <p>Supply Chain Director, TechGear</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card slide-in-left">
+        <p>Best operations investment. ROI was evident within the first 30 days.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Emily Rodriguez</h4>
+            <p>Founder, EcoHome</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header slide-in-left">
+      <h2>Questions</h2>
+      <p>Frequently asked</p>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="faq-item slide-in-left">
+        <div class="faq-question">
+          Implementation Timeline?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Setup takes less than 2 minutes for self-serve. Enterprise deployments include dedicated onboarding.</p>
+        </div>
+      </div>
+      <div class="faq-item slide-in-left">
+        <div class="faq-question">
+          Integration Options?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Native integrations with Shopify, WooCommerce, SAP, Oracle. Pro plans include full API access.</p>
+        </div>
+      </div>
+      <div class="faq-item slide-in-left">
+        <div class="faq-question">
+          Security & Compliance?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>SOC 2 Type II certified. GDPR compliant. Enterprise-grade encryption throughout.</p>
+        </div>
+      </div>
+      <div class="faq-item slide-in-left">
+        <div class="faq-question">
+          Support Levels?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Email support on Basic. Priority support with 4-hour response on Pro. 24/7 dedicated support for Enterprise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-text slide-in-left">
+      <h2>Ready to optimize your freight?</h2>
+      <p>Join enterprise brands shipping smarter with CartonFlow.</p>
+    </div>
+    <div class="cta-form slide-in-right">
+      <h3>Get Started</h3>
+      <input type="email" placeholder="Work email">
+      <input type="text" placeholder="Company name">
+      <button>Start Free Trial</button>
+      <p style="text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.75rem;">No credit card required</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Product</h4>
+        <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li><li><a href="#">Integrations</a></li><li><a href="#">API</a></li></ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Security</a></li></ul>
+      </div>
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul><li><a href="#">Help Center</a></li><li><a href="#">Documentation</a></li><li><a href="#">Status</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CartonFlow. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('pricingToggle');
+    const basicPrice = document.getElementById('basicPrice');
+    const proPrice = document.getElementById('proPrice');
+    let isAnnual = true;
+
+    toggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      toggle.classList.toggle('active');
+      basicPrice.innerHTML = isAnnual ? '$63<span>/mo</span>' : '$79<span>/mo</span>';
+      proPrice.innerHTML = isAnnual ? '$103<span>/mo</span>' : '$129<span>/mo</span>';
+    });
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+        
+        document.querySelectorAll('.faq-question').forEach(q => {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('active');
+          q.nextElementSibling.style.maxHeight = '0';
+        });
+        
+        if (!isActive) {
+          question.classList.add('active');
+          answer.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.slide-in-left, .slide-in-right').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

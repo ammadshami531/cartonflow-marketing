@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --bg: #050510;
+      --primary: #818cf8;
+      --accent: #67e8f9;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Animated Aurora Background */
+    .aurora-bg {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: auroraMove 20s ease-in-out infinite;
+    }
+    
+    .aurora-orb:nth-child(1) {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #818cf8 0%, transparent 70%);
+      top: -10%;
+      left: -10%;
+      animation-delay: 0s;
+    }
+    
+    .aurora-orb:nth-child(2) {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #67e8f9 0%, transparent 70%);
+      top: 30%;
+      right: -10%;
+      animation-delay: -5s;
+    }
+    
+    .aurora-orb:nth-child(3) {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
+      bottom: -10%;
+      left: 20%;
+      animation-delay: -10s;
+    }
+    
+    .aurora-orb:nth-child(4) {
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+      bottom: 20%;
+      right: 10%;
+      animation-delay: -15s;
+    }
+    
+    @keyframes auroraMove {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, -50px) scale(1.1); }
+      50% { transform: translate(-30px, 30px) scale(0.95); }
+      75% { transform: translate(-60px, -30px) scale(1.05); }
+    }
+    
+    /* Floating Orbs */
+    .floating-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.25;
+      animation: float 15s ease-in-out infinite;
+      z-index: -1;
+    }
+    
+    .floating-orb:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      background: var(--primary);
+      top: 10%;
+      right: 15%;
+    }
+    
+    .floating-orb:nth-child(2) {
+      width: 250px;
+      height: 250px;
+      background: var(--accent);
+      bottom: 15%;
+      left: 10%;
+      animation-delay: -7s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 16, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1rem 2rem;
+    }
+    
+    .navbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .logo span:first-child {
+      color: #fff;
+    }
+    
+    .logo span:last-child {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: #fff;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.875rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #050510;
+      border: none;
+      box-shadow: 0 4px 20px rgba(129, 140, 248, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(129, 140, 248, 0.6);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+    
+    .hero-content {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 4rem;
+      text-align: center;
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    
+    .hero-screenshot {
+      max-width: 900px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 30px 80px rgba(129, 140, 248, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Sections */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header h2 {
+      font-family: Georgia, serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.125rem;
+    }
+    
+    /* Glass Cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+    }
+    
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(129, 140, 248, 0.15);
+    }
+    
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .feature-card h3 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .feature-card p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Pricing */
+    .pricing-section {
+      position: relative;
+    }
+    
+    .pricing-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.3) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(60px);
+      z-index: -1;
+    }
+    
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .pricing-toggle label {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .toggle-switch {
+      width: 60px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+    }
+    
+    .toggle-switch.active {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+    
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background: #fff;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s;
+    }
+    
+    .toggle-switch.active::after {
+      transform: translateX(30px);
+    }
+    
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card.featured {
+      position: relative;
+      box-shadow: 0 0 60px rgba(129, 140, 248, 0.3);
+    }
+    
+    .pricing-card h3 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .price {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+    }
+    
+    .price span {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .pricing-features {
+      list-style: none;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    
+    .pricing-features li {
+      padding: 0.5rem 0;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--accent);
+    }
+    
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    
+    .testimonial-card p {
+      font-family: Georgia, serif;
+      font-size: 1.125rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+    }
+    
+    .author-info h4 {
+      font-weight: 600;
+    }
+    
+    .author-info p {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-style: normal;
+    }
+    
+    /* FAQ */
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1.5rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .faq-answer.active {
+      padding: 0 1.5rem 1.5rem;
+    }
+    
+    .faq-icon {
+      transition: transform 0.3s;
+    }
+    
+    .faq-question.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+    
+    .cta-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(103, 232, 249, 0.2) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(80px);
+      z-index: -1;
+    }
+    
+    .cta-section h2 {
+      font-family: Georgia, serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+    }
+    
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Animations */
+    .fade-in-drift {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in-drift.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @keyframes drift {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .fade-in-drift.visible {
+      animation: drift 6s ease-in-out infinite;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content {
+        padding: 2rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora-bg">
+    <div class="aurora-orb"></div>
+    <div class="aurora-orb"></div>
+    <div class="aurora-orb"></div>
+    <div class="aurora-orb"></div>
+  </div>
+  
+  <div class="floating-orb"></div>
+  <div class="floating-orb"></div>
+
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="logo"><span>Carton</span><span>Flow</span></div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="https://app.cartonflow.io/login">Login</a>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content fade-in-drift">
+      <h1>Your freight.<br><span class="gradient">Fully under control.</span></h1>
+      <p>Real-time logistics visibility for e-commerce brands. Track shipments, manage RFQs, and optimize your supply chain.</p>
+      <div class="hero-cta">
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Get Started</a>
+        <a href="#features" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <img src/screenshots/admin-dashboard.png" alt="Dashboard" class="hero-screenshot fade-in-drift">
+  </section>
+
+  <section id="features" class="section">
+    <div class="section-header fade-in-drift">
+      <h2>Everything you need</h2>
+      <p>Powerful features for modern logistics</p>
+    </div>
+    <div class="features-grid">
+      <div class="glass-card feature-card fade-in-drift">
+        <img src/screenshots/admin-tracking.png" alt="Tracking">
+        <h3>Real-time Tracking</h3>
+        <p>Monitor every shipment with live updates and predictive ETA calculations.</p>
+      </div>
+      <div class="glass-card feature-card fade-in-drift">
+        <img src/screenshots/3pl-rfq-auction.png" alt="RFQ">
+        <h3>Competitive RFQs</h3>
+        <p>Get multiple quotes from vetted 3PL providers and choose the best rates.</p>
+      </div>
+      <div class="glass-card feature-card fade-in-drift">
+        <img src/screenshots/admin-invoices.png" alt="Invoices">
+        <h3>Invoice Portal</h3>
+        <p>Centralized invoice management with automated reconciliation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section pricing-section">
+    <div class="pricing-glow"></div>
+    <div class="section-header fade-in-drift">
+      <h2>Simple pricing</h2>
+      <p>Choose the plan that fits your needs</p>
+    </div>
+    <div class="pricing-toggle fade-in-drift">
+      <label>Monthly</label>
+      <div class="toggle-switch" id="pricingToggle"></div>
+      <label>Annual</label>
+    </div>
+    <div class="pricing-cards">
+      <div class="glass-card pricing-card fade-in-drift">
+        <h3>Basic</h3>
+        <div class="price" id="basicPrice">$79<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Up to 1,000 shipments/month</li>
+          <li>Real-time tracking</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+      </div>
+      <div class="glass-card pricing-card featured fade-in-drift">
+        <h3>Pro</h3>
+        <div class="price" id="proPrice">$129<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Unlimited shipments</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+          <li>API access</li>
+          <li>Custom integrations</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary" style="width: 100%;">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <div class="section-header fade-in-drift">
+      <h2>Trusted by brands</h2>
+      <p>See what our customers say</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="glass-card testimonial-card fade-in-drift">
+        <p>"CartonFlow transformed our logistics. We've saved thousands and our team is more efficient."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Sarah Chen</h4>
+            <p>COO, UrbanStyle</p>
+          </div>
+        </div>
+      </div>
+      <div class="glass-card testimonial-card fade-in-drift">
+        <p>"The real-time visibility is unmatched. We make informed shipping decisions now."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Marcus Johnson</h4>
+            <p>Supply Chain Director, TechGear</p>
+          </div>
+        </div>
+      </div>
+      <div class="glass-card testimonial-card fade-in-drift">
+        <p>"Best investment for our operations. ROI was clear within the first month."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Emily Rodriguez</h4>
+            <p>Founder, EcoHome</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header fade-in-drift">
+      <h2>FAQ</h2>
+      <p>Frequently asked questions</p>
+    </div>
+    <div style="max-width: 700px; margin: 0 auto;">
+      <div class="faq-item fade-in-drift">
+        <div class="faq-question">
+          How quickly can I get started?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Setup takes less than 2 minutes. You'll be tracking shipments immediately after signing up.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in-drift">
+        <div class="faq-question">
+          Can I integrate with my existing tools?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely. CartonFlow offers native integrations with Shopify, WooCommerce, and major ERPs.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in-drift">
+        <div class="faq-question">
+          What makes CartonFlow different?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>We combine real-time tracking, competitive RFQs, and invoice management in one platform.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in-drift">
+        <div class="faq-question">
+          Is there a free trial?
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! Start with our Basic plan and upgrade or cancel anytime. No credit card required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="fade-in-drift">
+      <h2>Ready to take control?</h2>
+      <p>Join thousands of brands shipping smarter with CartonFlow</p>
+      <a href="https://app.cartonflow.io/signup" class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">Start Free Trial</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 CartonFlow. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('pricingToggle');
+    const basicPrice = document.getElementById('basicPrice');
+    const proPrice = document.getElementById('proPrice');
+    let isAnnual = false;
+
+    toggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      toggle.classList.toggle('active');
+      basicPrice.innerHTML = isAnnual ? '$63<span>/mo</span>' : '$79<span>/mo</span>';
+      proPrice.innerHTML = isAnnual ? '$103<span>/mo</span>' : '$129<span>/mo</span>';
+    });
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+        
+        document.querySelectorAll('.faq-question').forEach(q => {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('active');
+          q.nextElementSibling.style.maxHeight = '0';
+        });
+        
+        if (!isActive) {
+          question.classList.add('active');
+          answer.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-drift').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

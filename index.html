@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CartonFlow — 10 Design Variants</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080c14; color: #eef2ff; font-family: system-ui, sans-serif; padding: 48px 24px; }
+h1 { font-size: 36px; font-weight: 900; margin-bottom: 8px; }
+h1 span { background: linear-gradient(135deg, #a78bfa, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+p { color: #7c8fad; margin-bottom: 48px; font-size: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; }
+.card { background: #10172a; border: 1px solid #1c2642; border-radius: 16px; overflow: hidden; transition: all 0.2s; text-decoration: none; display: block; }
+.card:hover { border-color: #4F46E5; transform: translateY(-3px); box-shadow: 0 0 30px rgba(79,70,229,0.2); }
+.card-body { padding: 20px; }
+.num { font-size: 11px; font-weight: 700; color: #4F46E5; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.title { font-size: 18px; font-weight: 800; color: #eef2ff; margin-bottom: 4px; }
+.desc { font-size: 13px; color: #7c8fad; }
+</style>
+</head>
+<body>
+<h1>CartonFlow <span>Design Variants</span></h1>
+<p>10 unique designs. Click any to preview full page.</p>
+<div class="grid">
+  <a href="/v1/" class="card"><div class="card-body"><div class="num">V1</div><div class="title">Midnight Indigo</div><div class="desc">Polished SaaS — indigo glow orbs, glassmorphic nav, gradient headline</div></div></a>
+  <a href="/v2/" class="card"><div class="card-body"><div class="num">V2</div><div class="title">Emerald Terminal</div><div class="desc">Developer/technical — green terminal, typing effect, monospace labels</div></div></a>
+  <a href="/v3/" class="card"><div class="card-body"><div class="num">V3</div><div class="title">Pure Black Luxury</div><div class="desc">Stripe/Apple — pure black/white/gold, zero gradients, ultra minimal</div></div></a>
+  <a href="/v4/" class="card"><div class="card-body"><div class="num">V4</div><div class="title">Aurora</div><div class="desc">Animated aurora sky — frosted glass cards, serif headlines, floating orbs</div></div></a>
+  <a href="/v5/" class="card"><div class="card-body"><div class="num">V5</div><div class="title">Blueprint</div><div class="desc">Engineering technical — grid overlay, left-aligned hero, orange accents</div></div></a>
+  <a href="/v6/" class="card"><div class="card-body"><div class="num">V6</div><div class="title">Obsidian</div><div class="desc">Cinematic dark luxury — violet-pink gradient, parallax, shimmer borders</div></div></a>
+  <a href="/v7/" class="card"><div class="card-body"><div class="num">V7</div><div class="title">Neon Logistics</div><div class="desc">Cyberpunk lite — electric cyan neon, hot pink, perspective grid, scanlines</div></div></a>
+  <a href="/v8/" class="card"><div class="card-body"><div class="num">V8</div><div class="title">Corporate Orbital</div><div class="desc">Serious enterprise B2B — orange-red, social proof, full footer</div></div></a>
+  <a href="/v9/" class="card"><div class="card-body"><div class="num">V9</div><div class="title">Ivory & Carbon</div><div class="desc">Editorial split — cream top half, dark bottom, serif magazine typography</div></div></a>
+  <a href="/v10/" class="card"><div class="card-body"><div class="num">V10</div><div class="title">Depth</div><div class="desc">Layered parallax — 120px headlines, perspective screenshot tilt, sticky sections</div></div></a>
+</div>
+</body>
+</html>

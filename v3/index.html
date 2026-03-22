@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background: #000000;
+      color: #ffffff;
+      line-height: 1.5;
+      letter-spacing: -0.02em;
+      overflow-x: hidden;
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(20px);
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #111;
+    }
+    
+    .navbar-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.375rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    
+    .logo span:first-child {
+      color: #fff;
+    }
+    
+    .logo span:last-child {
+      color: #d4af37;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s;
+      letter-spacing: -0.01em;
+    }
+    
+    .nav-links a:hover {
+      color: #fff;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.875rem 1.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: -0.01em;
+    }
+    
+    .btn-primary {
+      background: #ffffff;
+      color: #000;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #333;
+    }
+    
+    .btn-secondary:hover {
+      border-color: #666;
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+    
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.05;
+      letter-spacing: -4px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero h1 .gold {
+      color: #d4af37;
+      position: relative;
+    }
+    
+    .hero h1 .gold::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #d4af37;
+      opacity: 0.6;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: #666;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+    
+    .hero-screenshot {
+      max-width: 1000px;
+      width: 100%;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    
+    /* Sections */
+    .section {
+      padding: 8rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: #111;
+      margin: 0 auto 4rem;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+      color: #666;
+      font-size: 1.125rem;
+    }
+    
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    
+    .feature-item {
+      padding: 3rem 2rem;
+      border-right: 1px solid #111;
+      transition: background 0.3s;
+    }
+    
+    .feature-item:last-child {
+      border-right: none;
+    }
+    
+    .feature-item:hover {
+      background: #0a0a0a;
+    }
+    
+    .feature-item img {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+    
+    .feature-item h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    
+    .feature-item p {
+      color: #666;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    
+    /* Pricing */
+    .pricing-section {
+      background: #030303;
+    }
+    
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .pricing-toggle label {
+      color: #666;
+      font-size: 0.875rem;
+    }
+    
+    .toggle-switch {
+      width: 50px;
+      height: 28px;
+      background: #111;
+      cursor: pointer;
+      position: relative;
+      border: 1px solid #222;
+    }
+    
+    .toggle-switch.active::before {
+      transform: translateX(22px);
+    }
+    
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      left: 2px;
+      top: 2px;
+      transition: transform 0.3s;
+    }
+    
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      max-width: 700px;
+      margin: 0 auto;
+      border: 1px solid #111;
+    }
+    
+    .pricing-card {
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      border-right: 1px solid #111;
+      transition: background 0.3s;
+    }
+    
+    .pricing-card:last-child {
+      border-right: none;
+    }
+    
+    .pricing-card:hover {
+      background: #050505;
+    }
+    
+    .pricing-card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    
+    .price {
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -4px;
+    }
+    
+    .price .currency {
+      font-size: 24px;
+      color: #d4af37;
+      vertical-align: top;
+      margin-right: 2px;
+    }
+    
+    .price span {
+      font-size: 14px;
+      color: #444;
+      font-weight: 400;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    
+    .pricing-features li {
+      padding: 0.5rem 0;
+      color: #666;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .pricing-features li::before {
+      content: '✓';
+      color: #d4af37;
+      font-size: 1rem;
+    }
+    
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    
+    .testimonial-item {
+      padding: 3rem 2rem;
+      border-right: 1px solid #111;
+    }
+    
+    .testimonial-item:last-child {
+      border-right: none;
+    }
+    
+    .testimonial-item blockquote {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .testimonial-item blockquote::before {
+      content: '"';
+      position: absolute;
+      font-size: 200px;
+      color: #d4af37;
+      opacity: 0.05;
+      top: -60px;
+      left: -40px;
+      font-family: Georgia, serif;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      background: #111;
+      border: 1px solid #222;
+    }
+    
+    .author-info h4 {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    .author-info p {
+      font-size: 0.75rem;
+      color: #666;
+    }
+    
+    /* FAQ */
+    .faq-item {
+      border-top: 1px solid #111;
+      overflow: hidden;
+    }
+    
+    .faq-item:last-child {
+      border-bottom: 1px solid #111;
+    }
+    
+    .faq-question {
+      padding: 2rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .faq-question:hover {
+      color: #888;
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 0 2rem;
+      color: #666;
+      line-height: 1.7;
+    }
+    
+    .faq-answer.active {
+      padding-bottom: 2rem;
+    }
+    
+    .faq-icon {
+      font-size: 1.25rem;
+      color: #d4af37;
+      transition: transform 0.3s;
+    }
+    
+    .faq-question.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 8rem 2rem;
+      background: #030303;
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    
+    /* Footer */
+    .footer {
+      padding: 2rem;
+      text-align: center;
+      color: #444;
+      font-size: 0.75rem;
+      border-top: 1px solid #111;
+    }
+    
+    /* Animations */
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    
+    .slide-in-left.visible,
+    .slide-in-right.visible,
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    @media (max-width: 900px) {
+      .features-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-item,
+      .testimonial-item {
+        border-right: none;
+        border-bottom: 1px solid #111;
+      }
+      
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-card {
+        border-right: none;
+        border-bottom: 1px solid #111;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+        letter-spacing: -2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="logo"><span>Carton</span><span>Flow</span></div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://app.cartonflow.io/login">Login</a>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1 class="slide-in-left">Your freight.<br><span class="gold">Fully under control.</span></h1>
+    <p class="fade-in">Real-time logistics visibility for e-commerce brands.</p>
+    <div class="hero-cta fade-in">
+      <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Get Started</a>
+      <a href="#features" class="btn btn-secondary">Learn More</a>
+    </div>
+    <img src/screenshots/admin-dashboard.png" alt="Dashboard" class="hero-screenshot slide-in-right">
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="features" class="section">
+    <div class="section-header fade-in">
+      <h2>Capabilities</h2>
+      <p>Engineered for modern logistics</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item slide-in-left">
+        <img src/screenshots/admin-tracking.png" alt="Tracking">
+        <h3>Real-time Tracking</h3>
+        <p>Live shipment monitoring with predictive ETA calculations.</p>
+      </div>
+      <div class="feature-item fade-in">
+        <img src/screenshots/3pl-rfq-auction.png" alt="RFQ">
+        <h3>Competitive RFQs</h3>
+        <p>Multiple quotes from vetted 3PL providers at your fingertips.</p>
+      </div>
+      <div class="feature-item slide-in-right">
+        <img src/screenshots/admin-invoices.png" alt="Invoices">
+        <h3>Invoice Portal</h3>
+        <p>Centralized management with automated reconciliation.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="pricing" class="section pricing-section">
+    <div class="section-header fade-in">
+      <h2>Plans</h2>
+      <p>Choose your tier</p>
+    </div>
+    <div class="pricing-toggle fade-in">
+      <label>Monthly</label>
+      <div class="toggle-switch" id="pricingToggle"></div>
+      <label>Annual</label>
+    </div>
+    <div class="pricing-cards">
+      <div class="pricing-card slide-in-left">
+        <h3>Basic</h3>
+        <div class="price"><span class="currency">$</span><span id="basicPrice">79</span><span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Up to 1,000 shipments</li>
+          <li>Real-time tracking</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+      </div>
+      <div class="pricing-card slide-in-right">
+        <h3>Pro</h3>
+        <div class="price"><span class="currency">$</span><span id="proPrice">129</span><span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Unlimited shipments</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+          <li>API access</li>
+          <li>Custom integrations</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary" style="width: 100%;">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="testimonials" class="section">
+    <div class="section-header fade-in">
+      <h2>Voices</h2>
+      <p>From our community</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-item slide-in-left">
+        <blockquote>CartonFlow transformed how we manage logistics. Significant savings and efficiency.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Sarah Chen</h4>
+            <p>COO, UrbanStyle</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-item fade-in">
+        <blockquote>Real-time visibility unmatched. We make informed shipping decisions now.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Marcus Johnson</h4>
+            <p>Supply Chain Director, TechGear</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-item slide-in-right">
+        <blockquote>Best operations investment. ROI clear within the first month.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar"></div>
+          <div class="author-info">
+            <h4>Emily Rodriguez</h4>
+            <p>Founder, EcoHome</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="section">
+    <div class="section-header fade-in">
+      <h2>Questions</h2>
+      <p>Frequently asked</p>
+    </div>
+    <div style="max-width: 700px; margin: 0 auto;">
+      <div class="faq-item fade-in">
+        <div class="faq-question">
+          How quickly can I get started?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Setup takes less than 2 minutes. You'll be tracking shipments immediately after signing up.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-question">
+          Can I integrate with existing tools?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely. Native integrations with Shopify, WooCommerce, and major ERPs. Pro plans include API access.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-question">
+          What makes CartonFlow different?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We combine real-time tracking, competitive RFQs, and invoice management in one platform — built for e-commerce brands.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-question">
+          Is there a free trial?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! Start with Basic and upgrade or cancel anytime. No credit card required for setup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="cta-section">
+    <div class="fade-in">
+      <h2>Ready to take control?</h2>
+      <p>Join thousands shipping smarter with CartonFlow</p>
+      <a href="https://app.cartonflow.io/signup" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">Get Started</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 CartonFlow</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('pricingToggle');
+    const basicPrice = document.getElementById('basicPrice');
+    const proPrice = document.getElementById('proPrice');
+    let isAnnual = false;
+
+    toggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      toggle.classList.toggle('active');
+      basicPrice.textContent = isAnnual ? '63' : '79';
+      proPrice.textContent = isAnnual ? '103' : '129';
+    });
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+        
+        document.querySelectorAll('.faq-question').forEach(q => {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('active');
+          q.nextElementSibling.style.maxHeight = '0';
+          q.querySelector('.faq-icon').textContent = '+';
+        });
+        
+        if (!isActive) {
+          question.classList.add('active');
+          answer.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          question.querySelector('.faq-icon').textContent = '−';
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.slide-in-left, .slide-in-right, .fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
