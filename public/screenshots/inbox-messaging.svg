@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+  <rect width="900" height="480" rx="8" fill="#f8fafc" stroke="#d0e4f0" stroke-width="2"/>
+  <rect x="0" y="0" width="900" height="48" rx="8" fill="#1D5AA2"/>
+  <text x="24" y="30" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#fff">📥 Inbox — Shipment Messages</text>
+  <!-- Notification badge -->
+  <circle cx="865" cy="24" r="10" fill="#ef4444"/>
+  <text x="861" y="28" font-family="system-ui" font-size="10" font-weight="700" fill="#fff">3</text>
+  <!-- Left panel: Thread list -->
+  <rect x="20" y="60" width="280" height="400" rx="8" fill="#fff" stroke="#d0e4f0"/>
+  <text x="36" y="84" font-family="system-ui" font-size="13" font-weight="700" fill="#0f2d57">Threads</text>
+  <!-- Thread 1 (active) -->
+  <rect x="24" y="96" width="272" height="64" rx="4" fill="#E8F4FD"/>
+  <circle cx="42" cy="128" r="6" fill="#ef4444"/>
+  <text x="56" y="116" font-family="system-ui" font-size="11" font-weight="700" fill="#0f2d57">BB-031526-03 — EVOLV One</text>
+  <text x="56" y="132" font-family="system-ui" font-size="10" fill="#555">Admin: ETA update needed for FTW1</text>
+  <text x="56" y="148" font-family="system-ui" font-size="9" fill="#999">2 min ago • 3 messages</text>
+  <!-- Thread 2 -->
+  <rect x="24" y="164" width="272" height="64" rx="4" fill="#fff"/>
+  <text x="56" y="184" font-family="system-ui" font-size="11" font-weight="600" fill="#1a1a2e">BB-031226-05 — GoFlow 320</text>
+  <text x="56" y="200" font-family="system-ui" font-size="10" fill="#555">You: Invoice uploaded for review</text>
+  <text x="56" y="216" font-family="system-ui" font-size="9" fill="#999">1 hour ago • 5 messages</text>
+  <!-- Thread 3 -->
+  <rect x="24" y="232" width="272" height="64" rx="4" fill="#fff"/>
+  <text x="56" y="252" font-family="system-ui" font-size="11" font-weight="600" fill="#1a1a2e">BB-031426-01 — PureJet Pro</text>
+  <text x="56" y="268" font-family="system-ui" font-size="10" fill="#555">Admin: Customs cleared ✅</text>
+  <text x="56" y="284" font-family="system-ui" font-size="9" fill="#999">Yesterday • 2 messages</text>
+  <!-- Right panel: Message thread -->
+  <rect x="320" y="60" width="560" height="400" rx="8" fill="#fff" stroke="#d0e4f0"/>
+  <text x="340" y="84" font-family="system-ui" font-size="13" font-weight="700" fill="#0f2d57">BB-031526-03 — EVOLV One</text>
+  <line x1="320" y1="96" x2="880" y2="96" stroke="#d0e4f0"/>
+  <!-- Message 1 (admin) -->
+  <rect x="340" y="110" width="360" height="56" rx="8" fill="#E8F4FD"/>
+  <text x="356" y="130" font-family="system-ui" font-size="10" font-weight="600" fill="#1D5AA2">Admin (Sarah)</text>
+  <text x="356" y="148" font-family="system-ui" font-size="11" fill="#1a1a2e">Can you update the ETA for FTW1 destination?</text>
+  <text x="356" y="162" font-family="system-ui" font-size="9" fill="#999">Today 2:30 PM</text>
+  <!-- Message 2 (you) -->
+  <rect x="480" y="180" width="380" height="56" rx="8" fill="#1D5AA2"/>
+  <text x="496" y="200" font-family="system-ui" font-size="10" font-weight="600" fill="#8FC6DF">You</text>
+  <text x="496" y="218" font-family="system-ui" font-size="11" fill="#fff">Updated — new ETA is April 8. Carrier confirmed.</text>
+  <text x="496" y="232" font-family="system-ui" font-size="9" fill="rgba(255,255,255,0.7)">Today 2:45 PM</text>
+  <!-- Compose bar -->
+  <rect x="330" y="410" width="460" height="36" rx="4" fill="#fff" stroke="#d0e4f0"/>
+  <text x="346" y="432" font-family="system-ui" font-size="12" fill="#999">Type a message...</text>
+  <rect x="800" y="410" width="70" height="36" rx="4" fill="#1D5AA2"/>
+  <text x="818" y="432" font-family="system-ui" font-size="12" font-weight="600" fill="#fff">Send</text>
+  <!-- Placeholder -->
+  <text x="450" y="475" text-anchor="middle" font-family="system-ui" font-size="11" fill="#78909c" font-style="italic">📸 Inbox — threaded messages per shipment with notification badges</text>
+</svg>

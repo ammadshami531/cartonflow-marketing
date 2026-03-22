@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
   title: "CartonFlow — Your freight, fully under control",
-  description: "Connect your brand with 3PLs, forwarders, and distributors. Real-time tracking, RFQ bidding, invoice portal, and carton-level visibility.",
+  description: "The logistics platform that connects Amazon sellers and e-commerce brands with their 3PLs, forwarders, and distributors — in one place, in real time.",
 };
 
 export default function RootLayout({
@@ -18,11 +12,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} h-full antialiased`}
-    >
-      <body className={`min-h-full flex flex-col font-sans ${inter.className}`}>{children}</body>
+    <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

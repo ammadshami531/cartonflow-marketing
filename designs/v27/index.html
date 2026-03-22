@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CartonFlow — Your freight, fully under control</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070810;--card:#0e1020;--border:#171c30;--primary:#4F46E5;--pl:#818cf8;--text:#f0f4ff;--muted:#5a6480;--green:#22c55e}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.gradient{background:linear-gradient(135deg,#a78bfa,#6366f1,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(7,8,16,0.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04)}
+.nav-logo svg{display:block}
+.nav-r{display:flex;align-items:center;gap:12px}
+.login{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}.login:hover{color:var(--text)}
+.cta{background:var(--primary);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(79,70,229,0.3)}.cta:hover{background:#6366f1;transform:translateY(-1px)}
+
+/* HERO — centered, full viewport */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none}
+.hero-orb-1{width:700px;height:700px;top:-200px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(79,70,229,0.12) 0%,transparent 70%)}
+.hero-orb-2{width:400px;height:400px;bottom:0;left:10%;background:radial-gradient(circle,rgba(129,140,248,0.07) 0%,transparent 70%)}
+.hero-orb-3{width:300px;height:300px;bottom:100px;right:5%;background:radial-gradient(circle,rgba(99,102,241,0.07) 0%,transparent 70%)}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--pl);margin-bottom:20px}
+.hero h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(52px,8vw,100px);font-weight:900;line-height:1.0;letter-spacing:-2px;margin-bottom:28px;max-width:900px}
+.hero h1 em{font-style:italic}
+.hero-sub{font-size:18px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:44px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+.btn-big{padding:14px 32px;font-size:15px;font-weight:700;border-radius:10px;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-fill{background:var(--primary);color:#fff;box-shadow:0 4px 20px rgba(79,70,229,0.4)}.btn-fill:hover{background:#6366f1;transform:translateY(-1px);box-shadow:0 8px 30px rgba(99,102,241,0.5)}
+.btn-outline{border:1px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:rgba(79,70,229,0.4);background:rgba(79,70,229,0.04)}
+.hero-note{font-size:12px;color:var(--muted);margin-bottom:64px}
+.hero-dash{position:relative;width:100%;max-width:1050px}
+.hero-dash-glow{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:80%;height:80%;background:radial-gradient(ellipse,rgba(79,70,229,0.2) 0%,transparent 65%);filter:blur(40px);pointer-events:none}
+.hero-dash-frame{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);box-shadow:0 50px 120px rgba(0,0,0,0.7)}
+.dash-chrome{background:#0d1117;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.dash-url-bar{flex:1;max-width:280px;margin:0 auto;background:rgba(255,255,255,0.04);border-radius:5px;padding:4px 12px;font-size:11px;color:var(--muted);text-align:center}
+.hero-dash-frame img{width:100%;display:block}
+
+/* STICKY SPLIT SCROLL */
+.split-container{display:flex;max-width:1200px;margin:0 auto;gap:0}
+.split-left{flex:0 0 45%;padding:0 60px 0 48px}
+.split-right{flex:0 0 55%;position:sticky;top:80px;height:calc(100vh - 80px);display:flex;align-items:center;justify-content:center;padding:40px 48px 40px 0}
+.split-right-inner{width:100%;position:relative}
+.split-screenshots{position:relative}
+.split-screenshot{position:absolute;top:0;left:0;width:100%;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.split-screenshot.active{opacity:1;transform:translateY(0);position:relative}
+.split-screenshot img{width:100%;display:block}
+.split-glow{position:absolute;inset:-30px;background:radial-gradient(ellipse,rgba(79,70,229,0.15) 0%,transparent 65%);pointer-events:none;border-radius:50%}
+
+/* Feature blocks in left column */
+.feature-block{padding:100px 0;min-height:60vh;display:flex;flex-direction:column;justify-content:center}
+.feature-block:first-child{padding-top:120px}
+.feature-block:last-child{padding-bottom:120px}
+.feat-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--pl);background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.2);padding:4px 10px;border-radius:4px;margin-bottom:20px}
+.feat-num{font-size:13px;font-weight:700;color:rgba(79,70,229,0.4);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.feature-block h3{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:18px}
+.feature-block p{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:24px;max-width:380px}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.feat-list li{display:flex;gap:10px;font-size:14px;color:var(--muted);align-items:flex-start}
+.feat-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--pl);flex-shrink:0;margin-top:6px}
+.feat-link{color:var(--pl);text-decoration:none;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}.feat-link:hover{gap:10px}
+
+/* Divider between split and rest */
+.section-divider{height:1px;background:var(--border);max-width:1200px;margin:0 auto}
+
+/* PRICING */
+.pricing-wrap{max-width:1100px;margin:0 auto;padding:100px 48px}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--pl);text-align:center;margin-bottom:16px}
+.pricing-wrap h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(32px,4vw,56px);font-weight:900;text-align:center;letter-spacing:-1.5px;margin-bottom:8px}
+.pricing-wrap .sub{text-align:center;color:var(--muted);font-size:16px;margin-bottom:48px}
+.toggle-row{display:flex;justify-content:center;margin-bottom:48px}
+.toggle-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:4px;display:flex;gap:4px}
+.t-btn{padding:8px 22px;border-radius:7px;border:none;cursor:pointer;font-size:13px;font-weight:600;background:transparent;color:var(--muted);transition:all .15s}
+.t-btn.on{background:var(--primary);color:#fff;box-shadow:0 2px 10px rgba(79,70,229,0.4)}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px;margin:0 auto}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;position:relative;transition:border-color .2s}
+.plan.pro{border-color:rgba(79,70,229,0.4);box-shadow:0 0 0 1px rgba(79,70,229,0.1),0 0 60px rgba(79,70,229,0.06)}
+.plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap}
+.p-name{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.p-price{font-size:56px;font-weight:900;letter-spacing:-3px;line-height:1;color:var(--text)}
+.p-price sup{font-size:22px;letter-spacing:0;vertical-align:top;margin-top:10px;font-weight:700}
+.p-price-mo{font-size:16px;color:var(--muted);font-weight:500}
+.p-billed{font-size:12px;color:var(--muted);margin:8px 0 24px}
+.p-cta{display:block;text-align:center;padding:13px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:28px;transition:all .2s}
+.p-cta-b{border:1px solid var(--border);color:var(--text)}.p-cta-b:hover{border-color:rgba(79,70,229,0.4);background:rgba(79,70,229,0.05)}
+.p-cta-p{background:var(--primary);color:#fff;box-shadow:0 4px 15px rgba(79,70,229,0.35)}.p-cta-p:hover{background:#6366f1;transform:translateY(-1px)}
+.p-feat{list-style:none;display:flex;flex-direction:column;gap:9px}
+.p-feat li{display:flex;gap:9px;font-size:13px;align-items:flex-start}
+.p-feat li.off{opacity:0.35}
+.ck{color:var(--green);flex-shrink:0;margin-top:1px}
+.p-note{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
+
+/* TESTIMONIALS */
+.testimonials-wrap{max-width:1100px;margin:0 auto;padding:80px 48px}
+.testimonials-wrap h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,3.5vw,48px);font-weight:900;letter-spacing:-1px;text-align:center;margin-bottom:48px}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.t-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:border-color .2s}
+.t-card:hover{border-color:rgba(79,70,229,0.3)}
+.t-stars{color:#f59e0b;font-size:13px;letter-spacing:2px;margin-bottom:14px}
+.t-q{font-size:14px;line-height:1.75;color:var(--text);margin-bottom:20px}
+.t-badge{display:inline-block;background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.2);color:var(--pl);font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px;margin-bottom:12px}
+.t-name{font-size:13px;font-weight:700}.t-role{font-size:12px;color:var(--muted)}
+
+/* FAQ */
+.faq-wrap{max-width:700px;margin:0 auto;padding:80px 48px}
+.faq-wrap h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:48px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;background:none;border:none;cursor:pointer;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left}
+.faq-btn span{font-size:15px;font-weight:600;color:var(--text)}
+.faq-icon{color:var(--pl);font-size:18px;transition:transform .2s;flex-shrink:0}
+.faq-icon.open{transform:rotate(180deg)}
+.faq-body{font-size:14px;color:var(--muted);line-height:1.8;padding-bottom:18px;display:none}
+.faq-body.open{display:block}
+
+/* CTA */
+.cta-wrap{padding:80px 48px 120px;max-width:1100px;margin:0 auto}
+.cta-box{background:linear-gradient(135deg,#0e1020 0%,#111230 100%);border:1px solid rgba(79,70,229,0.2);border-radius:24px;padding:80px 60px;text-align:center;position:relative;overflow:hidden}
+.cta-box-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(79,70,229,0.14) 0%,transparent 65%);pointer-events:none}
+.cta-box h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,4vw,50px);font-weight:900;letter-spacing:-1.5px;margin-bottom:14px;position:relative;z-index:1}
+.cta-box p{color:var(--muted);font-size:16px;margin-bottom:36px;position:relative;z-index:1}
+.cta-box .btn-fill{padding:15px 44px;font-size:16px;border-radius:12px;position:relative;z-index:1}
+
+footer{border-top:1px solid var(--border);padding:40px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;max-width:1200px;margin:0 auto}
+footer p{font-size:13px;color:var(--muted)}
+.f-links{display:flex;gap:20px}.f-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}.f-links a:hover{color:var(--text)}
+
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fade-up.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .split-container{flex-direction:column}
+  .split-right{position:relative;height:auto;top:auto}
+  .split-left{padding:0 24px}
+  .t-grid{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr}
+  .hero{padding:90px 20px 60px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <svg width="140" height="30" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+    <rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/>
+    <text x="7" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text>
+    <text x="32" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#FFF">F</text>
+    <text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text>
+  </svg>
+  <div class="nav-r">
+    <a href="https://app.cartonflow.io/login" class="login">Log in</a>
+    <a href="https://app.cartonflow.io/signup" class="cta">Start free trial</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-eyebrow">Logistics Platform for E-Commerce</div>
+  <h1>Your freight.<br><em class="gradient">Fully under control.</em></h1>
+  <p class="hero-sub">CartonFlow connects e-commerce brands and Amazon sellers with their 3PLs, forwarders, and distributors — solving shipping, the biggest pain point in logistics.</p>
+  <div class="hero-ctas">
+    <a href="https://app.cartonflow.io/signup" class="btn-big btn-fill">Start free trial →</a>
+    <a href="#features" class="btn-big btn-outline">See the platform</a>
+  </div>
+  <p class="hero-note">Starting at $79/mo · 14-day free trial · Your 3PLs join free</p>
+  <div class="hero-dash">
+    <div class="hero-dash-glow"></div>
+    <div class="hero-dash-frame">
+      <div class="dash-chrome">
+        <div style="display:flex;gap:6px"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+        <div class="dash-url-bar">app.cartonflow.io / dashboard</div>
+      </div>
+      <img src="/screenshots/admin-dashboard.png" alt="CartonFlow dashboard">
+    </div>
+  </div>
+</div>
+
+<!-- STICKY SPLIT SECTION -->
+<div id="features" class="split-container" style="padding:0;margin-top:0">
+  <div class="split-left">
+
+    <div class="feature-block" data-screenshot="dash">
+      <div class="feat-num">01</div>
+      <div class="feat-tag">All Plans</div>
+      <h3>Full shipment visibility, <em class="gradient">end to end.</em></h3>
+      <p>Every carton, every scan, every milestone — tracked in real time. FedEx and UPS tracking per carton, with geocoded positions and real scan events.</p>
+      <ul class="feat-list">
+        <li>Shipment status and milestone tracking</li>
+        <li>FedEx + UPS carton-level tracking</li>
+        <li>Multi-destination routing for FBA and custom</li>
+        <li>Automatic anomaly alerts on delays</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">Start tracking free →</a>
+    </div>
+
+    <div class="feature-block" data-screenshot="map">
+      <div class="feat-num">02</div>
+      <div class="feat-tag">Pro Feature</div>
+      <h3>Live ocean tracking on a <em class="gradient">world map.</em></h3>
+      <p>Real-time AIS vessel positions updated every few minutes. Know your freight's exact position, port ETA, and transit progress — before your 3PL calls you.</p>
+      <ul class="feat-list">
+        <li>AIS satellite-based vessel positions</li>
+        <li>Port ETA predictions and transit progress</li>
+        <li>Delay alerts before they become crises</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">Try Pro free →</a>
+    </div>
+
+    <div class="feature-block" data-screenshot="rfq">
+      <div class="feat-num">03</div>
+      <div class="feat-tag">Pro Feature</div>
+      <h3>Let your 3PLs compete. <em class="gradient">You win every time.</em></h3>
+      <p>Post RFQs to your trusted partners. They bid on DDP rates, you compare side-by-side and award in one click. Average 8–15% freight cost reduction per cycle.</p>
+      <ul class="feat-list">
+        <li>Structured bids — no phone tag</li>
+        <li>Side-by-side comparison and one-click award</li>
+        <li>One RFQ cycle typically pays for the year</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">Start saving →</a>
+    </div>
+
+    <div class="feature-block" data-screenshot="invoices">
+      <div class="feat-num">04</div>
+      <div class="feat-tag">All Plans</div>
+      <h3>Freight invoices without <em class="gradient">the email chaos.</em></h3>
+      <p>3PLs submit invoices directly in the platform — line items, totals, everything. You review and mark paid. No PDFs over email, no lost attachments, no manual tracking.</p>
+      <ul class="feat-list">
+        <li>Line-item detail on every invoice</li>
+        <li>Admin marks paid — 3PL sees it instantly</li>
+        <li>Full history searchable per shipment</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">See invoice portal →</a>
+    </div>
+
+  </div>
+
+  <div class="split-right">
+    <div class="split-right-inner">
+      <div class="split-glow"></div>
+      <div class="split-screenshots">
+        <div class="split-screenshot active" id="ss-dash" style="position:relative">
+          <img src="/screenshots/admin-dashboard.png" alt="Dashboard">
+        </div>
+        <div class="split-screenshot" id="ss-map">
+          <img src="/screenshots/live-map.png" alt="Live Map">
+        </div>
+        <div class="split-screenshot" id="ss-rfq">
+          <img src="/screenshots/3pl-rfq-auction.png" alt="RFQ">
+        </div>
+        <div class="split-screenshot" id="ss-invoices">
+          <img src="/screenshots/admin-invoices.png" alt="Invoices">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="pricing-wrap" id="pricing">
+  <div class="section-eyebrow">Pricing</div>
+  <h2>Simple pricing.<br><span class="gradient">No surprises.</span></h2>
+  <p class="sub">Your 3PLs and partners always join free.</p>
+  <div class="toggle-row">
+    <div class="toggle-wrap">
+      <button class="t-btn on" id="tm" onclick="sp('m')">Monthly</button>
+      <button class="t-btn" id="ta" onclick="sp('a')">Annual · Save 20%</button>
+    </div>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <div class="p-name">Basic</div>
+      <div class="p-price"><sup>$</sup><span id="bp">79</span><span class="p-price-mo">/mo</span></div>
+      <div class="p-billed" id="bn">Billed monthly</div>
+      <a href="https://app.cartonflow.io/signup?plan=basic" class="p-cta p-cta-b">Start free trial</a>
+      <ul class="p-feat">
+        <li><span class="ck">✓</span> Shipment tracking + status updates</li>
+        <li><span class="ck">✓</span> FedEx / UPS carton tracking</li>
+        <li><span class="ck">✓</span> Multi-destination routing</li>
+        <li><span class="ck">✓</span> Document hub + invoice portal</li>
+        <li><span class="ck">✓</span> 3PL messaging + push notifications</li>
+        <li><span class="ck">✓</span> 3 internal user seats</li>
+        <li><span class="ck">✓</span> Unlimited 3PL seats (always free)</li>
+        <li class="off"><span>🔒</span> Ocean freight + AIS maps</li>
+        <li class="off"><span>🔒</span> RFQ competitive bidding</li>
+      </ul>
+    </div>
+    <div class="plan pro">
+      <div class="plan-badge">Most Popular</div>
+      <div class="p-name">Pro</div>
+      <div class="p-price"><sup>$</sup><span id="pp">129</span><span class="p-price-mo">/mo</span></div>
+      <div class="p-billed" id="pn">Billed monthly</div>
+      <a href="https://app.cartonflow.io/signup?plan=pro" class="p-cta p-cta-p">Start free trial</a>
+      <ul class="p-feat">
+        <li><span class="ck">✓</span> Everything in Basic</li>
+        <li><span class="ck">✓</span> Live ocean tracking + AIS vessel maps</li>
+        <li><span class="ck">✓</span> RFQ system — competitive 3PL bidding</li>
+        <li><span class="ck">✓</span> Distributor management portal</li>
+        <li><span class="ck">✓</span> Advanced analytics + SLA dashboard</li>
+        <li><span class="ck">✓</span> Weekly digest + anomaly alerts</li>
+        <li><span class="ck">✓</span> 10 internal user seats</li>
+        <li><span class="ck">✓</span> Priority support</li>
+      </ul>
+    </div>
+  </div>
+  <p class="p-note">14-day free trial · Your 3PLs join free · Cancel anytime</p>
+</div>
+
+<div class="testimonials-wrap fade-up" id="testimonials">
+  <h2>The tool that replaced <span class="gradient">100 emails a week.</span></h2>
+  <div class="t-grid">
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-q">"We saved $14K in freight costs in Q1 just from the RFQ system. One bidding cycle paid for the whole year 20× over."</p><div class="t-badge">💰 $14K saved in Q1</div><div class="t-name">Amazon FBA Brand</div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-q">"I used to spend 2 hours a day chasing updates. Now I check CartonFlow once in the morning, see exactly where everything is."</p><div class="t-badge">⏱️ 2 hrs/day saved</div><div class="t-name">Marcus T.</div><div class="t-role">Amazon FBA Seller</div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-q">"Our 3PL loves it too — they told us it cut their back-and-forth emails by 80%. Problems get solved in minutes now."</p><div class="t-badge">📉 80% fewer emails</div><div class="t-name">Jennifer L.</div><div class="t-role">Shopify D2C Brand</div></div>
+  </div>
+</div>
+
+<div class="faq-wrap">
+  <h2>Questions <span class="gradient">answered.</span></h2>
+  <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Do my 3PLs have to pay?</span><span class="faq-icon">▾</span></button><div class="faq-body">No — your 3PLs, forwarders, and distributors join CartonFlow for free. They get a full portal to update shipments, respond to messages, submit invoices, and place bids. You pay, they benefit, everyone wins.</div></div>
+  <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Can I bring my own FedEx and UPS accounts?</span><span class="faq-icon">▾</span></button><div class="faq-body">Yes. You connect your own developer credentials — CartonFlow uses them to pull tracking data on your behalf. Your rates, your accounts, no middleman markup.</div></div>
+  <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>What's the difference between Basic and Pro?</span><span class="faq-icon">▾</span></button><div class="faq-body">Basic covers domestic tracking, invoicing, and messaging. Pro adds ocean freight with live AIS vessel maps, the competitive RFQ bidding system, distributor management, and advanced analytics.</div></div>
+  <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>How long does setup take?</span><span class="faq-icon">▾</span></button><div class="faq-body">The onboarding wizard walks you through everything step by step. Most users create their first shipment the same session.</div></div>
+  <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Can I cancel anytime?</span><span class="faq-icon">▾</span></button><div class="faq-body">Yes. No contracts, no cancellation fees. Cancel any time from your account settings.</div></div>
+</div>
+
+<div class="cta-wrap">
+  <div class="cta-box">
+    <div class="cta-box-glow"></div>
+    <h2>Stop chasing updates.<br><span class="gradient">Start shipping with clarity.</span></h2>
+    <p>14-day free trial · Card required · Your 3PLs join free</p>
+    <a href="https://app.cartonflow.io/signup" class="btn-big btn-fill">Start your free trial →</a>
+  </div>
+</div>
+
+<footer>
+  <svg width="120" height="26" viewBox="0 0 300 64" fill="none"><rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/><rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/><text x="7" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text><text x="32" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#FFF">F</text><text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text></svg>
+  <p>© 2026 CartonFlow. All rights reserved.</p>
+  <div class="f-links"><a href="https://cartonflow.io/privacy-policy">Privacy</a><a href="https://cartonflow.io/terms-of-service">Terms</a><a href="https://cartonflow.io/support">Support</a></div>
+</footer>
+
+<script>
+// Pricing toggle
+function sp(m){
+  const a=m==='a';
+  document.getElementById('bp').textContent=a?'63':'79';
+  document.getElementById('pp').textContent=a?'103':'129';
+  document.getElementById('bn').textContent=a?'Billed $756/yr · Save 20%':'Billed monthly';
+  document.getElementById('pn').textContent=a?'Billed $1,236/yr · Save 20%':'Billed monthly';
+  document.getElementById('tm').classList.toggle('on',!a);
+  document.getElementById('ta').classList.toggle('on',a);
+}
+
+// FAQ
+function tf(btn){
+  const b=btn.nextElementSibling,ic=btn.querySelector('.faq-icon'),open=b.classList.contains('open');
+  document.querySelectorAll('.faq-body').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-icon').forEach(x=>x.classList.remove('open'));
+  if(!open){b.classList.add('open');ic.classList.add('open');}
+}
+
+// Sticky split — change screenshot based on which feature block is in view
+const ssMap = {dash:'ss-dash',map:'ss-map',rfq:'ss-rfq',invoices:'ss-invoices'};
+const blocks = document.querySelectorAll('.feature-block[data-screenshot]');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && e.intersectionRatio > 0.4){
+      const key = e.target.dataset.screenshot;
+      document.querySelectorAll('.split-screenshot').forEach(s=>{s.classList.remove('active');s.style.position='absolute';});
+      const target = document.getElementById(ssMap[key]);
+      if(target){target.classList.add('active');target.style.position='relative';}
+    }
+  });
+},{threshold:0.4});
+blocks.forEach(b=>obs.observe(b));
+
+// Scroll fade
+const fo=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+</script>
+</body>
+</html>

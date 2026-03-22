@@ -1,5 +1,11 @@
-export default function Home() {
-  const html = `<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CartonFlow — Your freight, fully under control</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:#04050f;color:#eef2ff;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -30,6 +36,7 @@ h1{font-size:clamp(52px,8vw,96px);font-weight:900;line-height:1.0;letter-spacing
 .scroll-ind{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.2);font-size:11px;letter-spacing:2px;text-transform:uppercase;animation:bounce 2s ease-in-out infinite}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
+/* FEATURE PANELS */
 .fp{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center}
 .fp-bg{position:absolute;inset:0;z-index:0}
 .fp-bg img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
@@ -55,16 +62,19 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .fp-content.ra .fp-list li{flex-direction:row-reverse}
 .fp-btn{display:inline-block;background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;box-shadow:0 4px 15px rgba(79,70,229,0.35)}.fp-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(79,70,229,0.5)}
 
+/* PAIN STATS */
 .stats{background:#04050f;padding:60px;border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
 .stat-n{font-size:52px;font-weight:900;letter-spacing:-2px;margin-bottom:6px}
 .stat-l{font-size:13px;color:rgba(238,242,255,0.35);line-height:1.5}
 
+/* HOW IT WORKS SECTION */
 .hiw{background:#04050f;padding:100px 60px;border-top:1px solid rgba(255,255,255,0.04)}
 .hiw-hd{max-width:1100px;margin:0 auto 64px}
 .hiw-hd h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:10px}
 .hiw-hd p{color:rgba(238,242,255,0.35);font-size:16px;max-width:560px}
 
+/* Pain stat cards */
 .pain-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto 72px}
 .pain-card{border-radius:16px;padding:32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);position:relative;overflow:hidden}
 .pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4F46E5,#6366f1)}
@@ -75,6 +85,7 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .pain-solve{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:700;color:#a5b4fc;letter-spacing:0.3px}
 .pain-solve::before{content:'→';color:#6366f1}
 
+/* Before / After — collage panels */
 .ba-wrap{max-width:1100px;margin:0 auto}
 .ba-title{font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-0.5px;margin-bottom:36px;color:rgba(238,242,255,0.6);text-align:center}
 .ba-panels{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center}
@@ -85,9 +96,11 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .ba-vs{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#6366f1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;box-shadow:0 4px 16px rgba(79,70,229,0.5);flex-shrink:0}
 .ba-line{width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(79,70,229,0.3),transparent)}
 
+/* Collage container */
 .collage{position:relative;height:480px}
 .collage-win{position:absolute;border-radius:12px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.6);font-size:11px}
 
+/* WhatsApp window */
 .cw-wa{background:#111b21;width:240px;top:0;left:0;transform:rotate(-4deg);z-index:1}
 .cw-wa-bar{background:#1f2c34;padding:9px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.05)}
 .cw-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
@@ -100,6 +113,7 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .wm-t{font-size:8px;color:rgba(255,255,255,0.28);text-align:right;margin-top:2px}
 .wa-unread{background:#25d366;color:#111;border-radius:50%;width:16px;height:16px;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-left:auto}
 
+/* WeChat window */
 .cw-wc{background:#1a1a1a;width:230px;top:30px;left:180px;transform:rotate(3deg);z-index:2}
 .cw-wc-bar{background:#252525;padding:9px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06)}
 .cw-wc-body{padding:10px;display:flex;flex-direction:column;gap:7px;min-height:140px}
@@ -107,6 +121,7 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .wcm.r{background:#333;align-self:flex-start}
 .wcm.s{background:#07c160;align-self:flex-end;color:#fff}
 
+/* Email window */
 .cw-em{background:#1c1c1e;width:260px;bottom:0;left:60px;transform:rotate(-2deg);z-index:3}
 .cw-em-bar{background:#2c2c2e;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,0.06)}
 .cw-em-subj{font-size:11px;font-weight:700;color:#e5e5e5;margin-bottom:2px}
@@ -114,8 +129,10 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .cw-em-body{padding:12px;color:rgba(255,255,255,0.42);font-size:10px;line-height:1.65;min-height:100px}
 .cw-em-body strong{color:rgba(255,255,255,0.7)}
 
+/* Red noise overlay on collage */
 .collage-noise{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(239,68,68,0.04) 0%,transparent 70%);pointer-events:none;z-index:10}
 
+/* CF panel */
 .cf-panel{background:#0e1020;border-radius:16px;border:1px solid rgba(79,70,229,0.3);overflow:hidden;box-shadow:0 24px 80px rgba(79,70,229,0.15)}
 .cf-panel-bar{background:#090c1a;padding:11px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(79,70,229,0.15)}
 .cf-logo-sm{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#4F46E5,#6366f1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0}
@@ -135,11 +152,13 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .cf-inv-total{display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:rgba(238,242,255,0.7);border-top:1px solid rgba(255,255,255,0.07);margin-top:5px;padding-top:5px}
 .cf-paid-btn{background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;font-size:9px;font-weight:700;border-radius:4px;padding:3px 10px;display:inline-block}
 
+/* Points under panels */
 .ba-points{margin-top:14px;display:flex;flex-direction:column;gap:6px}
 .ba-point{font-size:12px;color:rgba(238,242,255,0.42);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
 .ba-point.bad-pt .pt-dot{color:rgba(239,68,68,0.55);flex-shrink:0;font-weight:700}
 .ba-point.good-pt .pt-dot{color:#818cf8;flex-shrink:0;font-weight:700}
 
+/* PRICING */
 .pricing{background:#04050f;padding:100px 60px;border-top:1px solid rgba(255,255,255,0.04)}
 .p-hd{text-align:center;margin-bottom:56px}
 .p-eye{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#818cf8;margin-bottom:14px}
@@ -172,12 +191,14 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .plan.pro .chk{color:#a5b4fc}
 .p-footer{text-align:center;color:rgba(238,242,255,0.2);font-size:12px;margin-top:24px}
 
+/* CTA */
 .cta-section{background:#04050f;min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.04)}
 .cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 50%,rgba(79,70,229,0.11) 0%,transparent 65%);pointer-events:none}
 .cta-inner{position:relative;z-index:1;max-width:780px}
 .cta-inner h2{font-size:clamp(30px,5vw,64px);font-weight:900;letter-spacing:-2.5px;line-height:1.0;margin-bottom:20px}
 .cta-inner p{color:rgba(238,242,255,0.35);font-size:16px;margin-bottom:40px}
 
+/* FOOTER with founder note */
 footer{border-top:1px solid rgba(255,255,255,0.05);padding:60px 60px 40px;background:#04050f}
 .footer-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:48px;align-items:start}
 .founder-note{max-width:480px}
@@ -190,6 +211,7 @@ footer{border-top:1px solid rgba(255,255,255,0.05);padding:60px 60px 40px;backgr
 footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
 .footer-deep-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#818cf8;text-decoration:none;font-weight:600;border:1px solid rgba(79,70,229,0.3);padding:8px 16px;border-radius:8px;transition:all .2s}.footer-deep-link:hover{background:rgba(79,70,229,0.1);border-color:rgba(79,70,229,0.5)}
 
+/* FAQ */
 .faq-section{background:#04050f;padding:60px;border-top:1px solid rgba(255,255,255,0.04)}
 .faq-inner{max-width:720px;margin:0 auto}
 .faq-inner h2{font-size:clamp(24px,3vw,40px);font-weight:900;letter-spacing:-1.5px;margin-bottom:40px}
@@ -224,7 +246,8 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   .footer-nav{align-items:flex-start}
 }
 </style>
-
+</head>
+<body>
 <nav id="nav">
   <svg width="140" height="30" viewBox="0 0 300 64" fill="none">
     <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
@@ -234,7 +257,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text>
   </svg>
   <div class="nav-r">
-    <a href="/features" class="login">Features</a>
+    <a href="features/" class="login">Features</a>
     <a href="https://app.cartonflow.io/login" class="login">Log in</a>
     <a href="https://app.cartonflow.io/signup" class="btn-nav">Start free trial</a>
   </div>
@@ -248,7 +271,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <p class="hero-sub">The logistics platform that connects Amazon sellers and e-commerce brands with their 3PLs, forwarders, and distributors — in one place, in real time.</p>
     <div class="hero-ctas">
       <a href="https://app.cartonflow.io/signup" class="btn-xl btn-fill">Start free trial →</a>
-      <a href="/features" class="btn-xl btn-ghost">See all features</a>
+      <a href="features/" class="btn-xl btn-ghost">See all features</a>
     </div>
     <p class="hero-note">Starting at $79/mo · Your 3PLs always join free · Cancel anytime</p>
   </div>
@@ -342,6 +365,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   </div>
 </div>
 
+<!-- HOW IT WORKS: pain stats + visual before/after -->
 <div class="hiw fade-up" id="why">
   <div class="hiw-hd">
     <h2>How it <span class="g">works.</span></h2>
@@ -372,13 +396,19 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
   </div>
 
+  <!-- Visual Before / After collage -->
   <div class="ba-wrap">
     <div class="ba-title">Before CartonFlow — After CartonFlow</div>
     <div class="ba-panels">
+
+      <!-- LEFT: overlapping collage of chat windows -->
       <div>
         <div class="ba-panel-label bl">Without CartonFlow</div>
+
         <div class="collage">
           <div class="collage-noise"></div>
+
+          <!-- WhatsApp window — top left, tilted left -->
           <div class="collage-win cw-wa">
             <div class="cw-wa-bar">
               <div class="cw-avatar" style="background:#1a472a">🚢</div>
@@ -395,6 +425,8 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
               <div class="wm r">I'll check and get back to you tomorrow<div class="wm-t">11:51 AM</div></div>
             </div>
           </div>
+
+          <!-- WeChat window — middle, tilted right -->
           <div class="collage-win cw-wc">
             <div class="cw-wc-bar">
               <div class="cw-avatar" style="background:#07c160;border-radius:8px">💚</div>
@@ -410,6 +442,8 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
               <div class="wcm r">Maybe 18–22 days. Will update when we know more</div>
             </div>
           </div>
+
+          <!-- Email window — bottom, slight left tilt -->
           <div class="collage-win cw-em">
             <div class="cw-em-bar">
               <div class="cw-em-subj">Re: Invoice #CF-0042 — missing items ⚠️</div>
@@ -420,6 +454,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
             </div>
           </div>
         </div>
+
         <div class="ba-points">
           <div class="ba-point bad-pt"><span class="pt-dot">✕</span> Updates scattered across WhatsApp, WeChat groups, and email chains</div>
           <div class="ba-point bad-pt"><span class="pt-dot">✕</span> ETAs are guesses — you find out too late to act on Amazon windows</div>
@@ -427,14 +462,17 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
         </div>
       </div>
 
+      <!-- CENTER arrow -->
       <div class="ba-divider">
         <div class="ba-line"></div>
         <div class="ba-vs">→</div>
         <div class="ba-line"></div>
       </div>
 
+      <!-- RIGHT: clean CartonFlow panel -->
       <div>
         <div class="ba-panel-label gl">With CartonFlow</div>
+
         <div class="cf-panel">
           <div class="cf-panel-bar">
             <div class="cf-logo-sm">CF</div>
@@ -442,15 +480,21 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
             <div class="cf-status-chip">🟢 In Transit</div>
           </div>
           <div class="cf-panel-body">
-            <div class="cf-milestone-bar">📍 Vessel departed Shanghai · ETA LA: Mar 29 · On schedule</div>
+
+            <div class="cf-milestone-bar">
+              📍 Vessel departed Shanghai · ETA LA: Mar 29 · On schedule
+            </div>
+
             <div class="cf-msg-row">
               <div class="cf-sender-tag">Jason @ Pacific Freight</div>
               <div class="cf-bubble recv">Customs pre-clearance filed. On track for Mar 29 arrival. No delays.</div>
             </div>
+
             <div class="cf-msg-row">
               <div class="cf-sender-tag you">You</div>
               <div class="cf-bubble sent">Perfect — FBA window Apr 1–7, we're good. Keep me posted.</div>
             </div>
+
             <div class="cf-invoice-card">
               <div class="cf-inv-title">
                 <span>📄 Invoice #CF-0042</span>
@@ -462,14 +506,17 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
               <div class="cf-inv-line"><span>Last-mile delivery</span><span>$320</span></div>
               <div class="cf-inv-total"><span>Total</span><span>$4,820.00</span></div>
             </div>
+
           </div>
         </div>
+
         <div class="ba-points">
           <div class="ba-point good-pt"><span class="pt-dot">✓</span> One thread per shipment — your team + every 3PL, in one place</div>
           <div class="ba-point good-pt"><span class="pt-dot">✓</span> Live ETA from AIS data — know before your FBA window closes</div>
           <div class="ba-point good-pt"><span class="pt-dot">✓</span> Structured invoices with full line-item detail, right in the platform</div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -493,7 +540,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <div class="plan-billed" id="bn">Billed monthly</div>
       <a href="https://app.cartonflow.io/signup?plan=basic" class="plan-btn btn-basic">Start 14-day free trial</a>
       <div class="plan-section">
-        <div class="plan-section-title">Tracking &amp; Visibility</div>
+        <div class="plan-section-title">Tracking & Visibility</div>
         <ul class="feat-list">
           <li class="inc"><span class="chk">✓</span> Shipment status + milestone tracking</li>
           <li class="inc"><span class="chk">✓</span> FedEx + UPS carton-level tracking</li>
@@ -502,7 +549,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
         </ul>
       </div>
       <div class="plan-section">
-        <div class="plan-section-title">Communication &amp; Finance</div>
+        <div class="plan-section-title">Communication & Finance</div>
         <ul class="feat-list">
           <li class="inc"><span class="chk">✓</span> 3PL messaging + push notifications</li>
           <li class="inc"><span class="chk">✓</span> Invoice portal (line-item detail)</li>
@@ -512,7 +559,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
         </ul>
       </div>
       <div class="plan-section">
-        <div class="plan-section-title">Team &amp; Analytics</div>
+        <div class="plan-section-title">Team & Analytics</div>
         <ul class="feat-list">
           <li class="inc"><span class="chk">✓</span> 3 internal user seats</li>
           <li class="inc"><span class="chk">✓</span> Unlimited 3PL seats (always free)</li>
@@ -529,7 +576,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <div class="plan-billed" id="pn">Billed monthly</div>
       <a href="https://app.cartonflow.io/signup?plan=pro" class="plan-btn btn-pro">Start 14-day free trial</a>
       <div class="plan-section">
-        <div class="plan-section-title">Tracking &amp; Visibility</div>
+        <div class="plan-section-title">Tracking & Visibility</div>
         <ul class="feat-list">
           <li class="inc"><span class="chk">✓</span> Shipment status + milestone tracking</li>
           <li class="inc"><span class="chk">✓</span> FedEx + UPS carton-level tracking</li>
@@ -538,7 +585,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
         </ul>
       </div>
       <div class="plan-section">
-        <div class="plan-section-title">Communication &amp; Finance</div>
+        <div class="plan-section-title">Communication & Finance</div>
         <ul class="feat-list">
           <li class="inc"><span class="chk">✓</span> 3PL messaging + push notifications</li>
           <li class="inc"><span class="chk">✓</span> Invoice portal (line-item detail)</li>
@@ -548,7 +595,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
         </ul>
       </div>
       <div class="plan-section">
-        <div class="plan-section-title">Team &amp; Analytics</div>
+        <div class="plan-section-title">Team & Analytics</div>
         <ul class="feat-list">
           <li class="inc"><span class="chk">✓</span> <strong>10 internal user seats</strong></li>
           <li class="inc"><span class="chk">✓</span> Unlimited 3PL seats (always free)</li>
@@ -590,7 +637,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <p>Most Amazon sellers and e-commerce brands are managing 6-figure freight operations over <strong>WhatsApp threads, WeChat groups, and spreadsheets</strong>. Invoices arrive as blurry PDFs. Delivery window deadlines get missed because the 3PL's update came 25 hours too late.<br><br>We built CartonFlow because this problem is real, it's expensive, and it's completely solvable. <strong>Your 3PLs join free. You get visibility you've never had. That's the deal.</strong></p>
     </div>
     <div class="footer-nav">
-      <a href="/features" class="footer-deep-link">→ Deep dive: all features</a>
+      <a href="features/" class="footer-deep-link">→ Deep dive: all features</a>
       <a href="https://cartonflow.io/privacy-policy">Privacy Policy</a>
       <a href="https://cartonflow.io/terms-of-service">Terms of Service</a>
       <a href="https://cartonflow.io/cancellation">Cancellation Policy</a>
@@ -598,8 +645,8 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
   </div>
   <div class="footer-bottom">
-    <svg width="120" height="26" viewBox="0 0 300 64" fill="none"><rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/><rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/><text x="7" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text><text x="32" y="47" font-weight="900" font-size="32" fill="#FFF">F</text><text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text></svg>
-    <p class="copy">&copy; 2026 CartonFlow by Pevara Systems. All rights reserved.</p>
+    <svg width="120" height="26" viewBox="0 0 300 64" fill="none"><rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/><rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/><text x="7" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text><text x="32" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#FFF">F</text><text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text></svg>
+    <p class="copy">© 2026 CartonFlow by Pevara Systems. All rights reserved.</p>
   </div>
 </footer>
 
@@ -623,9 +670,5 @@ function tf(btn){
 const fo=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');}),{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
 </script>
-`;
-
-  return (
-    <div dangerouslySetInnerHTML={{ __html: html }} />
-  );
-}
+</body>
+</html>
