@@ -63,7 +63,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <div class="highlight"><p><strong>Short version:</strong> Cancel anytime, no questions asked. Monthly plans stop at end of cycle. Annual plans get a prorated refund after 30 days.</p></div>
 
 <h2>1. Cancelling Your Subscription</h2>
-<p>You can cancel your CartonFlow subscription at any time from your account settings under <strong>Billing → Cancel Plan</strong>. No phone calls, no forms, no waiting.</p>
+<p>You can cancel your CartonFlow subscription at any time from your account dashboard under <strong>Settings → Billing → Manage Subscription</strong>. This opens the Stripe Billing Portal where you can cancel, change plans, or update payment info. No phone calls, no forms, no waiting.</p>
 
 <h2>2. What Happens When You Cancel</h2>
 <ul>

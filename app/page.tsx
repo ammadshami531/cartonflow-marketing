@@ -597,6 +597,8 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <a href="/acceptable-use">Acceptable Use</a>
       <a href="/cookies">Cookie Policy</a>
       <a href="/support">Support &amp; Contact</a>
+      <a href="/for-logistics-partners">For Logistics Partners</a>
+      <a href="/for-distributors">For Distributors</a>
       <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a>
     </div>
   </div>

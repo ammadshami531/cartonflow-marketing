@@ -98,10 +98,10 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <p>To the maximum extent permitted by law, Pevara Systems' total liability for any claim arising from your use of CartonFlow shall not exceed the total amount you paid us in the 12 months preceding the claim. We are not liable for indirect, incidental, or consequential damages.</p>
 
 <h2>11. Termination</h2>
-<p>Either party may terminate at any time. You can cancel from your account settings. We may terminate accounts that violate these Terms with or without notice. Upon termination, your data is retained for 90 days then permanently deleted.</p>
+<p>Either party may terminate at any time. You can cancel from your account dashboard under <strong>Settings → Billing → Manage Subscription</strong>, which opens the Stripe Billing Portal. We may terminate accounts that violate these Terms with or without notice. Upon termination, your data is retained for 90 days then permanently deleted.</p>
 
 <h2>12. Governing Law</h2>
-<p>These Terms are governed by the laws of the State of New York, USA, without regard to conflict of law provisions.</p>
+<p>These Terms are governed by the laws of the State of Ohio, USA, without regard to conflict of law provisions.</p>
 
 <h2>13. Changes</h2>
 <p>We may update these Terms from time to time. We'll notify you by email of material changes. Continued use constitutes acceptance.</p>
