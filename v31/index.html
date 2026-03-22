@@ -85,26 +85,66 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .pain-solve{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:700;color:#a5b4fc;letter-spacing:0.3px}
 .pain-solve::before{content:'→';color:#6366f1}
 
-/* Before / After — visual card rows */
+/* Before / After — visual mock windows */
 .ba-wrap{max-width:1100px;margin:0 auto}
-.ba-title{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-1px;margin-bottom:36px;color:rgba(238,242,255,0.65)}
-.ba-rows{display:flex;flex-direction:column;gap:12px}
-.ba-row{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;align-items:stretch}
-.ba-cell{border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px}
-.ba-cell.bad{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.13)}
-.ba-cell.good{background:rgba(79,70,229,0.07);border:1px solid rgba(79,70,229,0.18)}
-.ba-icon{font-size:22px;flex-shrink:0;width:36px;text-align:center}
-.ba-text{font-size:13px;line-height:1.55}
-.ba-cell.bad .ba-text{color:rgba(238,242,255,0.45)}
-.ba-cell.good .ba-text{color:rgba(238,242,255,0.78)}
-.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:18px;color:rgba(129,140,248,0.5);font-weight:900}
-.ba-header-row{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;margin-bottom:12px}
-.ba-hdr{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
-.ba-hdr.bh{color:rgba(239,68,68,0.55)}
-.ba-hdr.gh{color:#818cf8}
-.ba-hdr-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.bh .ba-hdr-dot{background:rgba(239,68,68,0.55)}
-.gh .ba-hdr-dot{background:#6366f1}
+.ba-title{font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-0.5px;margin-bottom:32px;color:rgba(238,242,255,0.6);text-align:center}
+.ba-panels{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center}
+.ba-panel{border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.5)}
+.ba-panel-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:14px}
+.ba-panel-label.bl{color:rgba(239,68,68,0.6)}
+.ba-panel-label.gl{color:#818cf8}
+.ba-divider{display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 24px}
+.ba-vs{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#6366f1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;box-shadow:0 4px 16px rgba(79,70,229,0.5);flex-shrink:0}
+.ba-line{width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(79,70,229,0.3),transparent)}
+
+/* Fake WhatsApp window */
+.fake-wa{background:#111b21;border-radius:14px;overflow:hidden;font-size:12px}
+.fake-wa-bar{background:#1f2c34;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.fake-wa-icon{width:32px;height:32px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.fake-wa-name{font-size:13px;font-weight:600;color:#e9edef}
+.fake-wa-sub{font-size:10px;color:#8696a0}
+.fake-wa-body{padding:12px;display:flex;flex-direction:column;gap:8px;background:#0b141a}
+.wa-msg{max-width:82%;padding:7px 10px;border-radius:8px;font-size:11px;line-height:1.45;color:#e9edef}
+.wa-msg.recv{background:#202c33;align-self:flex-start;border-top-left-radius:2px}
+.wa-msg.sent{background:#005c4b;align-self:flex-end;border-top-right-radius:2px}
+.wa-time{font-size:9px;color:rgba(255,255,255,0.3);text-align:right;margin-top:3px}
+
+/* Fake WeChat window */
+.fake-wc{background:#1a1a1a;border-radius:14px;overflow:hidden;font-size:12px}
+.fake-wc-bar{background:#2a2a2a;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.fake-wc-icon{width:32px;height:32px;border-radius:8px;background:#07c160;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;flex-shrink:0}
+.fake-wc-name{font-size:13px;font-weight:600;color:#e5e5e5}
+.fake-wc-body{padding:12px;display:flex;flex-direction:column;gap:8px}
+.wc-msg{max-width:82%;padding:7px 10px;border-radius:8px;font-size:11px;line-height:1.45;color:#e5e5e5}
+.wc-msg.recv{background:#333;align-self:flex-start;border-top-left-radius:2px}
+.wc-msg.sent{background:#07c160;align-self:flex-end;color:#fff;border-top-right-radius:2px}
+
+/* Fake email */
+.fake-email{background:#1c1c1e;border-radius:14px;overflow:hidden;font-size:12px}
+.fake-email-bar{background:#2c2c2e;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.fake-email-subject{font-size:12px;font-weight:700;color:#e5e5e5;margin-bottom:3px}
+.fake-email-from{font-size:10px;color:rgba(255,255,255,0.35)}
+.fake-email-body{padding:14px;color:rgba(255,255,255,0.5);font-size:11px;line-height:1.65}
+.fake-email-body strong{color:rgba(255,255,255,0.75)}
+
+/* Fake CF messaging */
+.fake-cf{background:#0e1020;border-radius:14px;overflow:hidden;font-size:12px;border:1px solid rgba(79,70,229,0.25)}
+.fake-cf-bar{background:#0a0d1a;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(79,70,229,0.15)}
+.cf-logo-sm{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#4F46E5,#6366f1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0}
+.fake-cf-title{font-size:12px;font-weight:700;color:#eef2ff}
+.fake-cf-badge{font-size:9px;background:rgba(79,70,229,0.3);color:#a5b4fc;border:1px solid rgba(79,70,229,0.4);border-radius:4px;padding:2px 6px;font-weight:700}
+.fake-cf-body{padding:12px;display:flex;flex-direction:column;gap:8px;background:#080b18}
+.cf-msg{max-width:85%;padding:8px 11px;border-radius:8px;font-size:11px;line-height:1.5}
+.cf-msg.recv{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);align-self:flex-start;color:rgba(238,242,255,0.7)}
+.cf-msg.sent{background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.3);align-self:flex-end;color:#eef2ff}
+.cf-tag{font-size:9px;font-weight:700;color:#a5b4fc;background:rgba(79,70,229,0.15);border-radius:3px;padding:1px 5px;display:inline-block;margin-bottom:4px}
+.cf-milestone{background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:8px;padding:8px 11px;font-size:10px;color:#4ade80;display:flex;align-items:center;gap:7px}
+
+/* Points under panels */
+.ba-points{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.ba-point{font-size:12px;color:rgba(238,242,255,0.45);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.ba-point.bad-pt .pt-dot{color:rgba(239,68,68,0.55);flex-shrink:0}
+.ba-point.good-pt .pt-dot{color:#818cf8;flex-shrink:0}
 
 /* PRICING */
 .pricing{background:#04050f;padding:100px 60px;border-top:1px solid rgba(255,255,255,0.04)}
@@ -182,8 +222,9 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   .stats-grid{grid-template-columns:1fr 1fr;gap:20px}
   .hiw{padding:60px 20px}
   .pain-stats{grid-template-columns:1fr}
-  .ba-row{grid-template-columns:1fr;gap:8px}
-  .ba-arrow{transform:rotate(90deg);height:24px}
+  .ba-panels{grid-template-columns:1fr;gap:20px}
+  .ba-divider{flex-direction:row;padding:16px 0}
+  .ba-line{width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(79,70,229,0.3),transparent)}
   .pricing{padding:60px 20px}
   .plans{grid-template-columns:1fr}
   .faq-section{padding:60px 20px}
@@ -343,40 +384,123 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
   </div>
 
-  <!-- Visual Before / After rows -->
+  <!-- Visual Before / After mock windows -->
   <div class="ba-wrap">
-    <div class="ba-title">Before → After</div>
-    <div class="ba-header-row">
-      <div class="ba-hdr bh"><div class="ba-hdr-dot"></div> Without CartonFlow</div>
-      <div></div>
-      <div class="ba-hdr gh"><div class="ba-hdr-dot"></div> With CartonFlow</div>
-    </div>
-    <div class="ba-rows">
-      <div class="ba-row">
-        <div class="ba-cell bad"><div class="ba-icon">📱</div><div class="ba-text">Texting your 3PL on WhatsApp or WeChat to find out where your container is</div></div>
-        <div class="ba-arrow">→</div>
-        <div class="ba-cell good"><div class="ba-icon">🗺️</div><div class="ba-text">Live AIS vessel position on an interactive map — updated in real time, no texting required</div></div>
+    <div class="ba-title">Before CartonFlow — After CartonFlow</div>
+    <div class="ba-panels">
+
+      <!-- LEFT: chaos collage -->
+      <div>
+        <div class="ba-panel-label bl">Without CartonFlow</div>
+        <div class="ba-panel" style="display:flex;flex-direction:column;gap:10px;background:transparent;box-shadow:none;border-radius:0">
+
+          <!-- Fake WhatsApp -->
+          <div class="fake-wa">
+            <div class="fake-wa-bar">
+              <div class="fake-wa-icon">💬</div>
+              <div>
+                <div class="fake-wa-name">Jason @ Pacific Freight</div>
+                <div class="fake-wa-sub">WhatsApp · last seen today</div>
+              </div>
+            </div>
+            <div class="fake-wa-body">
+              <div class="wa-msg sent">Hey Jason, any update on the Shanghai container? It was supposed to sail Monday<div class="wa-time">9:12 AM ✓✓</div></div>
+              <div class="wa-msg recv">Still at port, waiting on customs clearance. Could be another 3–5 days<div class="wa-time">11:47 AM</div></div>
+              <div class="wa-msg sent">We have an FBA delivery window opening Thursday — this is a problem<div class="wa-time">11:49 AM ✓</div></div>
+            </div>
+          </div>
+
+          <!-- Fake WeChat -->
+          <div class="fake-wc">
+            <div class="fake-wc-bar">
+              <div class="fake-wc-icon">💚</div>
+              <div>
+                <div class="fake-wc-name">Li Wei — Shenzhen 3PL Group</div>
+                <div style="font-size:10px;color:#888">WeChat · 6 members</div>
+              </div>
+            </div>
+            <div class="fake-wc-body">
+              <div class="wc-msg recv">货物已装箱，等待提单确认 📦</div>
+              <div class="wc-msg recv" style="font-size:10px;color:#888;background:transparent;padding:0 0 0 4px">Li Wei • 8:33 AM</div>
+              <div class="wc-msg sent">Do you have an ETA for LA port arrival?</div>
+              <div class="wc-msg recv">Maybe 18–22 days. Very difficult to say exactly now</div>
+            </div>
+          </div>
+
+          <!-- Fake email -->
+          <div class="fake-email">
+            <div class="fake-email-bar">
+              <div class="fake-email-subject">Re: Invoice #CF-0042 — missing line items</div>
+              <div class="fake-email-from">From: ops@globalfreight.com · 3 attachments</div>
+            </div>
+            <div class="fake-email-body">
+              Please find attached the updated invoice. Note that the <strong>fuel surcharge is on page 2</strong> of the PDF. The port handling fee was added verbally — we'll include it next time. Let me know if you need the breakdown in a different format...
+            </div>
+          </div>
+
+        </div>
+        <div class="ba-points">
+          <div class="ba-point bad-pt"><span class="pt-dot">✕</span> Updates scattered across WhatsApp, WeChat, and email</div>
+          <div class="ba-point bad-pt"><span class="pt-dot">✕</span> ETAs are guesses — you find out too late to act</div>
+          <div class="ba-point bad-pt"><span class="pt-dot">✕</span> Invoices arrive as PDFs with missing line items</div>
+        </div>
       </div>
-      <div class="ba-row">
-        <div class="ba-cell bad"><div class="ba-icon">⚠️</div><div class="ba-text">Your 3PL tells you the shipment is late — after the Amazon FBA window change deadline closes</div></div>
-        <div class="ba-arrow">→</div>
-        <div class="ba-cell good"><div class="ba-icon">⏱️</div><div class="ba-text">ETA alerts fire early enough to update your FBA delivery window and avoid Amazon penalties</div></div>
+
+      <!-- CENTER divider -->
+      <div class="ba-divider">
+        <div class="ba-line"></div>
+        <div class="ba-vs">→</div>
+        <div class="ba-line"></div>
       </div>
-      <div class="ba-row">
-        <div class="ba-cell bad"><div class="ba-icon">🤷</div><div class="ba-text">Accepting the first freight quote because comparing 3PLs means 6 WhatsApp conversations</div></div>
-        <div class="ba-arrow">→</div>
-        <div class="ba-cell good"><div class="ba-icon">🏆</div><div class="ba-text">Post one RFQ, 3PLs bid competitively, you compare side-by-side and award in one click</div></div>
+
+      <!-- RIGHT: CartonFlow -->
+      <div>
+        <div class="ba-panel-label gl">With CartonFlow</div>
+        <div class="ba-panel">
+          <div class="fake-cf">
+            <div class="fake-cf-bar">
+              <div class="cf-logo-sm">CF</div>
+              <div style="flex:1">
+                <div class="fake-cf-title">SHZ-LAX-042 · Shanghai → Los Angeles</div>
+              </div>
+              <div class="fake-cf-badge">🟢 In Transit</div>
+            </div>
+            <div class="fake-cf-body">
+              <div class="cf-milestone">📍 Vessel departed Shanghai · ETA LA: Mar 29 · 14 days out</div>
+
+              <div style="margin-top:4px">
+                <div class="cf-tag">Jason @ Pacific Freight</div>
+                <div class="cf-msg recv">Customs pre-clearance filed. On track for Mar 29 arrival. No delays expected.</div>
+              </div>
+
+              <div>
+                <div class="cf-tag" style="text-align:right;display:block">You</div>
+                <div class="cf-msg sent">Thanks — FBA window is Apr 1–7, we're good. Keep me posted on any changes.</div>
+              </div>
+
+              <div>
+                <div class="cf-tag">Jason @ Pacific Freight</div>
+                <div class="cf-msg recv">Invoice #042 submitted — $4,820 total, 6 line items. Please review when ready.</div>
+              </div>
+
+              <div style="background:rgba(79,70,229,0.08);border:1px solid rgba(79,70,229,0.15);border-radius:8px;padding:10px 12px;margin-top:4px">
+                <div style="font-size:10px;font-weight:700;color:#a5b4fc;margin-bottom:6px">📄 Invoice #CF-0042 · $4,820.00</div>
+                <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(238,242,255,0.4)"><span>Ocean freight (DDP)</span><span>$3,400</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(238,242,255,0.4)"><span>Port handling</span><span>$680</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(238,242,255,0.4)"><span>Fuel surcharge</span><span>$420</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(238,242,255,0.4)"><span>Last-mile delivery</span><span>$320</span></div>
+                <div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:flex-end"><span style="background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:3px 10px">Mark Paid</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-points">
+          <div class="ba-point good-pt"><span class="pt-dot">✓</span> All 3PLs in one platform — per-shipment message threads</div>
+          <div class="ba-point good-pt"><span class="pt-dot">✓</span> Live ETA from AIS data — know before your FBA window closes</div>
+          <div class="ba-point good-pt"><span class="pt-dot">✓</span> Structured invoices with full line-item detail, right in the platform</div>
+        </div>
       </div>
-      <div class="ba-row">
-        <div class="ba-cell bad"><div class="ba-icon">📄</div><div class="ba-text">Invoices arrive as blurry PDFs over email — missing line items, no payment trail</div></div>
-        <div class="ba-arrow">→</div>
-        <div class="ba-cell good"><div class="ba-icon">✅</div><div class="ba-text">3PLs submit structured invoices in the platform with full line-item detail — you mark paid, they see it instantly</div></div>
-      </div>
-      <div class="ba-row">
-        <div class="ba-cell bad"><div class="ba-icon">🌐</div><div class="ba-text">Every 3PL has a different update format — spreadsheets, emails, voice notes, no single source of truth</div></div>
-        <div class="ba-arrow">→</div>
-        <div class="ba-cell good"><div class="ba-icon">📦</div><div class="ba-text">Every 3PL, every shipment, every document — one platform, one login, one source of truth</div></div>
-      </div>
+
     </div>
   </div>
 </div>
