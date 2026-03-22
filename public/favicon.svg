@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Favicon SVG — renders at 16x16, 32x32, 48x48 -->
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="7" fill="#0A0F1E"/>
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="6.25" stroke="#4F46E5" stroke-width="1.5"/>
+  <!-- At small sizes, simplified CF -->
+  <text x="2" y="24" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="18" fill="#4F46E5">C</text>
+  <text x="16" y="24" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="18" fill="#FFFFFF">F</text>
+</svg>
