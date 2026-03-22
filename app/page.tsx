@@ -591,10 +591,13 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
     <div class="footer-nav">
       <a href="/features" class="footer-deep-link">→ Deep dive: all features</a>
-      <a href="https://cartonflow.io/privacy-policy">Privacy Policy</a>
-      <a href="https://cartonflow.io/terms-of-service">Terms of Service</a>
-      <a href="https://cartonflow.io/cancellation">Cancellation Policy</a>
-      <a href="https://cartonflow.io/support">Support</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms-of-service">Terms of Service</a>
+      <a href="/cancellation">Cancellation &amp; Refunds</a>
+      <a href="/acceptable-use">Acceptable Use</a>
+      <a href="/cookies">Cookie Policy</a>
+      <a href="/support">Support &amp; Contact</a>
+      <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a>
     </div>
   </div>
   <div class="footer-bottom">
