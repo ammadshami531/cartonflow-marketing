@@ -149,6 +149,13 @@ footer p{font-size:13px;color:var(--muted)}
 .p-feat li.yes{color:rgba(255,255,255,0.72)}
 .p-feat li.no{color:rgba(255,255,255,0.2)}
 .chk{color:#22c55e;flex-shrink:0;margin-top:1px;font-size:11px}
+
+.p-section{margin-bottom:16px}
+.p-sec-hd{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.p-feat-s{list-style:none;display:flex;flex-direction:column;gap:8px}
+.p-feat-s li{display:flex;gap:8px;font-size:13px;align-items:flex-start;line-height:1.4}
+.p-feat-s li.yes{color:rgba(255,255,255,0.75)}
+.p-feat-s li.no{color:rgba(255,255,255,0.22)}
 </style>
 </head>
 <body>
@@ -289,17 +296,35 @@ footer p{font-size:13px;color:var(--muted)}
       <div class="p-price"><sup>$</sup><span id="bp">79</span><span class="p-price-mo">/mo</span></div>
       <div class="p-billed" id="bn">Billed monthly</div>
       <a href="https://app.cartonflow.io/signup?plan=basic" class="p-cta p-cta-b">Start free trial</a>
-      <ul class="p-feat">
-        <li><span class="ck">✓</span> Shipment tracking + status updates</li>
-        <li><span class="ck">✓</span> FedEx / UPS carton tracking</li>
-        <li><span class="ck">✓</span> Multi-destination routing</li>
-        <li><span class="ck">✓</span> Document hub + invoice portal</li>
-        <li><span class="ck">✓</span> 3PL messaging + push notifications</li>
-        <li><span class="ck">✓</span> 3 internal user seats</li>
-        <li><span class="ck">✓</span> Unlimited 3PL seats (always free)</li>
-        <li class="off"><span>🔒</span> Ocean freight + AIS maps</li>
-        <li class="off"><span>🔒</span> RFQ competitive bidding</li>
-      </ul>
+            <div class="p-section">
+        <div class="p-sec-hd">Tracking &amp; Visibility</div>
+        <ul class="p-feat-s">
+          <li class="yes"><span class="chk">✓</span> Shipment status + milestone tracking</li>
+          <li class="yes"><span class="chk">✓</span> FedEx + UPS carton-level tracking</li>
+          <li class="yes"><span class="chk">✓</span> Multi-destination routing</li>
+          <li class="no"><span>🔒</span> Live ocean tracking + AIS maps</li>
+        </ul>
+      </div>
+      <div class="p-section">
+        <div class="p-sec-hd">Communication &amp; Finance</div>
+        <ul class="p-feat-s">
+          <li class="yes"><span class="chk">✓</span> 3PL messaging + push notifications</li>
+          <li class="yes"><span class="chk">✓</span> Invoice portal (line-item detail)</li>
+          <li class="yes"><span class="chk">✓</span> Document hub</li>
+          <li class="no"><span>🔒</span> RFQ competitive bidding</li>
+          <li class="no"><span>🔒</span> Distributor management portal</li>
+        </ul>
+      </div>
+      <div class="p-section">
+        <div class="p-sec-hd">Team &amp; Analytics</div>
+        <ul class="p-feat-s">
+          <li class="yes"><span class="chk">✓</span> 3 internal user seats</li>
+          <li class="yes"><span class="chk">✓</span> Unlimited 3PL seats (free)</li>
+          <li class="no"><span>🔒</span> Advanced analytics + SLA dashboard</li>
+          <li class="no"><span>🔒</span> Weekly digest + anomaly alerts</li>
+          <li class="no"><span>🔒</span> 10 user seats + priority support</li>
+        </ul>
+      </div>
     </div>
     <div class="plan pro">
       <div class="plan-badge">Most Popular</div>
@@ -307,16 +332,35 @@ footer p{font-size:13px;color:var(--muted)}
       <div class="p-price"><sup>$</sup><span id="pp">129</span><span class="p-price-mo">/mo</span></div>
       <div class="p-billed" id="pn">Billed monthly</div>
       <a href="https://app.cartonflow.io/signup?plan=pro" class="p-cta p-cta-p">Start free trial</a>
-      <ul class="p-feat">
-        <li><span class="ck">✓</span> Everything in Basic</li>
-        <li><span class="ck">✓</span> Live ocean tracking + AIS vessel maps</li>
-        <li><span class="ck">✓</span> RFQ system — competitive 3PL bidding</li>
-        <li><span class="ck">✓</span> Distributor management portal</li>
-        <li><span class="ck">✓</span> Advanced analytics + SLA dashboard</li>
-        <li><span class="ck">✓</span> Weekly digest + anomaly alerts</li>
-        <li><span class="ck">✓</span> 10 internal user seats</li>
-        <li><span class="ck">✓</span> Priority support</li>
-      </ul>
+            <div class="p-section">
+        <div class="p-sec-hd">Tracking &amp; Visibility</div>
+        <ul class="p-feat-s">
+          <li class="yes"><span class="chk">✓</span> Shipment status + milestone tracking</li>
+          <li class="yes"><span class="chk">✓</span> FedEx + UPS carton-level tracking</li>
+          <li class="yes"><span class="chk">✓</span> Multi-destination routing</li>
+          <li class="yes"><span class="chk">✓</span> <strong>Live ocean tracking + AIS maps</strong></li>
+        </ul>
+      </div>
+      <div class="p-section">
+        <div class="p-sec-hd">Communication &amp; Finance</div>
+        <ul class="p-feat-s">
+          <li class="yes"><span class="chk">✓</span> 3PL messaging + push notifications</li>
+          <li class="yes"><span class="chk">✓</span> Invoice portal (line-item detail)</li>
+          <li class="yes"><span class="chk">✓</span> Document hub</li>
+          <li class="yes"><span class="chk">✓</span> <strong>RFQ competitive bidding system</strong></li>
+          <li class="yes"><span class="chk">✓</span> <strong>Distributor management portal</strong></li>
+        </ul>
+      </div>
+      <div class="p-section">
+        <div class="p-sec-hd">Team &amp; Analytics</div>
+        <ul class="p-feat-s">
+          <li class="yes"><span class="chk">✓</span> <strong>10 internal user seats</strong></li>
+          <li class="yes"><span class="chk">✓</span> Unlimited 3PL seats (free)</li>
+          <li class="yes"><span class="chk">✓</span> <strong>Advanced analytics + SLA dashboard</strong></li>
+          <li class="yes"><span class="chk">✓</span> <strong>Weekly digest + anomaly alerts</strong></li>
+          <li class="yes"><span class="chk">✓</span> <strong>Priority support</strong></li>
+        </ul>
+      </div>
     </div>
   </div>
   <p class="p-note">14-day free trial · Your 3PLs join free · Cancel anytime</p>
