@@ -68,13 +68,14 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .stat-n{font-size:52px;font-weight:900;letter-spacing:-2px;margin-bottom:6px}
 .stat-l{font-size:13px;color:rgba(238,242,255,0.35);line-height:1.5}
 
-/* PAIN SECTION — replaces testimonials */
-.pain-section{background:#04050f;padding:80px 60px;border-top:1px solid rgba(255,255,255,0.04)}
-.pain-section h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;margin-bottom:10px}
-.pain-section .pain-sub{color:rgba(238,242,255,0.35);font-size:15px;margin-bottom:52px;max-width:600px}
+/* HOW IT WORKS SECTION */
+.hiw{background:#04050f;padding:100px 60px;border-top:1px solid rgba(255,255,255,0.04)}
+.hiw-hd{max-width:1100px;margin:0 auto 64px}
+.hiw-hd h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:10px}
+.hiw-hd p{color:rgba(238,242,255,0.35);font-size:16px;max-width:560px}
 
 /* Pain stat cards */
-.pain-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;max-width:1100px;margin-left:auto;margin-right:auto}
+.pain-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto 72px}
 .pain-card{border-radius:16px;padding:32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);position:relative;overflow:hidden}
 .pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4F46E5,#6366f1)}
 .pain-icon{font-size:28px;margin-bottom:16px}
@@ -84,24 +85,26 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .pain-solve{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:700;color:#a5b4fc;letter-spacing:0.3px}
 .pain-solve::before{content:'→';color:#6366f1}
 
-/* Before / After */
-.ba-section{max-width:1100px;margin:0 auto}
-.ba-section h3{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-1px;margin-bottom:28px;text-align:center;color:rgba(238,242,255,0.7)}
-.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.ba-col{border-radius:16px;padding:32px}
-.ba-col.before{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15)}
-.ba-col.after{background:rgba(79,70,229,0.06);border:1px solid rgba(79,70,229,0.2)}
-.ba-head{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
-.ba-head.before-head{color:rgba(239,68,68,0.7)}
-.ba-head.after-head{color:#818cf8}
-.ba-dot-r{width:8px;height:8px;border-radius:50%;background:rgba(239,68,68,0.7);flex-shrink:0}
-.ba-dot-g{width:8px;height:8px;border-radius:50%;background:#6366f1;flex-shrink:0}
-.ba-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.ba-list li{display:flex;gap:10px;font-size:13px;line-height:1.55;align-items:flex-start}
-.ba-col.before .ba-list li{color:rgba(238,242,255,0.5)}
-.ba-col.after .ba-list li{color:rgba(238,242,255,0.75)}
-.ba-x{color:rgba(239,68,68,0.6);flex-shrink:0;font-weight:700;margin-top:1px}
-.ba-c{color:#818cf8;flex-shrink:0;font-weight:700;margin-top:1px}
+/* Before / After — visual card rows */
+.ba-wrap{max-width:1100px;margin:0 auto}
+.ba-title{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-1px;margin-bottom:36px;color:rgba(238,242,255,0.65)}
+.ba-rows{display:flex;flex-direction:column;gap:12px}
+.ba-row{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;align-items:stretch}
+.ba-cell{border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px}
+.ba-cell.bad{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.13)}
+.ba-cell.good{background:rgba(79,70,229,0.07);border:1px solid rgba(79,70,229,0.18)}
+.ba-icon{font-size:22px;flex-shrink:0;width:36px;text-align:center}
+.ba-text{font-size:13px;line-height:1.55}
+.ba-cell.bad .ba-text{color:rgba(238,242,255,0.45)}
+.ba-cell.good .ba-text{color:rgba(238,242,255,0.78)}
+.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:18px;color:rgba(129,140,248,0.5);font-weight:900}
+.ba-header-row{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;margin-bottom:12px}
+.ba-hdr{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.ba-hdr.bh{color:rgba(239,68,68,0.55)}
+.ba-hdr.gh{color:#818cf8}
+.ba-hdr-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.bh .ba-hdr-dot{background:rgba(239,68,68,0.55)}
+.gh .ba-hdr-dot{background:#6366f1}
 
 /* PRICING */
 .pricing{background:#04050f;padding:100px 60px;border-top:1px solid rgba(255,255,255,0.04)}
@@ -177,9 +180,10 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   .fp-num{display:none}
   .stats{padding:60px 20px}
   .stats-grid{grid-template-columns:1fr 1fr;gap:20px}
-  .pain-section{padding:60px 20px}
+  .hiw{padding:60px 20px}
   .pain-stats{grid-template-columns:1fr}
-  .ba-grid{grid-template-columns:1fr}
+  .ba-row{grid-template-columns:1fr;gap:8px}
+  .ba-arrow{transform:rotate(90deg);height:24px}
   .pricing{padding:60px 20px}
   .plans{grid-template-columns:1fr}
   .faq-section{padding:60px 20px}
@@ -200,7 +204,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text>
   </svg>
   <div class="nav-r">
-    <a href="/features/" class="login">Features</a>
+    <a href="features/" class="login">Features</a>
     <a href="https://app.cartonflow.io/login" class="login">Log in</a>
     <a href="https://app.cartonflow.io/signup" class="btn-nav">Start free trial</a>
   </div>
@@ -214,7 +218,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <p class="hero-sub">The logistics platform that connects Amazon sellers and e-commerce brands with their 3PLs, forwarders, and distributors — in one place, in real time.</p>
     <div class="hero-ctas">
       <a href="https://app.cartonflow.io/signup" class="btn-xl btn-fill">Start free trial →</a>
-      <a href="/features/" class="btn-xl btn-ghost">See all features</a>
+      <a href="features/" class="btn-xl btn-ghost">See all features</a>
     </div>
     <p class="hero-note">Starting at $79/mo · Your 3PLs always join free · Cancel anytime</p>
   </div>
@@ -308,60 +312,70 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   </div>
 </div>
 
-<!-- PAIN SECTION: replaces testimonials -->
-<div class="pain-section fade-up" id="why">
-  <div style="max-width:1100px;margin:0 auto">
-    <h2>The problems <span class="g">every seller knows.</span></h2>
-    <p class="pain-sub">CartonFlow was built because we lived these. Most brands are managing 6-figure freight operations over WhatsApp, WeChat, and spreadsheets. That's insane. So we fixed it.</p>
+<!-- HOW IT WORKS: pain stats + visual before/after -->
+<div class="hiw fade-up" id="why">
+  <div class="hiw-hd">
+    <h2>How it <span class="g">works.</span></h2>
+    <p>Most brands manage 6-figure freight operations over WhatsApp, WeChat, and spreadsheets. CartonFlow fixes that — one dashboard for everything, in real time.</p>
+  </div>
 
-    <div class="pain-stats">
-      <div class="pain-card">
-        <div class="pain-icon">📱</div>
-        <div class="pain-stat"><span class="g">8hrs+</span></div>
-        <div class="pain-label">Lost every week chasing updates</div>
-        <div class="pain-desc">The average Amazon seller or e-commerce brand spends 8+ hours per week bouncing between WhatsApp, WeChat, and email threads just to find out where their shipments are.</div>
-        <div class="pain-solve">CartonFlow gives you one dashboard for every shipment, in real time</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon">⏰</div>
-        <div class="pain-stat"><span class="g">24hrs</span></div>
-        <div class="pain-label">The window you can't miss</div>
-        <div class="pain-desc">Amazon FBA delivery windows are 1 week. You can only change them up to 24 hours before the window opens. If your 3PL tells you the shipment is late after that — you're penalized. Enough penalties and Amazon restricts your ability to inbound at all.</div>
-        <div class="pain-solve">Live ETAs let you update delivery windows before the deadline closes</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon">📉</div>
-        <div class="pain-stat"><span class="g">15%</span></div>
-        <div class="pain-label">Freight margin left on the table</div>
-        <div class="pain-desc">Amazon fees are rising. E-commerce margins are tighter. Most brands accept the first freight quote they get. With CartonFlow's RFQ system, your 3PLs compete — and you keep 8–15% that was silently disappearing.</div>
-        <div class="pain-solve">One RFQ cycle typically pays for a full year's subscription</div>
-      </div>
+  <div class="pain-stats">
+    <div class="pain-card">
+      <div class="pain-icon">📱</div>
+      <div class="pain-stat"><span class="g">8hrs+</span></div>
+      <div class="pain-label">Lost every week chasing updates</div>
+      <div class="pain-desc">The average Amazon seller or e-commerce brand spends 8+ hours per week bouncing between WhatsApp, WeChat, and email threads just to find out where their shipments are.</div>
+      <div class="pain-solve">CartonFlow gives you one dashboard for every shipment, in real time</div>
     </div>
+    <div class="pain-card">
+      <div class="pain-icon">⏰</div>
+      <div class="pain-stat"><span class="g">24hrs</span></div>
+      <div class="pain-label">The window you can't miss</div>
+      <div class="pain-desc">Amazon FBA delivery windows are 1 week. You can only change them up to 24 hours before the window opens. If your 3PL tells you the shipment is late after that — you're penalized. Enough penalties and Amazon restricts your ability to inbound at all.</div>
+      <div class="pain-solve">Live ETAs let you update delivery windows before the deadline closes</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">📉</div>
+      <div class="pain-stat"><span class="g">15%</span></div>
+      <div class="pain-label">Freight margin left on the table</div>
+      <div class="pain-desc">Amazon fees are rising. E-commerce margins are tighter. Most brands accept the first freight quote they get. With CartonFlow's RFQ system, your 3PLs compete — and you keep 8–15% that was silently disappearing.</div>
+      <div class="pain-solve">One RFQ cycle typically pays for a full year's subscription</div>
+    </div>
+  </div>
 
-    <!-- Before / After -->
-    <div class="ba-section">
-      <h3>Before CartonFlow → After CartonFlow</h3>
-      <div class="ba-grid">
-        <div class="ba-col before">
-          <div class="ba-head before-head"><div class="ba-dot-r"></div> Without CartonFlow</div>
-          <ul class="ba-list">
-            <li><span class="ba-x">✕</span> Texting your 3PL on WhatsApp or WeChat to find out where your container is</li>
-            <li><span class="ba-x">✕</span> 3PL tells you a shipment is late — after the Amazon window change deadline</li>
-            <li><span class="ba-x">✕</span> Accepting the first freight quote because there's no easy way to compare</li>
-            <li><span class="ba-x">✕</span> PDFs emailed back and forth for invoices, half of them missing line items</li>
-            <li><span class="ba-x">✕</span> Every 3PL has a different update format — no single source of truth</li>
-          </ul>
-        </div>
-        <div class="ba-col after">
-          <div class="ba-head after-head"><div class="ba-dot-g"></div> With CartonFlow</div>
-          <ul class="ba-list">
-            <li><span class="ba-c">✓</span> Live AIS vessel positions + real-time milestone updates in one dashboard</li>
-            <li><span class="ba-c">✓</span> Early ETA alerts give you time to update FBA windows before penalties hit</li>
-            <li><span class="ba-c">✓</span> Post one RFQ, 3PLs bid, you pick the winner — 8–15% saved per shipment</li>
-            <li><span class="ba-c">✓</span> 3PLs submit invoices directly in the platform with full line-item detail</li>
-            <li><span class="ba-c">✓</span> Every 3PL, every shipment, every document — in one shared platform</li>
-          </ul>
-        </div>
+  <!-- Visual Before / After rows -->
+  <div class="ba-wrap">
+    <div class="ba-title">Before → After</div>
+    <div class="ba-header-row">
+      <div class="ba-hdr bh"><div class="ba-hdr-dot"></div> Without CartonFlow</div>
+      <div></div>
+      <div class="ba-hdr gh"><div class="ba-hdr-dot"></div> With CartonFlow</div>
+    </div>
+    <div class="ba-rows">
+      <div class="ba-row">
+        <div class="ba-cell bad"><div class="ba-icon">📱</div><div class="ba-text">Texting your 3PL on WhatsApp or WeChat to find out where your container is</div></div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-cell good"><div class="ba-icon">🗺️</div><div class="ba-text">Live AIS vessel position on an interactive map — updated in real time, no texting required</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell bad"><div class="ba-icon">⚠️</div><div class="ba-text">Your 3PL tells you the shipment is late — after the Amazon FBA window change deadline closes</div></div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-cell good"><div class="ba-icon">⏱️</div><div class="ba-text">ETA alerts fire early enough to update your FBA delivery window and avoid Amazon penalties</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell bad"><div class="ba-icon">🤷</div><div class="ba-text">Accepting the first freight quote because comparing 3PLs means 6 WhatsApp conversations</div></div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-cell good"><div class="ba-icon">🏆</div><div class="ba-text">Post one RFQ, 3PLs bid competitively, you compare side-by-side and award in one click</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell bad"><div class="ba-icon">📄</div><div class="ba-text">Invoices arrive as blurry PDFs over email — missing line items, no payment trail</div></div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-cell good"><div class="ba-icon">✅</div><div class="ba-text">3PLs submit structured invoices in the platform with full line-item detail — you mark paid, they see it instantly</div></div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell bad"><div class="ba-icon">🌐</div><div class="ba-text">Every 3PL has a different update format — spreadsheets, emails, voice notes, no single source of truth</div></div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-cell good"><div class="ba-icon">📦</div><div class="ba-text">Every 3PL, every shipment, every document — one platform, one login, one source of truth</div></div>
       </div>
     </div>
   </div>
@@ -483,7 +497,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <p>Most Amazon sellers and e-commerce brands are managing 6-figure freight operations over <strong>WhatsApp threads, WeChat groups, and spreadsheets</strong>. Invoices arrive as blurry PDFs. Delivery window deadlines get missed because the 3PL's update came 25 hours too late.<br><br>We built CartonFlow because this problem is real, it's expensive, and it's completely solvable. <strong>Your 3PLs join free. You get visibility you've never had. That's the deal.</strong></p>
     </div>
     <div class="footer-nav">
-      <a href="/features/" class="footer-deep-link">→ Deep dive: all features</a>
+      <a href="features/" class="footer-deep-link">→ Deep dive: all features</a>
       <a href="https://cartonflow.io/privacy-policy">Privacy Policy</a>
       <a href="https://cartonflow.io/terms-of-service">Terms of Service</a>
       <a href="https://cartonflow.io/cancellation">Cancellation Policy</a>
