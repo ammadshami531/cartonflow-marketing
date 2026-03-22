@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CartonFlow — Your freight, fully under control</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0d0e1a;color:#e8eaff;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.acc{color:#818cf8}
+.g{background:linear-gradient(135deg,#a78bfa,#818cf8,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* NAV — masthead style on dark bg */
+nav{
+  border-bottom:3px solid #4F46E5;
+  padding:0 60px;
+  display:flex;align-items:center;justify-content:space-between;height:64px;
+  position:sticky;top:0;z-index:100;
+  background:#0d0e1a;
+}
+.nav-center{position:absolute;left:50%;transform:translateX(-50%);text-align:center}
+.nav-date{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;margin-bottom:2px}
+.nav-wordmark{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:900;letter-spacing:-0.5px;color:#e8eaff}
+.nav-wordmark span{color:#818cf8}
+.nav-r{display:flex;align-items:center;gap:12px}
+.nav-login{color:rgba(255,255,255,0.4);text-decoration:none;font-size:13px;font-weight:600;transition:color .2s}.nav-login:hover{color:#e8eaff}
+.nav-cta{background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;padding:8px 18px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;border-radius:6px;box-shadow:0 3px 12px rgba(79,70,229,0.35)}.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,0.5)}
+
+/* HERO — newspaper front page on dark bg */
+.hero{
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  padding:64px 60px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:end;
+  overflow:hidden;
+  max-width:1400px;margin:0 auto;
+}
+.hero-kicker{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#818cf8;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.hero-kicker::before{content:'';width:24px;height:2px;background:#4F46E5}
+.hero h1{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(48px,6vw,80px);
+  font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;color:#e8eaff;
+}
+.hero h1 em{font-style:italic;color:#818cf8}
+.hero-lead{font-size:17px;color:rgba(232,234,255,0.55);line-height:1.8;margin-bottom:32px;max-width:480px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.btn-ind{background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;padding:13px 28px;font-size:14px;font-weight:700;text-decoration:none;display:inline-block;transition:all .2s;border-radius:6px;box-shadow:0 4px 15px rgba(79,70,229,0.4)}.btn-ind:hover{transform:translateY(-1px);box-shadow:0 8px 25px rgba(79,70,229,0.55)}
+.btn-outline-ind{border:2px solid #4F46E5;color:#818cf8;padding:12px 28px;font-size:14px;font-weight:700;text-decoration:none;display:inline-block;transition:all .2s;border-radius:6px}.btn-outline-ind:hover{background:rgba(79,70,229,0.12)}
+.hero-proof{display:flex;align-items:center;gap:14px;padding-bottom:32px;border-top:1px solid rgba(255,255,255,0.07);padding-top:20px}
+.hero-stars{color:#f59e0b;font-size:15px;letter-spacing:2px}
+.hero-proof-txt{font-size:12px;color:rgba(255,255,255,0.35)}
+.hero-right{position:relative;border-left:2px solid rgba(255,255,255,0.08);padding-left:40px}
+.hero-right img{width:100%;display:block;border:1px solid rgba(255,255,255,0.08);border-radius:4px}
+.hero-caption{border-top:1px solid rgba(255,255,255,0.07);padding:12px 0;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;text-transform:uppercase}
+
+/* STATS — dark indigo bar */
+.stats-bar{
+  background:linear-gradient(135deg,rgba(79,70,229,0.15),rgba(99,102,241,0.08));
+  border-bottom:1px solid rgba(79,70,229,0.2);
+  border-top:1px solid rgba(79,70,229,0.15);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-cell{padding:28px 40px;border-right:1px solid rgba(79,70,229,0.15);text-align:center}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Playfair Display',Georgia,serif;font-size:44px;font-weight:900;letter-spacing:-2px;color:#a78bfa;margin-bottom:4px}
+.stat-l{font-size:11px;color:rgba(232,234,255,0.4);letter-spacing:1px;text-transform:uppercase}
+
+/* FEATURES */
+.features-wrap{max-width:1400px;margin:0 auto;padding:0 60px}
+.section-head{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;
+  padding:48px 0 32px;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.section-num{font-family:'Playfair Display',Georgia,serif;font-size:56px;font-weight:900;color:rgba(129,140,248,0.15);line-height:1;flex-shrink:0}
+.section-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,2.8vw,36px);font-weight:900;letter-spacing:-0.5px;color:#e8eaff}
+.section-title em{font-style:italic;color:#818cf8}
+.section-rule{height:1px;background:linear-gradient(90deg,rgba(79,70,229,0.4),transparent)}
+.section-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:rgba(79,70,229,0.15);border:1px solid rgba(79,70,229,0.3);color:#a5b4fc;padding:4px 12px;border-radius:4px;flex-shrink:0;white-space:nowrap}
+
+.feature-editorial{display:grid;grid-template-columns:42% 58%;border-bottom:1px solid rgba(255,255,255,0.07)}
+.feature-editorial.flip{grid-template-columns:58% 42%}
+.feat-ed-text{padding:48px;border-right:1px solid rgba(255,255,255,0.07)}
+.feature-editorial.flip .feat-ed-text{border-right:none;border-left:1px solid rgba(255,255,255,0.07);order:2}
+.feature-editorial.flip .feat-ed-img{order:1}
+.feat-ed-text h3{font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,2.3vw,36px);font-weight:900;letter-spacing:-0.5px;line-height:1.15;margin-bottom:16px;color:#e8eaff}
+.feat-ed-text h3 em{font-style:italic;color:#818cf8}
+.feat-ed-text p{font-size:14px;color:rgba(232,234,255,0.5);line-height:1.85;margin-bottom:20px}
+.feat-ed-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.feat-ed-list li{display:flex;gap:10px;font-size:13px;color:rgba(232,234,255,0.65);align-items:flex-start}
+.feat-ed-list li::before{content:'—';color:#4F46E5;flex-shrink:0;font-weight:700}
+.feat-link{color:#818cf8;text-decoration:none;font-size:13px;font-weight:700;border-bottom:1px solid rgba(129,140,248,0.3);padding-bottom:2px;display:inline-flex;align-items:center;gap:6px;transition:gap .15s;letter-spacing:0.3px}.feat-link:hover{gap:10px;border-color:#818cf8}
+.feat-ed-img{overflow:hidden}
+.feat-ed-img img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .6s ease}
+.feat-ed-img:hover img{transform:scale(1.02)}
+
+/* PRICING */
+.pricing-wrap{max-width:1400px;margin:0 auto;padding:0 60px}
+.pricing-toggle-row{display:flex;align-items:center;gap:16px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.07)}
+.pricing-toggle-row span{font-size:13px;color:rgba(255,255,255,0.35);font-weight:500}
+.toggle-switch{display:flex;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:3px;gap:2px}
+.ts-btn{padding:6px 16px;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;background:transparent;color:rgba(255,255,255,0.35);transition:all .15s;border-radius:4px;font-family:'Inter',sans-serif}
+.ts-btn.on{background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;box-shadow:0 2px 10px rgba(79,70,229,0.35)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,0.08)}
+.p-col{padding:48px;border-right:1px solid rgba(255,255,255,0.08)}
+.p-col:last-child{border-right:none}
+.p-col.pro-col{background:linear-gradient(135deg,rgba(79,70,229,0.08),rgba(99,102,241,0.04));border:1px solid rgba(79,70,229,0.3)}
+.p-col-name{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.p-col.pro-col .p-col-name{color:#818cf8}
+.p-col-price{font-family:'Playfair Display',Georgia,serif;font-size:68px;font-weight:900;letter-spacing:-4px;line-height:1;color:#e8eaff;margin-bottom:4px}
+.p-col-price sup{font-size:28px;letter-spacing:0;vertical-align:top;margin-top:14px;font-weight:700;font-family:'Inter',sans-serif}
+.p-col-price .mo{font-size:18px;color:rgba(255,255,255,0.3);font-weight:400;font-family:'Inter',sans-serif;letter-spacing:0}
+.p-col-billed{font-size:12px;color:rgba(255,255,255,0.3);margin:8px 0 32px;font-family:'Inter',sans-serif}
+.p-cta{display:block;text-align:center;padding:14px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:32px;transition:all .2s;border-radius:6px;letter-spacing:0.3px}
+.p-cta-basic{border:1px solid rgba(255,255,255,0.12);color:#e8eaff}.p-cta-basic:hover{background:rgba(255,255,255,0.04)}
+.p-cta-pro{background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;box-shadow:0 4px 15px rgba(79,70,229,0.4)}.p-cta-pro:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(79,70,229,0.55)}
+
+/* Plan feature sections */
+.p-feat-section{margin-bottom:20px}
+.p-feat-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.p-feat-list{list-style:none;display:flex;flex-direction:column;gap:8px;font-family:'Inter',sans-serif}
+.p-feat-list li{display:flex;gap:9px;font-size:13px;align-items:flex-start;line-height:1.4}
+.p-feat-list li.inc{color:rgba(232,234,255,0.75)}
+.p-feat-list li.off{opacity:0.22}
+.p-chk{color:#22c55e;flex-shrink:0;font-size:12px;margin-top:1px}
+.p-col.pro-col .p-chk{color:#818cf8}
+
+.pricing-footer{font-size:12px;color:rgba(255,255,255,0.2);text-align:center;padding:18px;border-top:1px solid rgba(255,255,255,0.07);letter-spacing:0.3px}
+
+/* TESTIMONIALS */
+.testi-wrap{max-width:1400px;margin:0 auto;padding:0 60px 60px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.08)}
+.t-col{padding:36px;border-right:1px solid rgba(255,255,255,0.08)}
+.t-col:last-child{border-right:none}
+.t-stars{color:#f59e0b;font-size:13px;letter-spacing:2px;margin-bottom:14px}
+.t-pull{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700;font-style:italic;line-height:1.5;color:#e8eaff;margin-bottom:18px;padding-left:16px;border-left:3px solid #4F46E5}
+.t-badge{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#818cf8;margin-bottom:10px;display:block}
+.t-name{font-size:13px;font-weight:700;color:#e8eaff}
+.t-role{font-size:12px;color:rgba(232,234,255,0.35)}
+
+/* FAQ */
+.faq-wrap{max-width:1400px;margin:0 auto;padding:0 60px 80px}
+.faq-wrap h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-1px;margin-bottom:36px;color:#e8eaff}
+.faq-item{border-top:1px solid rgba(255,255,255,0.07)}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;padding:16px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;font-family:'Inter',sans-serif}
+.faq-q span{font-size:14px;font-weight:600;color:#e8eaff}
+.faq-icon{color:#818cf8;font-size:16px;transition:transform .2s;flex-shrink:0}
+.faq-icon.open{transform:rotate(180deg)}
+.faq-ans{font-size:13px;color:rgba(232,234,255,0.45);line-height:1.8;padding-bottom:16px;display:none;font-family:'Inter',sans-serif}
+.faq-ans.open{display:block}
+
+/* CTA */
+.cta-wrap{
+  background:linear-gradient(135deg,rgba(79,70,229,0.2),rgba(99,102,241,0.1),rgba(139,92,246,0.15));
+  border-top:1px solid rgba(79,70,229,0.25);
+  padding:100px 60px;
+  text-align:left;
+}
+.cta-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px}
+.cta-text h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(32px,4.5vw,60px);font-weight:900;font-style:italic;letter-spacing:-2px;line-height:1.05;color:#e8eaff;margin-bottom:14px}
+.cta-text h2 em{font-style:italic;color:#a78bfa}
+.cta-text p{font-size:15px;color:rgba(232,234,255,0.4)}
+.cta-action{flex-shrink:0;text-align:center}
+.btn-white{background:#e8eaff;color:#111;padding:15px 40px;font-size:15px;font-weight:700;text-decoration:none;display:inline-block;transition:all .2s;border-radius:6px}.btn-white:hover{background:#fff;transform:translateY(-1px)}
+.cta-action p{font-size:12px;color:rgba(232,234,255,0.3);margin-top:10px;font-family:'Inter',sans-serif}
+
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;background:#0d0e1a}
+footer p{font-size:12px;color:rgba(255,255,255,0.25)}
+.f-links{display:flex;gap:20px}.f-links a{font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;transition:color .2s}.f-links a:hover{color:#818cf8}
+
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.fade-up.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  nav{padding:0 20px}.nav-center{display:none}
+  .hero{grid-template-columns:1fr;padding:40px 20px 0}
+  .hero-right{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,0.08);padding-top:24px}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .features-wrap,.pricing-wrap,.testi-wrap,.faq-wrap{padding:0 20px}
+  .feature-editorial,.feature-editorial.flip{grid-template-columns:1fr}
+  .feature-editorial .feat-ed-img{min-height:260px}
+  .feature-editorial.flip .feat-ed-text{order:1;border-left:none}
+  .feature-editorial.flip .feat-ed-img{order:2}
+  .pricing-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .cta-inner{grid-template-columns:1fr}
+  .cta-wrap{padding:60px 20px}
+  footer{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <svg width="120" height="26" viewBox="0 0 300 64" fill="none">
+    <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+    <rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/>
+    <text x="7" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text>
+    <text x="32" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#E8EAFF">F</text>
+    <text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#E8EAFF">Carton</tspan><tspan fill="#818cf8">Flow</tspan></text>
+  </svg>
+  <div class="nav-center">
+    <span class="nav-date">Logistics Platform · Est. 2024</span>
+    <div class="nav-wordmark">Carton<span>Flow</span></div>
+  </div>
+  <div class="nav-r">
+    <a href="https://app.cartonflow.io/login" class="nav-login">Log in</a>
+    <a href="https://app.cartonflow.io/signup" class="nav-cta">Start free trial</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">Logistics Platform</div>
+    <h1>Your freight.<br><em>Fully under control.</em></h1>
+    <p class="hero-lead">CartonFlow connects e-commerce brands and Amazon sellers with their 3PLs, forwarders, and distributors — in one platform, in real time.</p>
+    <div class="hero-ctas">
+      <a href="https://app.cartonflow.io/signup" class="btn-ind">Start free trial →</a>
+      <a href="#features" class="btn-outline-ind">See the platform</a>
+    </div>
+    <div class="hero-proof">
+      <div class="hero-stars">★★★★★</div>
+      <div class="hero-proof-txt">14-day free trial · No charge before day 14 · 3PLs always free</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="/screenshots/admin-dashboard.jpg" alt="CartonFlow Dashboard">
+    <div class="hero-caption">CartonFlow Dashboard — Real-time shipment visibility</div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-cell"><div class="stat-n">$14K</div><div class="stat-l">Avg Q1 freight savings</div></div>
+  <div class="stat-cell"><div class="stat-n">80%</div><div class="stat-l">Fewer 3PL emails</div></div>
+  <div class="stat-cell"><div class="stat-n">2min</div><div class="stat-l">Avg RFQ bid time</div></div>
+  <div class="stat-cell"><div class="stat-n">0</div><div class="stat-l">Contracts required</div></div>
+</div>
+
+<div class="features-wrap" id="features">
+  <div class="section-head">
+    <div class="section-num">01</div>
+    <div class="section-rule"></div>
+    <div class="section-title">Live Ocean <em>Tracking</em></div>
+    <div class="section-tag">Pro</div>
+  </div>
+  <div class="feature-editorial fade-up">
+    <div class="feat-ed-text">
+      <h3>Real-time vessel positions on a <em>world map.</em></h3>
+      <p>AIS satellite data updates every few minutes. Port ETAs, transit progress, vessel details — all visible before your 3PL sends a WhatsApp message. Filter by status: In Transit, Last Mile, Customs, Hold, Delayed.</p>
+      <ul class="feat-ed-list">
+        <li>Live AIS satellite vessel positions</li>
+        <li>Port ETA predictions and transit progress</li>
+        <li>Shipment status chips: In Transit · Last Mile · Customs · Delayed</li>
+        <li>Automatic delay alerts before they escalate</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">Try Pro free →</a>
+    </div>
+    <div class="feat-ed-img"><img src="/screenshots/live-map.jpg" alt="Live map"></div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">02</div>
+    <div class="section-rule"></div>
+    <div class="section-title">Competitive <em>RFQ Bidding</em></div>
+    <div class="section-tag">Pro</div>
+  </div>
+  <div class="feature-editorial flip fade-up">
+    <div class="feat-ed-text">
+      <h3>Let your 3PLs compete. <em>You save every time.</em></h3>
+      <p>Post shipment RFQs to your trusted 3PLs. Structured bids per service combo — no phone tag, no ambiguous quotes. Compare side-by-side and award in one click. Average 8–15% freight reduction per cycle. One cycle typically pays for the whole year.</p>
+      <ul class="feat-ed-list">
+        <li>Structured bids per service combo</li>
+        <li>Side-by-side comparison and one-click award</li>
+        <li>Bid history and awarded status tracking</li>
+        <li>6 shipments awaiting RFQ shown at a glance</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">Start saving →</a>
+    </div>
+    <div class="feat-ed-img"><img src="/screenshots/3pl-rfq-auction.jpg" alt="RFQ bidding"></div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">03</div>
+    <div class="section-rule"></div>
+    <div class="section-title">Shipment <em>Tracking</em></div>
+    <div class="section-tag">All Plans</div>
+  </div>
+  <div class="feature-editorial fade-up">
+    <div class="feat-ed-text">
+      <h3>Every shipment. Every carton. <em>In real time.</em></h3>
+      <p>FedEx and UPS tracking per carton, with real scan events. Status badges — Pending, Delayed, In Transit, Delivered — across all your shipments in one list. Search and filter by product, status, or destination. KPI stats bar shows units in motion, on-time delivery, and SLA at a glance.</p>
+      <ul class="feat-ed-list">
+        <li>Shipment status + FedEx/UPS carton tracking</li>
+        <li>Multi-destination routing (FBA + custom warehouses)</li>
+        <li>Milestone alerts and anomaly detection</li>
+        <li>Export + Upload actions from tracking view</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">Start tracking free →</a>
+    </div>
+    <div class="feat-ed-img"><img src="/screenshots/admin-tracking.jpg" alt="Tracking"></div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-num">04</div>
+    <div class="section-rule"></div>
+    <div class="section-title">Invoice <em>Portal</em></div>
+    <div class="section-tag">All Plans</div>
+  </div>
+  <div class="feature-editorial flip fade-up">
+    <div class="feat-ed-text">
+      <h3>Freight invoices without <em>the email chaos.</em></h3>
+      <p>3PLs submit invoices directly in the platform — line items, totals, due date, everything. You review, and mark paid. Status is visible to the 3PL instantly. Upload Invoice button for 3PL self-serve. Full billing history searchable by shipment or date.</p>
+      <ul class="feat-ed-list">
+        <li>Line-item detail on every freight invoice</li>
+        <li>Mark paid — 3PL sees status instantly</li>
+        <li>Full history searchable by shipment or date</li>
+        <li>No PDFs over email, no lost attachments</li>
+      </ul>
+      <a href="https://app.cartonflow.io/signup" class="feat-link">See invoice portal →</a>
+    </div>
+    <div class="feat-ed-img"><img src="/screenshots/admin-invoices.jpg" alt="Invoice portal"></div>
+  </div>
+</div>
+
+<div class="pricing-wrap" id="pricing">
+  <div class="section-head">
+    <div class="section-num">05</div>
+    <div class="section-rule"></div>
+    <div class="section-title">Simple <em>Pricing</em></div>
+  </div>
+  <div class="pricing-toggle-row">
+    <span>Billing period:</span>
+    <div class="toggle-switch">
+      <button class="ts-btn on" id="tm" onclick="sp('m')">Monthly</button>
+      <button class="ts-btn" id="ta" onclick="sp('a')">Annual (Save 20%)</button>
+    </div>
+    <span>Your 3PLs, forwarders, and distributors always join free.</span>
+  </div>
+  <div class="pricing-grid">
+    <div class="p-col">
+      <div class="p-col-name">Basic Plan</div>
+      <div class="p-col-price"><sup>$</sup><span id="bp">79</span><span class="mo">/mo</span></div>
+      <div class="p-col-billed" id="bn">Billed monthly</div>
+      <a href="https://app.cartonflow.io/signup?plan=basic" class="p-cta p-cta-basic">Start 14-day free trial</a>
+      <div class="p-feat-section">
+        <div class="p-feat-title">Tracking & Visibility</div>
+        <ul class="p-feat-list">
+          <li class="inc"><span class="p-chk">✓</span> Shipment status + milestone tracking</li>
+          <li class="inc"><span class="p-chk">✓</span> FedEx + UPS carton-level tracking</li>
+          <li class="inc"><span class="p-chk">✓</span> Multi-destination routing (FBA + custom)</li>
+          <li class="off"><span>🔒</span> Live ocean tracking + AIS vessel maps</li>
+        </ul>
+      </div>
+      <div class="p-feat-section">
+        <div class="p-feat-title">Communication & Finance</div>
+        <ul class="p-feat-list">
+          <li class="inc"><span class="p-chk">✓</span> 3PL messaging + push notifications</li>
+          <li class="inc"><span class="p-chk">✓</span> Invoice portal (line-item detail)</li>
+          <li class="inc"><span class="p-chk">✓</span> Document hub</li>
+          <li class="off"><span>🔒</span> RFQ competitive bidding</li>
+          <li class="off"><span>🔒</span> Distributor management portal</li>
+        </ul>
+      </div>
+      <div class="p-feat-section">
+        <div class="p-feat-title">Team & Analytics</div>
+        <ul class="p-feat-list">
+          <li class="inc"><span class="p-chk">✓</span> 3 internal user seats</li>
+          <li class="inc"><span class="p-chk">✓</span> Unlimited 3PL seats (free)</li>
+          <li class="off"><span>🔒</span> Advanced analytics + SLA dashboard</li>
+          <li class="off"><span>🔒</span> Weekly digest + anomaly alerts</li>
+          <li class="off"><span>🔒</span> 10 user seats</li>
+        </ul>
+      </div>
+    </div>
+    <div class="p-col pro-col">
+      <div class="p-col-name">Pro Plan · Most Popular</div>
+      <div class="p-col-price"><sup>$</sup><span id="pp">129</span><span class="mo">/mo</span></div>
+      <div class="p-col-billed" id="pn">Billed monthly</div>
+      <a href="https://app.cartonflow.io/signup?plan=pro" class="p-cta p-cta-pro">Start 14-day free trial</a>
+      <div class="p-feat-section">
+        <div class="p-feat-title">Tracking & Visibility</div>
+        <ul class="p-feat-list">
+          <li class="inc"><span class="p-chk">✓</span> Shipment status + milestone tracking</li>
+          <li class="inc"><span class="p-chk">✓</span> FedEx + UPS carton-level tracking</li>
+          <li class="inc"><span class="p-chk">✓</span> Multi-destination routing (FBA + custom)</li>
+          <li class="inc"><span class="p-chk">✓</span> <strong>Live ocean tracking + AIS vessel maps</strong></li>
+        </ul>
+      </div>
+      <div class="p-feat-section">
+        <div class="p-feat-title">Communication & Finance</div>
+        <ul class="p-feat-list">
+          <li class="inc"><span class="p-chk">✓</span> 3PL messaging + push notifications</li>
+          <li class="inc"><span class="p-chk">✓</span> Invoice portal (line-item detail)</li>
+          <li class="inc"><span class="p-chk">✓</span> Document hub</li>
+          <li class="inc"><span class="p-chk">✓</span> <strong>RFQ competitive bidding system</strong></li>
+          <li class="inc"><span class="p-chk">✓</span> <strong>Distributor management portal</strong></li>
+        </ul>
+      </div>
+      <div class="p-feat-section">
+        <div class="p-feat-title">Team & Analytics</div>
+        <ul class="p-feat-list">
+          <li class="inc"><span class="p-chk">✓</span> <strong>10 internal user seats</strong></li>
+          <li class="inc"><span class="p-chk">✓</span> Unlimited 3PL seats (free)</li>
+          <li class="inc"><span class="p-chk">✓</span> <strong>Advanced analytics + SLA dashboard</strong></li>
+          <li class="inc"><span class="p-chk">✓</span> <strong>Weekly digest + anomaly alerts</strong></li>
+          <li class="inc"><span class="p-chk">✓</span> <strong>Priority support</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pricing-footer">14-day free trial on both plans · No credit card required · Cancel anytime</div>
+</div>
+
+<div class="testi-wrap" id="testimonials">
+  <div class="section-head">
+    <div class="section-num">06</div>
+    <div class="section-rule"></div>
+    <div class="section-title">Customer <em>Stories</em></div>
+  </div>
+  <div class="testi-grid">
+    <div class="t-col"><div class="t-stars">★★★★★</div><div class="t-pull">"One bidding cycle paid for the whole year's subscription 20× over."</div><span class="t-badge">💰 $14K saved in Q1</span><div class="t-name">Amazon FBA Brand</div></div>
+    <div class="t-col"><div class="t-stars">★★★★★</div><div class="t-pull">"I check CartonFlow once in the morning, see exactly where everything is, and I'm done."</div><span class="t-badge">⏱️ 2 hrs/day saved</span><div class="t-name">Marcus T.</div><div class="t-role">Amazon FBA Seller</div></div>
+    <div class="t-col"><div class="t-stars">★★★★★</div><div class="t-pull">"Our 3PL told us it cut their back-and-forth emails by 80%. Problems solved in minutes."</div><span class="t-badge">📉 80% fewer emails</span><div class="t-name">Jennifer L.</div><div class="t-role">Shopify D2C Brand</div></div>
+  </div>
+</div>
+
+<div class="faq-wrap">
+  <h2>Questions <span class="acc">answered.</span></h2>
+  <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>Do my 3PLs and freight partners have to pay?</span><span class="faq-icon">▾</span></button><div class="faq-ans">No — your 3PLs, forwarders, and distributors join CartonFlow for free. They get a portal to update shipments, respond to messages, submit invoices, and place bids.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>Can I bring my own FedEx and UPS accounts?</span><span class="faq-icon">▾</span></button><div class="faq-ans">Yes. You connect your own developer credentials — CartonFlow uses them to pull tracking data. Your rates, your accounts, no middleman markup.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>What's the difference between Basic and Pro?</span><span class="faq-icon">▾</span></button><div class="faq-ans">Basic covers domestic tracking, invoicing, and messaging. Pro adds live ocean tracking with AIS maps, the competitive RFQ bidding system, distributor management, advanced analytics, and 10 user seats.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>Can I cancel anytime?</span><span class="faq-icon">▾</span></button><div class="faq-ans">Yes. No contracts, no fees. Cancel any time from account settings.</div></div>
+</div>
+
+<div class="cta-wrap">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>Stop chasing updates.<br><em>Start shipping with clarity.</em></h2>
+      <p>14-day free trial · Card required at signup · Your 3PLs join for free</p>
+    </div>
+    <div class="cta-action">
+      <a href="https://app.cartonflow.io/signup" class="btn-white">Start free trial →</a>
+      <p>Starting at $79/mo · Cancel anytime</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <svg width="120" height="26" viewBox="0 0 300 64" fill="none"><rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/><rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/><text x="7" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text><text x="32" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#E8EAFF">F</text><text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#E8EAFF">Carton</tspan><tspan fill="#818cf8">Flow</tspan></text></svg>
+  <p>© 2026 CartonFlow. All rights reserved.</p>
+  <div class="f-links"><a href="https://cartonflow.io/privacy-policy">Privacy</a><a href="https://cartonflow.io/terms-of-service">Terms</a><a href="https://cartonflow.io/cancellation">Cancellation</a><a href="https://cartonflow.io/support">Support</a></div>
+</footer>
+
+<script>
+function sp(m){
+  const a=m==='a';
+  document.getElementById('bp').textContent=a?'63':'79';
+  document.getElementById('pp').textContent=a?'103':'129';
+  document.getElementById('bn').textContent=a?'Billed $756/yr · Save 20%':'Billed monthly';
+  document.getElementById('pn').textContent=a?'Billed $1,236/yr · Save 20%':'Billed monthly';
+  document.getElementById('tm').classList.toggle('on',!a);
+  document.getElementById('ta').classList.toggle('on',a);
+}
+function tf(btn){
+  const b=btn.nextElementSibling,ic=btn.querySelector('.faq-icon'),open=b.classList.contains('open');
+  document.querySelectorAll('.faq-ans').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-icon').forEach(x=>x.classList.remove('open'));
+  if(!open){b.classList.add('open');ic.classList.add('open');}
+}
+const fo=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+</script>
+</body>
+</html>
