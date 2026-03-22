@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #030308;
+      --primary: #6366f1;
+      --accent: #f0abfc;
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    /* Snap Scroll Container */
+    .snap-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    /* Panel Base */
+    .panel {
+      height: 100vh;
+      width: 100vw;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 2rem;
+    }
+
+    /* Panel 1: Hero with particles */
+    .panel-hero {
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .panel-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, white, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 50px 160px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 130px 80px, white, transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 200px 200px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 250px 50px, white, transparent),
+        radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 350px 250px, rgba(255,255,255,0.6), transparent);
+      background-size: 400px 300px;
+      animation: particles 20s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes particles {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-300px); }
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease forwards 0.5s;
+    }
+
+    .hero-headline {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-headline .accent {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-screenshot {
+      width: 400px;
+      height: 250px;
+      background: url/screenshots/admin-dashboard.png') center/cover no-repeat;
+      border-radius: 12px;
+      margin: 2rem auto 0;
+      box-shadow: 0 25px 80px rgba(99, 102, 241, 0.3);
+      opacity: 0;
+      transform: translateY(50px);
+      animation: riseUp 1.5s ease forwards 1s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes riseUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Panel 2: Problem/Before-After */
+    .panel-problem {
+      background: linear-gradient(180deg, var(--bg) 0%, #0d0d1a 100%);
+    }
+
+    .panel-problem h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .comparison-column {
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .comparison-before {
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+    }
+
+    .comparison-after {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .comparison-column h3 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .comparison-before h3 {
+      color: #ef4444;
+    }
+
+    .comparison-after h3 {
+      color: var(--primary);
+    }
+
+    .stat {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-before .stat {
+      color: #ef4444;
+    }
+
+    .comparison-after .stat {
+      color: var(--accent);
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Panel 3: Features with tabs */
+    .panel-features {
+      background: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 100%);
+    }
+
+    .panel-features h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .feature-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature-tab {
+      padding: 1rem 2rem;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--text);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .feature-tab:hover, .feature-tab.active {
+      background: var(--primary);
+    }
+
+    .feature-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1000px;
+      align-items: center;
+    }
+
+    .feature-description h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .feature-description p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .feature-screenshot {
+      width: 100%;
+      height: 300px;
+      background: url/screenshots/live-map.png') center/cover no-repeat;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    /* Panel 4: Social Proof */
+    .panel-social {
+      background: linear-gradient(180deg, #1a1a2e 0%, #2d1b4e 100%);
+    }
+
+    .testimonial-container {
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+    }
+
+    .testimonial {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .testimonial.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .testimonial-text {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-author {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial-dot {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-dot:hover, .testimonial-dot.active {
+      background: var(--primary);
+    }
+
+    /* Panel 5: Pricing */
+    .panel-pricing {
+      background: linear-gradient(180deg, #2d1b4e 0%, #1a1a2e 100%);
+    }
+
+    .panel-pricing h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .pricing-cards {
+      display: flex;
+      gap: 2rem;
+      max-width: 900px;
+    }
+
+    .pricing-card {
+      flex: 1;
+      padding: 3rem 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .pricing-card h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card .price {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card .price small {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .pricing-card .period {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card li {
+      padding: 0.5rem 0;
+      color: var(--text-muted);
+    }
+
+    .pricing-card .btn {
+      display: block;
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card .btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* Panel 6: CTA */
+    .panel-cta {
+      background: var(--bg);
+    }
+
+    .panel-cta h2 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .panel-cta .btn {
+      padding: 1.5rem 4rem;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: all 0.3s ease;
+    }
+
+    .panel-cta .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.7;
+      z-index: 10;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-arrow {
+      width: 20px;
+      height: 30px;
+      border: 2px solid var(--text);
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .scroll-arrow::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: var(--text);
+      border-radius: 2px;
+      animation: scrollDown 2s infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { top: 6px; opacity: 1; }
+      100% { top: 14px; opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .comparison {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .feature-content {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-cards {
+        flex-direction: column;
+      }
+
+      .hero-screenshot {
+        width: 280px;
+        height: 180px;
+      }
+
+      .testimonial-text {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="snap-container">
+    <!-- Panel 1: Hero -->
+    <section class="panel panel-hero">
+      <div class="hero-content">
+        <h1 class="hero-headline">Your freight.<br>Fully under <span class="accent">control</span>.</h1>
+        <p class="hero-sub">Connect with 3PLs, forwarders, and distributors — solving shipping, the biggest pain point in logistics.</p>
+        <a href="https://app.cartonflow.io/signup" class="btn" style="padding: 1rem 2rem; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 700;">Start free trial</a>
+        <div class="hero-screenshot"></div>
+      </div>
+    </section>
+
+    <!-- Panel 2: Problem/Comparison -->
+    <section class="panel panel-problem">
+      <h2>The CartonFlow Difference</h2>
+      <div class="comparison">
+        <div class="comparison-column comparison-before">
+          <h3>Before CartonFlow</h3>
+          <div class="stat" data-count="47">0</div>
+          <p class="stat-label">hours spent tracking shipments monthly</p>
+        </div>
+        <div class="comparison-column comparison-after">
+          <h3>After CartonFlow</h3>
+          <div class="stat" data-count="2">0</div>
+          <p class="stat-label">hours spent tracking shipments monthly</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel 3: Features -->
+    <section class="panel panel-features">
+      <h2>Everything you need</h2>
+      <div class="feature-tabs">
+        <button class="feature-tab active" data-feature="tracking">Tracking</button>
+        <button class="feature-tab" data-feature="rfq">RFQs</button>
+        <button class="feature-tab" data-feature="analytics">Analytics</button>
+      </div>
+      <div class="feature-content">
+        <div class="feature-description">
+          <h3 id="feature-title">Real-time Tracking</h3>
+          <p id="feature-desc">Monitor every shipment across all carriers and 3PLs from a single unified dashboard. Get instant updates on location, status, and estimated delivery times.</p>
+        </div>
+        <div class="feature-screenshot" id="feature-image"></div>
+      </div>
+    </section>
+
+    <!-- Panel 4: Social Proof -->
+    <section class="panel panel-social">
+      <div class="testimonial-container">
+        <div class="testimonial active">
+          <p class="testimonial-text">"CartonFlow saved us $47,000 in the first quarter alone. We finally have visibility across our entire supply chain."</p>
+          <p class="testimonial-author">— Sarah Chen, TechStyle Commerce</p>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"The RFQ feature alone pays for itself. We cut our shipping costs by 35% in three months."</p>
+          <p class="testimonial-author">— Mike Rodriguez, Amazon Seller</p>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"Finally, a platform that actually understands logistics. This is what we've been waiting for."</p>
+          <p class="testimonial-author">— Lisa Park, Operations Lead</p>
+        </div>
+        <div class="testimonial-nav">
+          <button class="testimonial-dot active" data-testimonial="0"></button>
+          <button class="testimonial-dot" data-testimonial="1"></button>
+          <button class="testimonial-dot" data-testimonial="2"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel 5: Pricing -->
+    <section class="panel panel-pricing">
+      <h2>Simple pricing</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Basic</h3>
+          <div class="price">$79<small>/mo</small></div>
+          <p class="period">or $63/mo annual</p>
+          <ul>
+            <li>Unlimited tracking</li>
+            <li>5 RFQs/month</li>
+            <li>Basic analytics</li>
+            <li>Email support</li>
+          </ul>
+          <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Pro</h3>
+          <div class="price">$129<small>/mo</small></div>
+          <p class="period">or $103/mo annual</p>
+          <ul>
+            <li>Unlimited everything</li>
+            <li>Advanced analytics</li>
+            <li>Priority support</li>
+            <li>API access</li>
+          </ul>
+          <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel 6: CTA -->
+    <section class="panel panel-cta">
+      <h2>Ready to take control?</h2>
+      <a href="https://app.cartonflow.io/signup" class="btn">Start your 14-day free trial</a>
+    </section>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+
+  <script>
+    // Counter animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stats = entry.target.querySelectorAll('.stat');
+          stats.forEach(stat => {
+            const target = parseInt(stat.dataset.count);
+            animateCounter(stat, 0, target, 2000);
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(document.querySelector('.panel-problem'));
+
+    function animateCounter(el, start, end, duration) {
+      const range = end - start;
+      const increment = range / (duration / 16);
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+          current = end;
+          clearInterval(timer);
+        }
+        el.textContent = current + (end >= 1000 ? 'K+' : '+');
+      }, 16);
+    }
+
+    // Feature tabs
+    const featureData = {
+      tracking: {
+        title: 'Real-time Tracking',
+        desc: 'Monitor every shipment across all carriers and 3PLs from a single unified dashboard. Get instant updates on location, status, and estimated delivery times.',
+        image:/screenshots/admin-tracking.png'
+      },
+      rfq: {
+        title: 'RFQ Automation',
+        desc: 'Post shipping requests to multiple 3PLs simultaneously. Compare bids, delivery times, and rates side by side. Award contracts with one click.',
+        image:/screenshots/3pl-rfq-auction.png'
+      },
+      analytics: {
+        title: 'Live Analytics',
+        desc: 'Track shipping costs, delivery performance, and carrier reliability over time. Identify savings opportunities before they become problems.',
+        image:/screenshots/admin-invoices.png'
+      }
+    };
+
+    document.querySelectorAll('.feature-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.feature-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        const feature = tab.dataset.feature;
+        document.getElementById('feature-title').textContent = featureData[feature].title;
+        document.getElementById('feature-desc').textContent = featureData[feature].desc;
+        document.getElementById('feature-image').style.backgroundImage = `url('${featureData[feature].image}')`;
+      });
+    });
+
+    // Testimonial navigation
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.testimonial-dot');
+
+    function showTestimonial(index) {
+      testimonials.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentTestimonial = parseInt(dot.dataset.testimonial);
+        showTestimonial(currentTestimonial);
+      });
+    });
+
+    // Auto-advance testimonials
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000);
+  </script>
+</body>
+</html>

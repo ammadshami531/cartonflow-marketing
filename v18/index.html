@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0c0c0c;
+      --primary: linear-gradient(135deg, #4F46E5 0%, #06b6d4 100%);
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Noise/Grain Texture */
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+    }
+
+    .noise::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+      animation: noise 0.5s steps(4) infinite;
+    }
+
+    @keyframes noise {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-5%, -5%); }
+      20% { transform: translate(-10%, 5%); }
+      30% { transform: translate(5%, -10%); }
+      40% { transform: translate(-5%, 15%); }
+      50% { transform: translate(-10%, 5%); }
+      60% { transform: translate(15%, 0); }
+      70% { transform: translate(0, 10%); }
+      80% { transform: translate(-15%, 0); }
+      90% { transform: translate(10%, 5%); }
+    }
+
+    /* Hero Section - Magazine Cover Style */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem;
+      position: relative;
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, var(--bg) 70%);
+    }
+
+    .hero-logo {
+      width: 300px;
+      margin-bottom: 3rem;
+      animation: scaleIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero-tagline {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease forwards 0.3s;
+      opacity: 0;
+    }
+
+    .hero-tagline .accent {
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease forwards 0.5s;
+      opacity: 0;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.5rem;
+      animation: fadeInUp 1s ease forwards 0.7s;
+      opacity: 0;
+    }
+
+    .hero-cta .btn {
+      padding: 1.25rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .hero-cta .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 10px 40px rgba(79, 70, 229, 0.4);
+    }
+
+    .hero-cta .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(79, 70, 229, 0.5);
+    }
+
+    .hero-cta .btn-outline {
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--text);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-cta .btn-outline:hover {
+      border-color: var(--text);
+      background: rgba(255,255,255,0.1);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card Deck Pattern - Overlapping Cards */
+    .card-deck {
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .deck-section {
+      position: relative;
+      padding: 8rem 0;
+    }
+
+    /* Features - Sliding Cards */
+    .features {
+      position: relative;
+    }
+
+    .feature-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+    }
+
+    .feature-card:nth-child(even) {
+      direction: rtl;
+    }
+
+    .feature-card:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .feature-content {
+      padding: 3rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transform: translateX(-100px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .feature-card:nth-child(even) .feature-content {
+      transform: translateX(100px);
+    }
+
+    .feature-card.visible .feature-content {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .feature-number {
+      font-size: 6rem;
+      font-weight: 800;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .feature-content h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-content p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .feature-image {
+      height: 350px;
+      background: url/screenshots/admin-dashboard.png') center/cover no-repeat;
+      border-radius: 24px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      transform: translateX(100px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .feature-card:nth-child(even) .feature-image {
+      transform: translateX(-100px);
+    }
+
+    .feature-card.visible .feature-image {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    /* Social Proof - Horizontal Scrolling */
+    .social-proof {
+      padding: 6rem 0;
+      overflow: hidden;
+      background: linear-gradient(180deg, transparent 0%, rgba(79, 70, 229, 0.1) 50%, transparent 100%);
+    }
+
+    .social-proof h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .testimonial-strip {
+      display: flex;
+      gap: 2rem;
+      padding: 0 2rem;
+      animation: scrollLeft 30s linear infinite;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .testimonial-card {
+      min-width: 400px;
+      padding: 2rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .testimonial-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .testimonial-author strong {
+      color: var(--text);
+    }
+
+    /* Pricing Section */
+    .pricing {
+      padding: 8rem 2rem;
+      text-align: center;
+    }
+
+    .pricing h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-sub {
+      color: var(--text-muted);
+      margin-bottom: 4rem;
+      font-size: 1.25rem;
+    }
+
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      flex: 1;
+      max-width: 350px;
+      padding: 3rem 2rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card.featured {
+      background: rgba(79, 70, 229, 0.2);
+      border-color: rgba(79, 70, 229, 0.5);
+      transform: scale(1.05);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+
+    .pricing-card h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card .price {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card .price small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .pricing-card .period {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .pricing-card li {
+      padding: 0.75rem 0;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .pricing-card li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-card .btn {
+      display: block;
+      padding: 1.25rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card .btn-outline {
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--text);
+    }
+
+    .pricing-card .btn-outline:hover {
+      border-color: var(--text);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .pricing-card.featured .btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    .pricing-card.featured .btn:hover {
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+    }
+
+    /* Navigation - Minimal */
+    .nav {
+      position: fixed;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 100;
+    }
+
+    .nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .nav .btn {
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav .btn-login {
+      color: var(--text);
+    }
+
+    .nav .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .feature-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .feature-card:nth-child(even) {
+        direction: ltr;
+      }
+
+      .feature-content,
+      .feature-card:nth-child(even) .feature-content {
+        transform: translateY(50px);
+      }
+
+      .feature-image,
+      .feature-card:nth-child(even) .feature-image {
+        transform: translateY(50px);
+        order: -1;
+      }
+
+      .feature-card.visible .feature-content,
+      .feature-card.visible .feature-image {
+        transform: translateY(0);
+      }
+
+      .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .pricing-card.featured:hover {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        width: calc(100% - 2rem);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 2rem;
+      }
+
+      .hero-logo {
+        width: 200px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+      }
+
+      .testimonial-card {
+        min-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Noise Texture -->
+  <div class="noise"></div>
+
+  <!-- Minimal Nav -->
+  <nav class="nav">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://app.cartonflow.io/login" class="btn btn-login">Log in</a>
+    <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Start trial</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <svg class="hero-logo" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+      <rect x="1" y="1" width="62" height="62" rx="14" stroke="url(#gradient)" stroke-width="2"/>
+      <text x="7" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text>
+      <text x="32" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#FFFFFF">F</text>
+      <text x="80" y="42" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFFFFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text>
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#4F46E5"/>
+          <stop offset="100%" style="stop-color:#06b6d4"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <h1 class="hero-tagline">Your freight. Fully under <span class="accent">control</span>.</h1>
+
+    <p class="hero-sub">CartonFlow connects e-commerce brands and Amazon sellers with their 3PLs, forwarders, and distributors — solving shipping, the biggest pain point in logistics.</p>
+
+    <div class="hero-cta">
+      <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Start 14-day free trial</a>
+      <a href="https://app.cartonflow.io/login" class="btn btn-outline">Log in</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features card-deck" id="features">
+    <div class="deck-section">
+      <div class="feature-card">
+        <div class="feature-content">
+          <div class="feature-number">01</div>
+          <h3>Real-time Tracking</h3>
+          <p>Monitor every shipment across all carriers and 3PLs from a single unified dashboard. Get instant updates on location, status, and estimated delivery times.</p>
+        </div>
+        <div class="feature-image" style="background-image: url/screenshots/admin-tracking.png');"></div>
+      </div>
+    </div>
+
+    <div class="deck-section">
+      <div class="feature-card">
+        <div class="feature-content">
+          <div class="feature-number">02</div>
+          <h3>RFQ Automation</h3>
+          <p>Post shipping requests to multiple 3PLs simultaneously. Compare bids, delivery times, and rates side by side. Award contracts with one click.</p>
+        </div>
+        <div class="feature-image" style="background-image: url/screenshots/3pl-rfq-auction.png');"></div>
+      </div>
+    </div>
+
+    <div class="deck-section">
+      <div class="feature-card">
+        <div class="feature-content">
+          <div class="feature-number">03</div>
+          <h3>Live Analytics</h3>
+          <p>Track shipping costs, delivery performance, and carrier reliability over time. Identify savings opportunities before they become problems.</p>
+        </div>
+        <div class="feature-image" style="background-image: url/screenshots/admin-invoices.png');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <h2>What our customers say</h2>
+    <div class="testimonial-strip">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"CartonFlow saved us $47,000 in the first quarter alone. We finally have visibility across our entire supply chain."</p>
+        <p class="testimonial-author">— <strong>Sarah Chen</strong>, Operations Director at TechStyle Commerce</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The RFQ feature alone pays for itself. We cut our shipping costs by 35% in three months."</p>
+        <p class="testimonial-author">— <strong>Mike Rodriguez</strong>, Amazon Seller</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Finally, a platform that actually understands logistics. This is what we've been waiting for."</p>
+        <p class="testimonial-author">— <strong>Lisa Park</strong>, Operations Lead</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The visibility we have now is incredible. No more chasing updates on WhatsApp."</p>
+        <p class="testimonial-author">— <strong>James Wilson</strong>, E-commerce Director</p>
+      </div>
+      <!-- Duplicate for seamless scroll -->
+      <div class="testimonial-card">
+        <p class="testimonial-text">"CartonFlow saved us $47,000 in the first quarter alone. We finally have visibility across our entire supply chain."</p>
+        <p class="testimonial-author">— <strong>Sarah Chen</strong>, Operations Director at TechStyle Commerce</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The RFQ feature alone pays for itself. We cut our shipping costs by 35% in three months."</p>
+        <p class="testimonial-author">— <strong>Mike Rodriguez</strong>, Amazon Seller</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <h2>Simple, transparent pricing</h2>
+    <p class="pricing-sub">3PLs always free. No hidden fees.</p>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <div class="price">$79<small>/mo</small></div>
+        <p class="period">or $63/mo with annual ($756/yr)</p>
+        <ul>
+          <li>Unlimited shipment tracking</li>
+          <li>5 active RFQs per month</li>
+          <li>Basic analytics dashboard</li>
+          <li>Email support</li>
+          <li>2 team members</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-outline">Start free trial</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3>Pro</h3>
+        <div class="price">$129<small>/mo</small></div>
+        <p class="period">or $103/mo with annual ($1,236/yr)</p>
+        <ul>
+          <li>Everything in Basic, plus:</li>
+          <li>Unlimited RFQs</li>
+          <li>Advanced analytics & reporting</li>
+          <li>Priority support</li>
+          <li>10 team members</li>
+          <li>API access</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 CartonFlow. All rights reserved. · 14-day free trial · 3PLs always free</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for feature card animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.feature-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

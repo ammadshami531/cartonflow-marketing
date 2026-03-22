@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0f0f13;
+      --primary: #7c3aed;
+      --primary-light: #c4b5fd;
+      --card-bg: #1a1a1f;
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 100px;
+    }
+
+    /* Floating Navbar */
+    .nav-pill {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 2.5rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 1000;
+      animation: slideDown 0.8s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    .nav-pill .logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-pill a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-pill a:hover {
+      color: var(--text);
+    }
+
+    .nav-pill .btn {
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-pill .btn-login {
+      color: var(--text);
+    }
+
+    .nav-pill .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .nav-pill .btn-primary:hover {
+      background: #6d28d9;
+    }
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto auto auto auto;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .bento-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      overflow: hidden;
+      position: relative;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .bento-card:nth-child(1) { animation-delay: 0s; }
+    .bento-card:nth-child(2) { animation-delay: 0.1s; }
+    .bento-card:nth-child(3) { animation-delay: 0.2s; }
+    .bento-card:nth-child(4) { animation-delay: 0.3s; }
+    .bento-card:nth-child(5) { animation-delay: 0.4s; }
+    .bento-card:nth-child(6) { animation-delay: 0.5s; }
+    .bento-card:nth-child(7) { animation-delay: 0.6s; }
+    .bento-card:nth-child(8) { animation-delay: 0.7s; }
+    .bento-card:nth-child(9) { animation-delay: 0.8s; }
+    .bento-card:nth-child(10) { animation-delay: 0.9s; }
+
+    /* Hero Card */
+    .card-hero {
+      grid-column: span 2;
+      grid-row: span 2;
+      background: linear-gradient(135deg, var(--primary) 0%, #4c1d95 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .card-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ffffff 0%, #e9d5ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-hero p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-hero .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-hero .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Feature Cards */
+    .card-feature {
+      grid-column: span 1;
+      min-height: 250px;
+    }
+
+    .card-feature h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-light);
+    }
+
+    .card-feature p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card-feature .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Screenshot Card */
+    .card-screenshot {
+      grid-column: span 2;
+      grid-row: span 1;
+      min-height: 200px;
+      background: url/screenshots/live-map.png') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .card-screenshot::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+
+    .card-screenshot span {
+      position: relative;
+      z-index: 1;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Pricing Card */
+    .card-pricing {
+      grid-column: span 4;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(79, 70, 229, 0.2) 100%);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+    }
+
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-toggle button {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--text);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-toggle button.active {
+      background: var(--primary);
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .pricing-option {
+      background: rgba(0,0,0,0.3);
+      padding: 2rem;
+      border-radius: 15px;
+    }
+
+    .pricing-option h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-option .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary-light);
+    }
+
+    .pricing-option .price small {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    /* Testimonial Cards */
+    .card-testimonial {
+      grid-column: span 1;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-testimonial blockquote {
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .card-testimonial cite {
+      font-size: 0.85rem;
+      color: var(--primary-light);
+      font-style: normal;
+    }
+
+    /* CTA Card */
+    .card-cta {
+      grid-column: span 4;
+      background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .card-cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-cta p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+    }
+
+    .card-cta .btn {
+      display: inline-block;
+      padding: 1.25rem 3rem;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .card-cta .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-hero {
+        grid-column: span 2;
+      }
+
+      .card-screenshot {
+        grid-column: span 2;
+      }
+
+      .card-pricing {
+        grid-column: span 2;
+      }
+
+      .card-cta {
+        grid-column: span 2;
+      }
+
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .nav-pill {
+        width: calc(100% - 2rem);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .card-hero {
+        grid-column: span 1;
+      }
+
+      .card-screenshot {
+        grid-column: span 1;
+      }
+
+      .card-pricing {
+        grid-column: span 1;
+      }
+
+      .card-cta {
+        grid-column: span 1;
+      }
+
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding-top: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Nav Pill -->
+  <nav class="nav-pill">
+    <svg class="logo" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+      <rect x="1" y="1" width="62" height="62" rx="14" stroke="#7c3aed" stroke-width="2"/>
+      <text x="7" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#7c3aed">C</text>
+      <text x="32" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#FFFFFF">F</text>
+      <text x="80" y="42" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFFFFF">Carton</tspan><tspan fill="#7c3aed">Flow</tspan></text>
+    </svg>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://app.cartonflow.io/login" class="btn btn-login">Log in</a>
+    <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Start trial</a>
+  </nav>
+
+  <!-- Bento Grid -->
+  <div class="bento-grid" id="features">
+    <!-- Hero Card -->
+    <div class="bento-card card-hero">
+      <h1>Your freight. Fully under control.</h1>
+      <p>Connect with 3PLs, forwarders, and distributors — solving shipping, the biggest pain point in logistics.</p>
+      <a href="https://app.cartonflow.io/signup" class="btn">Start 14-day free trial</a>
+    </div>
+
+    <!-- Feature 1 -->
+    <div class="bento-card card-feature">
+      <div class="icon">📦</div>
+      <h3>Real-time Tracking</h3>
+      <p>Track every carton across all carriers in one dashboard.</p>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="bento-card card-feature">
+      <div class="icon">🤝</div>
+      <h3>RFQ Automation</h3>
+      <p>Post requests to multiple 3PLs and compare bids instantly.</p>
+    </div>
+
+    <!-- Screenshot Card -->
+    <div class="bento-card card-screenshot">
+      <span>Live supply chain map</span>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="bento-card card-feature">
+      <div class="icon">📊</div>
+      <h3>Analytics</h3>
+      <p>Monitor costs, delivery times, and performance metrics.</p>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="bento-card card-feature">
+      <div class="icon">🔔</div>
+      <h3>Smart Alerts</h3>
+      <p>Get notified about delays and important updates.</p>
+    </div>
+
+    <!-- Testimonial 1 -->
+    <div class="bento-card card-testimonial">
+      <blockquote>"Saved us $47K in Q1 alone."</blockquote>
+      <cite>— Sarah Chen, TechStyle</cite>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="bento-card card-testimonial">
+      <blockquote>"Finally have full visibility."</blockquote>
+      <cite>— Mike R., Amazon Seller</cite>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="bento-card card-testimonial">
+      <blockquote>"Game changer for our team."</blockquote>
+      <cite>— Lisa M., Logistics Lead</cite>
+    </div>
+
+    <!-- Pricing Card -->
+    <div class="bento-card card-pricing" id="pricing">
+      <div class="pricing-toggle">
+        <button class="active" onclick="setPricing('monthly')">Monthly</button>
+        <button onclick="setPricing('annual')">Annual (Save 20%)</button>
+      </div>
+      <div class="pricing-cards">
+        <div class="pricing-option">
+          <h4>Basic</h4>
+          <div class="price" id="basic-price">$79<small>/mo</small></div>
+          <p style="color: var(--text-muted); margin-top: 0.5rem;">Unlimited tracking, 5 RFQs/mo</p>
+        </div>
+        <div class="pricing-option" style="border: 2px solid var(--primary);">
+          <h4 style="color: var(--primary-light);">Pro</h4>
+          <div class="price" id="pro-price">$129<small>/mo</small></div>
+          <p style="color: var(--text-muted); margin-top: 0.5rem;">Unlimited RFQs, API access</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Card -->
+    <div class="bento-card card-cta">
+      <h2>Ready to take control?</h2>
+      <p>Start your 14-day free trial. No credit card required. 3PLs always free.</p>
+      <a href="https://app.cartonflow.io/signup" class="btn">Get started free</a>
+    </div>
+  </div>
+
+  <script>
+    let pricingType = 'monthly';
+    
+    function setPricing(type) {
+      pricingType = type;
+      document.querySelectorAll('.pricing-toggle button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === (type === 'monthly' ? 0 : 1));
+      });
+      
+      const basicPrice = type === 'monthly' ? '$79' : '$63';
+      const proPrice = type === 'monthly' ? '$129' : '$103';
+      
+      document.getElementById('basic-price').innerHTML = basicPrice + '<small>/mo</small>';
+      document.getElementById('pro-price').innerHTML = proPrice + '<small>/mo</small>';
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

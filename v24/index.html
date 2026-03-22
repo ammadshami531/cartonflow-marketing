@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0f172a;
+      --primary: #3b82f6;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: #1e293b;
+      --border: #334155;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      width: 120px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .nav-cta a {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .nav-cta .btn-outline:hover {
+      border-color: var(--primary);
+    }
+
+    .nav-cta .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .nav-cta .btn-primary:hover {
+      background: #2563eb;
+    }
+
+    /* Hero Section - Compact & Dense */
+    .hero {
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--border);
+    }
+
+    .hero-logo svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 .accent {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Social Proof Pills */
+    .hero-pills {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .pill.gold {
+      background: rgba(234, 179, 8, 0.1);
+      border-color: rgba(234, 179, 8, 0.3);
+      color: #eab308;
+    }
+
+    .pill.green {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .hero-cta .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .hero-cta .btn-primary:hover {
+      background: #2563eb;
+    }
+
+    .hero-cta .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--card-bg);
+    }
+
+    .hero-cta .btn-outline:hover {
+      border-color: var(--primary);
+    }
+
+    .trial-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Screenshot Tabs */
+    .screenshot-tabs {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .tab-nav {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 0.75rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .tab-content {
+      height: 300px;
+      position: relative;
+    }
+
+    .tab-screenshot {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .tab-screenshot.active {
+      opacity: 1;
+    }
+
+    /* Features Grid */
+    .features {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .features h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .feature-item {
+      padding: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .feature-content h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .feature-content p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Pricing Section */
+    .pricing {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pricing h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-toggle button {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .pricing-toggle button.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .pricing-cards {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card {
+      flex: 1;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+    }
+
+    .pricing-card h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card .price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-card .price small {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .pricing-card .period {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .pricing-card li {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      padding: 0.25rem 0;
+    }
+
+    .pricing-card li::before {
+      content: '✓ ';
+      color: var(--primary);
+    }
+
+    .pricing-card .btn {
+      display: block;
+      padding: 0.65rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .pricing-card .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .pricing-card .btn-outline:hover {
+      border-color: var(--primary);
+    }
+
+    .pricing-card.featured .btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Comparison Table */
+    .comparison {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .comparison table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison th,
+    .comparison td {
+      padding: 0.75rem 1rem;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+
+    .comparison th {
+      background: rgba(59, 130, 246, 0.1);
+      font-weight: 600;
+    }
+
+    .comparison th:first-child,
+    .comparison td:first-child {
+      text-align: left;
+    }
+
+    .comparison td:first-child {
+      font-weight: 500;
+    }
+
+    .comparison .check {
+      color: var(--primary);
+    }
+
+    .comparison .dash {
+      color: var(--text-muted);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonials h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .testimonial-strip {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+
+    .testimonial-card {
+      flex: 0 0 280px;
+      padding: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .testimonial-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .testimonial-author {
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question::after {
+      content: '+';
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .faq-item.active .faq-question::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 150px;
+      padding-bottom: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-cards {
+        flex-direction: column;
+      }
+
+      .comparison {
+        display: none;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-strip {
+        flex-direction: column;
+      }
+
+      .testimonial-card {
+        flex: 0 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <svg class="nav-logo" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+      <rect x="1" y="1" width="62" height="62" rx="14" stroke="#3b82f6" stroke-width="2"/>
+      <text x="7" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#3b82f6">C</text>
+      <text x="32" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#FFFFFF">F</text>
+      <text x="80" y="42" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFFFFF">Carton</tspan><tspan fill="#3b82f6">Flow</tspan></text>
+    </svg>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://app.cartonflow.io/login" class="btn-outline">Log in</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-primary">Start trial</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="30" height="30" rx="7" fill="#1e293b"/>
+        <rect x="1" y="1" width="30" height="30" rx="7" stroke="#3b82f6" stroke-width="2"/>
+        <text x="3" y="20" font-family="Arial Black, sans-serif" font-weight="900" font-size="16" fill="#3b82f6">C</text>
+        <text x="14" y="20" font-family="Arial Black, sans-serif" font-weight="900" font-size="16" fill="#f8fafc">F</text>
+      </svg>
+    </div>
+
+    <h1>Your freight. Fully under <span class="accent">control</span>.</h1>
+    <p class="hero-sub">Connect with 3PLs, forwarders, and distributors — solving shipping, the biggest pain point in logistics.</p>
+
+    <div class="hero-pills">
+      <span class="pill gold">★★★★★ Rated 4.9</span>
+      <span class="pill green">14-day free trial</span>
+      <span class="pill green">3PLs always free</span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Start 14-day free trial</a>
+      <a href="https://app.cartonflow.io/login" class="btn btn-outline">Log in</a>
+    </div>
+    <p class="trial-note">No credit card required. No charge before day 14.</p>
+  </section>
+
+  <!-- Screenshot Tabs -->
+  <section class="screenshot-tabs">
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+      <button class="tab-btn" data-tab="map">Live Map</button>
+      <button class="tab-btn" data-tab="rfq">RFQ</button>
+      <button class="tab-btn" data-tab="invoices">Invoices</button>
+    </div>
+    <div class="tab-content">
+      <div class="tab-screenshot active" style="background-image: url/screenshots/admin-dashboard.png');"></div>
+      <div class="tab-screenshot" style="background-image: url/screenshots/live-map.png');"></div>
+      <div class="tab-screenshot" style="background-image: url/screenshots/3pl-rfq-auction.png');"></div>
+      <div class="tab-screenshot" style="background-image: url/screenshots/admin-invoices.png');"></div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2>Everything you need to manage logistics</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">📦</div>
+        <div class="feature-content">
+          <h3>Real-time tracking</h3>
+          <p>Track every carton across all carriers and 3PLs from one dashboard.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🗺️</div>
+        <div class="feature-content">
+          <h3>Live map view</h3>
+          <p>Visualize your entire supply chain on an interactive global map.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-content">
+          <h3>RFQ automation</h3>
+          <p>Post requests to multiple 3PLs and compare bids instantly.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📊</div>
+        <div class="feature-content">
+          <h3>Invoice management</h3>
+          <p>Automatically track, match, and reconcile shipping invoices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <h2>Simple pricing</h2>
+    <div class="pricing-toggle">
+      <button class="active" onclick="setPricing('monthly')">Monthly</button>
+      <button onclick="setPricing('annual')">Annual (Save 20%)</button>
+    </div>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <div class="price" id="basic-price">$79</div>
+        <div class="period" id="basic-period">or $63/mo annual</div>
+        <ul>
+          <li>Unlimited shipment tracking</li>
+          <li>5 active RFQs per month</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-outline">Start free trial</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3 style="color: var(--primary);">Pro</h3>
+        <div class="price" id="pro-price">$129</div>
+        <div class="period" id="pro-period">or $103/mo annual</div>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>Unlimited RFQs</li>
+          <li>Advanced analytics</li>
+          <li>API access</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Basic</th>
+            <th>Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Shipment tracking</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>RFQs per month</td>
+            <td>5</td>
+            <td><span class="check">Unlimited</span></td>
+          </tr>
+          <tr>
+            <td>Analytics</td>
+            <td>Basic</td>
+            <td><span class="check">Advanced</span></td>
+          </tr>
+          <tr>
+            <td>Team members</td>
+            <td>2</td>
+            <td><span class="check">10</span></td>
+          </tr>
+          <tr>
+            <td>API access</td>
+            <td><span class="dash">−</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What customers say</h2>
+    <div class="testimonial-strip">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Saved us $47,000 in Q1 alone. Finally have visibility across our entire supply chain."</p>
+        <p class="testimonial-author">— Sarah Chen, TechStyle</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The RFQ feature alone pays for itself. Cut shipping costs by 35%."</p>
+        <p class="testimonial-author">— Mike R., Amazon Seller</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Finally, a platform that actually understands logistics."</p>
+        <p class="testimonial-author">— Lisa P., Operations Lead</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">Is there a free trial?</div>
+        <div class="faq-answer">Yes, we offer a 14-day free trial. No credit card required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Are 3PLs free to use?</div>
+        <div class="faq-answer">Yes, 3PLs, forwarders, and distributors can always use CartonFlow for free.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I change plans anytime?</div>
+        <div class="faq-answer">Absolutely. You can upgrade, downgrade, or cancel at any time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you offer API access?</div>
+        <div class="faq-answer">Yes, API access is included in the Pro plan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What carriers do you support?</div>
+        <div class="faq-answer">We support all major carriers and can integrate with any 3PL system.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is my data secure?</div>
+        <div class="faq-answer">Yes, we use enterprise-grade encryption and are SOC 2 compliant.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How long does setup take?</div>
+        <div class="faq-answer">Most customers are up and running in under 30 minutes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you offer refunds?</div>
+        <div class="faq-answer">Yes, we offer a full refund within the first 30 days if you're not satisfied.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 CartonFlow. All rights reserved. · 14-day free trial · 3PLs always free</p>
+  </footer>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-screenshot').forEach((s, i) => {
+          s.classList.toggle('active', i === ['dashboard', 'map', 'rfq', 'invoices'].indexOf(tab));
+        });
+      });
+    });
+
+    // Pricing toggle
+    let pricingType = 'monthly';
+    
+    function setPricing(type) {
+      pricingType = type;
+      document.querySelectorAll('.pricing-toggle button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === (type === 'monthly' ? 0 : 1));
+      });
+      
+      const basicPrice = type === 'monthly' ? '$79' : '$63';
+      const proPrice = type === 'monthly' ? '$129' : '$103';
+      
+      document.getElementById('basic-price').textContent = basicPrice;
+      document.getElementById('basic-period').textContent = type === 'monthly' ? 'Monthly billing' : 'or $63/mo annual ($756/yr)';
+      document.getElementById('pro-price').textContent = proPrice;
+      document.getElementById('pro-period').textContent = type === 'monthly' ? 'Monthly billing' : 'or $103/mo annual ($1,236/yr)';
+    }
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

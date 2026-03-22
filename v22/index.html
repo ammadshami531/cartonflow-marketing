@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0a0a14;
+      --primary: #4ade80;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --card-bg: #11111f;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Monospace for numbers */
+    .mono {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-logo {
+      width: 140px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-cta a {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta .btn-outline {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    .nav-cta .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .nav-cta .btn-primary {
+      background: var(--primary);
+      color: var(--bg);
+    }
+
+    .nav-cta .btn-primary:hover {
+      background: #22c55e;
+    }
+
+    /* Stats Hero */
+    .stats-hero {
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+
+    .stat-card {
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .stat-value {
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .stat-value .unit {
+      font-size: 2rem;
+      color: var(--text-muted);
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .stat-trend {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--primary);
+    }
+
+    .stat-trend.up {
+      color: var(--primary);
+    }
+
+    /* Main Headline */
+    .headline-section {
+      padding: 2rem 4rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .headline-section h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .headline-section h1 .accent {
+      color: var(--primary);
+    }
+
+    .headline-section p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .headline-section .cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .headline-section .btn {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .headline-section .btn-primary {
+      background: var(--primary);
+      color: var(--bg);
+    }
+
+    .headline-section .btn-primary:hover {
+      background: #22c55e;
+    }
+
+    .headline-section .btn-outline {
+      border: 2px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    .headline-section .btn-outline:hover {
+      border-color: var(--text);
+    }
+
+    /* Features with Metrics */
+    .features {
+      padding: 6rem 4rem;
+    }
+
+    .features h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--primary);
+    }
+
+    .feature-metric {
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .feature-metric small {
+      font-size: 2rem;
+      color: var(--text-muted);
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .feature-screenshot {
+      width: 100%;
+      height: 150px;
+      background: url/screenshots/admin-dashboard.png') center/cover no-repeat;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      filter: grayscale(50%);
+      transition: filter 0.3s ease;
+    }
+
+    .feature-card:hover .feature-screenshot {
+      filter: grayscale(0%);
+    }
+
+    /* Social Proof */
+    .social-proof {
+      padding: 6rem 4rem;
+      background: rgba(74, 222, 128, 0.05);
+    }
+
+    .social-proof h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .nps-container {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .nps-score {
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .nps-score small {
+      font-size: 2rem;
+      color: var(--text-muted);
+    }
+
+    .nps-label {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .stars {
+      color: #fbbf24;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+    }
+
+    .testimonial-author span {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Pricing */
+    .pricing {
+      padding: 6rem 4rem;
+    }
+
+    .pricing h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-sub {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 4rem;
+    }
+
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .pricing-toggle button {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.2);
+      color: var(--text);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-toggle button.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--bg);
+    }
+
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      flex: 1;
+      max-width: 380px;
+      padding: 3rem 2rem;
+      background: var(--card-bg);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: rgba(74, 222, 128, 0.05);
+    }
+
+    .pricing-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card .price {
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-card .price small {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .pricing-card .period {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .pricing-card li {
+      padding: 0.75rem 0;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .pricing-card li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-card li::before {
+      content: '✓ ';
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .pricing-card .btn {
+      display: block;
+      padding: 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card .btn-outline {
+      border: 2px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    .pricing-card .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .pricing-card.featured .btn {
+      background: var(--primary);
+      color: var(--bg);
+    }
+
+    .pricing-card.featured .btn:hover {
+      background: #22c55e;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 4rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem 2rem;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stat-value {
+        font-size: 3rem;
+      }
+
+      .nps-score {
+        font-size: 4rem;
+      }
+
+      .headline-section .cta {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <svg class="nav-logo" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+      <rect x="1" y="1" width="62" height="62" rx="14" stroke="#4ade80" stroke-width="2"/>
+      <text x="7" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#4ade80">C</text>
+      <text x="32" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#FFFFFF">F</text>
+      <text x="80" y="42" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFFFFF">Carton</tspan><tspan fill="#4ade80">Flow</tspan></text>
+    </svg>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Results</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://app.cartonflow.io/login" class="btn-outline">Log in</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-primary">Start trial</a>
+    </div>
+  </nav>
+
+  <!-- Stats Hero -->
+  <section class="stats-hero">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-value mono" data-count="14" data-suffix="K">0</span>
+        <span class="stat-label">Avg freight savings</span>
+        <span class="stat-trend up">↑ per customer</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value mono" data-count="80" data-suffix="%">0</span>
+        <span class="stat-label">Fewer 3PL emails</span>
+        <span class="stat-trend up">↓ reduction</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value mono" data-count="2" data-suffix=" min">0</span>
+        <span class="stat-label">Setup time</span>
+        <span class="stat-trend">Fastest in class</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value mono" data-count="0">0</span>
+        <span class="stat-label">Lock-in contracts</span>
+        <span class="stat-trend">Cancel anytime</span>
+      </div>
+    </div>
+
+    <div class="headline-section" style="border: none; padding: 2rem;">
+      <h1>Your freight. Fully under <span class="accent">control</span>.</h1>
+      <p>CartonFlow connects e-commerce brands and Amazon sellers with their 3PLs, forwarders, and distributors — solving shipping, the biggest pain point in logistics.</p>
+      <div class="cta">
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Start 14-day free trial</a>
+        <a href="https://app.cartonflow.io/login" class="btn btn-outline">Log in</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2>Features that move the needle</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-metric mono">85<small>%</small></span>
+        <h3>Real-time Visibility</h3>
+        <p>Track every carton across all carriers and 3PLs from one dashboard.</p>
+        <div class="feature-screenshot" style="background-image: url/screenshots/admin-tracking.png');"></div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-metric mono">3<small>x</small></span>
+        <h3>Faster RFQs</h3>
+        <p>Post to multiple 3PLs simultaneously, compare bids instantly.</p>
+        <div class="feature-screenshot" style="background-image: url/screenshots/3pl-rfq-auction.png');"></div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-metric mono">0</span>
+        <h3>Missed Invoices</h3>
+        <p>Automatic tracking, matching, and reconciliation.</p>
+        <div class="feature-screenshot" style="background-image: url/screenshots/admin-invoices.png');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof" id="testimonials">
+    <h2>Customer results</h2>
+    <div class="nps-container">
+      <div class="nps-score mono">4.9<small>/5</small></div>
+      <div class="nps-label">Net Promoter Score</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"CartonFlow saved us $47,000 in the first quarter alone. We finally have visibility across our entire supply chain."</p>
+        <p class="testimonial-author">Sarah Chen <span>— TechStyle Commerce</span></p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The RFQ feature alone pays for itself. We cut our shipping costs by 35% in three months."</p>
+        <p class="testimonial-author">Mike Rodriguez <span>— Amazon Seller</span></p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Finally, a platform that actually understands logistics. This is what we've been waiting for."</p>
+        <p class="testimonial-author">Lisa Park <span>— Operations Lead</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <h2>Simple pricing</h2>
+    <p class="pricing-sub">3PLs always free. No hidden fees.</p>
+
+    <div class="pricing-toggle">
+      <button class="active" onclick="setPricing('monthly')">Monthly</button>
+      <button onclick="setPricing('annual')">Annual (Save 20%)</button>
+    </div>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <div class="price mono" id="basic-price">$79</div>
+        <div class="period" id="basic-period">or $63/mo annual ($756/yr)</div>
+        <ul>
+          <li>Unlimited shipment tracking</li>
+          <li>5 active RFQs per month</li>
+          <li>Basic analytics dashboard</li>
+          <li>Email support</li>
+          <li>2 team members</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-outline">Start free trial</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3 style="color: var(--primary);">Pro</h3>
+        <div class="price mono" id="pro-price">$129</div>
+        <div class="period" id="pro-period">or $103/mo annual ($1,236/yr)</div>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>Unlimited RFQs</li>
+          <li>Advanced analytics & reporting</li>
+          <li>Priority support</li>
+          <li>10 team members</li>
+          <li>API access</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 CartonFlow. All rights reserved. · 14-day free trial · 3PLs always free</p>
+  </footer>
+
+  <script>
+    // Counter animation with IntersectionObserver
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stat = entry.target;
+          const target = parseFloat(stat.dataset.count);
+          const suffix = stat.dataset.suffix || '';
+          animateCounter(stat, 0, target, 2000, suffix);
+          counterObserver.unobserve(stat);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-value[data-count]').forEach(stat => {
+      counterObserver.observe(stat);
+    });
+
+    function animateCounter(el, start, end, duration, suffix) {
+      const range = end - start;
+      const increment = range / (duration / 16);
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+          current = end;
+          clearInterval(timer);
+        }
+        
+        let displayValue = current;
+        if (suffix === '%') {
+          displayValue = Math.floor(current);
+        } else if (suffix === ' min') {
+          displayValue = Math.floor(current);
+        } else if (end >= 1000) {
+          displayValue = Math.floor(current) + 'K';
+        } else {
+          displayValue = Math.floor(current);
+        }
+        
+        el.innerHTML = displayValue + '<span class="unit">' + suffix + '</span>';
+      }, 16);
+    }
+
+    // Pricing toggle
+    let pricingType = 'monthly';
+    
+    function setPricing(type) {
+      pricingType = type;
+      document.querySelectorAll('.pricing-toggle button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === (type === 'monthly' ? 0 : 1));
+      });
+      
+      const basicPrice = type === 'monthly' ? '$79' : '$63';
+      const proPrice = type === 'monthly' ? '$129' : '$103';
+      
+      document.getElementById('basic-price').textContent = basicPrice;
+      document.getElementById('basic-period').textContent = type === 'monthly' ? 'Monthly billing' : 'or $63/mo annual ($756/yr)';
+      document.getElementById('pro-price').textContent = proPrice;
+      document.getElementById('pro-period').textContent = type === 'monthly' ? 'Monthly billing' : 'or $103/mo annual ($1,236/yr)';
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="64" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon mark: dark box with CF ligature -->
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+  <rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/>
+  <!-- C letter -->
+  <text x="7" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text>
+  <!-- F letter -->
+  <text x="32" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#FFFFFF">F</text>
+
+  <!-- Wordmark — "CartonFlow" as one word, Carton in dark slate, Flow in indigo -->
+  <text x="80" y="42" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5">
+    <tspan fill="#111827">Carton</tspan><tspan fill="#4F46E5">Flow</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="80" y="58" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="9" letter-spacing="2.5" fill="#64748B">LOGISTICS PLATFORM</text>
+</svg>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #fdfcfb;
+      --text: #1a1a1a;
+      --text-muted: #555555;
+      --accent: #4F46E5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(253, 252, 251, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-logo {
+      width: 120px;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-cta a {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta .btn-outline {
+      border: 1px solid var(--text);
+      color: var(--text);
+    }
+
+    .nav-cta .btn-outline:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .nav-cta .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .nav-cta .btn-primary:hover {
+      background: #4338ca;
+    }
+
+    /* Article Container */
+    .article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero-kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Narrative Text */
+    .narrative {
+      font-size: 1.2rem;
+      line-height: 2;
+      color: var(--text);
+    }
+
+    .narrative p {
+      margin-bottom: 1.5rem;
+    }
+
+    .narrative .dropcap {
+      float: left;
+      font-size: 5rem;
+      line-height: 0.8;
+      padding-right: 0.5rem;
+      padding-top: 0.25rem;
+      color: var(--accent);
+    }
+
+    /* Inline Images */
+    .inline-image {
+      width: 100%;
+      max-width: 720px;
+      margin: 2rem 0;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .inline-image img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .inline-image figcaption {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 900px;
+    }
+
+    .pull-quote .accent {
+      color: var(--accent);
+    }
+
+    /* Feature Section */
+    .features-section {
+      margin: 4rem 0;
+      padding: 3rem;
+      background: #f8f7f5;
+      border-radius: 12px;
+    }
+
+    .features-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+
+    .feature-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-text h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-image {
+      flex: 1;
+      height: 200px;
+      border-radius: 8px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      margin: 4rem 0;
+      padding: 4rem 2rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .pricing-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-section .story {
+      font-size: 1.35rem;
+      margin-bottom: 3rem;
+      opacity: 0.95;
+    }
+
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .pricing-card {
+      background: white;
+      color: var(--text);
+      padding: 2rem;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 280px;
+      max-width: 320px;
+    }
+
+    .pricing-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card .price small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .pricing-card .period {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .pricing-card li {
+      padding: 0.5rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .pricing-card li::before {
+      content: '✓ ';
+      color: var(--accent);
+    }
+
+    .pricing-card .btn {
+      display: block;
+      padding: 1rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card .btn:hover {
+      background: #4338ca;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+    }
+
+    .cta-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .cta-section .btn {
+      display: inline-block;
+      padding: 1.25rem 3rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta-section .btn:hover {
+      background: #4338ca;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        padding: 1rem 2rem;
+      }
+
+      .article {
+        padding: 6rem 1.5rem 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .pull-quote {
+        font-size: 1.5rem;
+        padding: 2rem 1rem;
+      }
+
+      .feature-item {
+        flex-direction: column !important;
+      }
+
+      .feature-image {
+        width: 100%;
+      }
+
+      .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <svg class="nav-logo" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+      <rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/>
+      <text x="7" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text>
+      <text x="32" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#FFFFFF">F</text>
+      <text x="80" y="42" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#111827">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text>
+    </svg>
+    <div class="nav-cta">
+      <a href="https://app.cartonflow.io/login" class="btn-outline">Log in</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-primary">Start trial</a>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <article class="article">
+    <!-- Hero -->
+    <header class="hero">
+      <p class="kicker">The Story</p>
+      <h1>How we're solving <span class="accent">logistics</span>, one carton at a time.</h1>
+      <p class="hero-sub">Meet the e-commerce sellers who reclaimed their time with CartonFlow.</p>
+    </header>
+
+    <!-- Narrative -->
+    <div class="narrative">
+      <p><span class="dropcap">M</span>eet Marcus. He ships 200 FBA cartons a month and spends two hours every single day chasing updates on WhatsApp, email, and phone calls. His inbox was a nightmare — hundreds of messages from different 3PLs, all asking the same questions, all needing responses.</p>
+
+      <p>Every morning started the same way: coffee cold, phone in hand, scrolling through yet another thread about a delayed shipment. "Where's my cargo?" "When will it arrive?" "Why is this costing more?" The questions piled up like unopened boxes.</p>
+
+      <figure class="inline-image">
+        <img src/screenshots/admin-dashboard.png" alt="CartonFlow dashboard showing shipment overview">
+        <figcaption>The chaos of managing shipments across multiple platforms.</figcaption>
+      </figure>
+
+      <p>Then he found CartonFlow.</p>
+
+      <p>It wasn't magic. It was clarity. Suddenly, everything Marcus needed was in one place. Every shipment, tracked in real time. Every 3PL, communicating through a single platform. Every invoice, matched and reconciled automatically.</p>
+
+      <blockquote class="pull-quote">
+        "We saved <span class="accent">$14,000</span> in Q1 alone. And I got my mornings back."
+      </blockquote>
+
+      <p>Now, his 3PLs update shipments directly into CartonFlow. No more chasing. No more guessing. He opens the dashboard, sees exactly where everything is, and moves on with his day.</p>
+
+      <p>The transformation wasn't just about money — though that helped. It was about time. About peace of mind. About finally having visibility across an entire supply chain without the headache.</p>
+
+      <!-- Features -->
+      <section class="features-section">
+        <h3>What changed for Marcus</h3>
+        
+        <div class="feature-item">
+          <div class="feature-text">
+            <h4>Real-time tracking</h4>
+            <p>Every carton, every carrier, every 3PL — all visible from one dashboard. No more switching between spreadsheets and email threads.</p>
+          </div>
+          <div class="feature-image" style="background-image: url/screenshots/admin-tracking.png');"></div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-text">
+            <h4>RFQ automation</h4>
+            <p>Post shipping requests to multiple 3PLs simultaneously. Compare bids, delivery times, and rates side by side. Award contracts with one click.</p>
+          </div>
+          <div class="feature-image" style="background-image: url/screenshots/3pl-rfq-auction.png');"></div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-text">
+            <h4>Live supply chain map</h4>
+            <p>Visualize the entire logistics network on an interactive global map. See every shipment at a glance.</p>
+          </div>
+          <div class="feature-image" style="background-image: url/screenshots/live-map.png');"></div>
+        </div>
+      </section>
+
+      <p>Marcus isn't unique. He's one of hundreds of e-commerce brands and Amazon sellers who've made the switch. Brands that were tired of the chaos. Tired of the uncertainty. Tired of spending their days playing phone tag with logistics partners.</p>
+
+      <p>They're all finding the same thing: when you have visibility, you have control. And when you have control, you can focus on what actually matters — growing your business.</p>
+    </div>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+      <h3>The bottom line</h3>
+      <p class="story">Marcus pays $79/month. He saved $14,000 in Q1. The math is simple.</p>
+      
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h4>Basic</h4>
+          <div class="price">$79<small>/mo</small></div>
+          <p class="period">or $63/mo annual ($756/yr)</p>
+          <ul>
+            <li>Unlimited shipment tracking</li>
+            <li>5 active RFQs per month</li>
+            <li>Basic analytics</li>
+            <li>Email support</li>
+          </ul>
+          <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+        </div>
+
+        <div class="pricing-card">
+          <h4>Pro</h4>
+          <div class="price">$129<small>/mo</small></div>
+          <p class="period">or $103/mo annual ($1,236/yr)</p>
+          <ul>
+            <li>Unlimited everything</li>
+            <li>Advanced analytics</li>
+            <li>Priority support</li>
+            <li>API access</li>
+          </ul>
+          <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+        </div>
+      </div>
+
+      <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.8;">3PLs always free. 14-day free trial. No charge before day 14.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h3>Your turn</h3>
+      <p>Ready to reclaim your time? Start your free trial today.</p>
+      <a href="https://app.cartonflow.io/signup" class="btn">Start 14-day free trial</a>
+    </section>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 CartonFlow. All rights reserved. · 14-day free trial · 3PLs always free</p>
+  </footer>
+
+  <script>
+    // Smooth scroll for any anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Add fade-in animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-item, .pricing-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

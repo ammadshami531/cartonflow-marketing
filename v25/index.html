@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartonFlow — Your freight. Fully under control.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #030712;
+      --primary-start: #6366f1;
+      --primary-mid: #8b5cf6;
+      --primary-end: #d946ef;
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      perspective: 1000px;
+    }
+
+    /* Gradient Background */
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, 
+        var(--bg) 0%, 
+        #0f0a1e 25%, 
+        #1a0f2e 50%, 
+        #0f0a1e 75%, 
+        var(--bg) 100%);
+      z-index: -2;
+    }
+
+    .gradient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: var(--primary-start);
+      top: -200px;
+      left: -200px;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: var(--primary-mid);
+      top: 50%;
+      right: -150px;
+    }
+
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: var(--primary-end);
+      bottom: -100px;
+      left: 30%;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-logo {
+      width: 140px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-cta a {
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta .btn-outline {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    .nav-cta .btn-outline:hover {
+      border-color: var(--primary-mid);
+    }
+
+    .nav-cta .btn-primary {
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      color: white;
+    }
+
+    .nav-cta .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section with 3D Parallax */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .hero-content {
+      z-index: 10;
+      transform: translateZ(50px);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-mid), var(--primary-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .hero-cta .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .hero-cta .btn-primary {
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      color: white;
+    }
+
+    .hero-cta .btn-primary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+    }
+
+    .hero-cta .btn-outline {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-cta .btn-outline:hover {
+      border-color: var(--primary-mid);
+      background: rgba(139, 92, 246, 0.1);
+    }
+
+    /* 3D Screenshot Layers for Parallax */
+    .hero-layers {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hero-layer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    .layer-1 {
+      width: 600px;
+      height: 350px;
+      background: url/screenshots/admin-dashboard.png') center/cover no-repeat;
+      opacity: 0.3;
+      transform: translate(-50%, -50%) translateZ(-200px) scale(1.5);
+    }
+
+    .layer-2 {
+      width: 500px;
+      height: 300px;
+      background: url/screenshots/live-map.png') center/cover no-repeat;
+      opacity: 0.5;
+      transform: translate(-50%, -50%) translateZ(-100px) scale(1.3);
+    }
+
+    .layer-3 {
+      width: 400px;
+      height: 250px;
+      background: url/screenshots/3pl-rfq-auction.png') center/cover no-repeat;
+      opacity: 0.7;
+      transform: translate(-50%, -50%) translateZ(0px) scale(1.1);
+    }
+
+    /* Features Section with 3D Cards */
+    .features {
+      padding: 8rem 2rem;
+      position: relative;
+    }
+
+    .features h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: rotateX(-30deg) translateY(50px);
+    }
+
+    .feature-card.visible {
+      opacity: 1;
+      transform: rotateX(0deg) translateY(0);
+    }
+
+    .feature-card:hover {
+      transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
+      border-color: var(--primary-mid);
+      box-shadow: 0 30px 60px rgba(139, 92, 246, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      transform: translateZ(30px);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      transform: translateZ(20px);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      transform: translateZ(15px);
+    }
+
+    .feature-screenshot {
+      width: 100%;
+      height: 150px;
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      transform: translateZ(25px);
+    }
+
+    /* Pricing with 3D Floating Cards */
+    .pricing {
+      padding: 8rem 2rem;
+      text-align: center;
+      perspective: 1000px;
+    }
+
+    .pricing h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-sub {
+      color: var(--text-muted);
+      margin-bottom: 4rem;
+    }
+
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .pricing-toggle button {
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-toggle button.active {
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      border-color: transparent;
+      color: white;
+    }
+
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .pricing-card {
+      flex: 1;
+      max-width: 350px;
+      padding: 3rem 2rem;
+      background: rgba(255,255,255,0.03);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: translateZ(-100px) rotateX(10deg);
+    }
+
+    .pricing-card.visible {
+      opacity: 1;
+      transform: translateZ(0) rotateX(0);
+    }
+
+    .pricing-card:hover {
+      transform: translateZ(30px) rotateX(-5deg);
+      border-color: var(--primary-mid);
+    }
+
+    .pricing-card.featured {
+      transform: translateZ(50px) scale(1.05);
+      border-color: var(--primary-start);
+      background: rgba(139, 92, 246, 0.1);
+    }
+
+    .pricing-card.featured.visible {
+      transform: translateZ(50px) scale(1.05);
+    }
+
+    .pricing-card.featured:hover {
+      transform: translateZ(80px) scale(1.08);
+    }
+
+    .pricing-card h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      transform: translateZ(20px);
+    }
+
+    .pricing-card .price {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      transform: translateZ(30px);
+    }
+
+    .pricing-card .price small {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .pricing-card .period {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      transform: translateZ(15px);
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin-bottom: 2rem;
+      transform: translateZ(10px);
+    }
+
+    .pricing-card li {
+      padding: 0.5rem 0;
+      color: var(--text-muted);
+    }
+
+    .pricing-card li::before {
+      content: '✓ ';
+      color: var(--primary-start);
+    }
+
+    .pricing-card .btn {
+      display: block;
+      padding: 1.25rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      transform: translateZ(20px);
+    }
+
+    .pricing-card .btn-outline {
+      border: 2px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    .pricing-card .btn-outline:hover {
+      border-color: var(--primary-mid);
+    }
+
+    .pricing-card.featured .btn {
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      color: white;
+    }
+
+    /* Testimonials in 3D Arc */
+    .testimonials {
+      padding: 8rem 2rem;
+      text-align: center;
+      perspective: 1000px;
+    }
+
+    .testimonials h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 4rem;
+    }
+
+    .testimonial-carousel {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .testimonial-card {
+      flex: 0 0 320px;
+      padding: 2rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: rotateY(10deg) translateZ(30px);
+      border-color: var(--primary-mid);
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      color: var(--primary-start);
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.1) 50%, transparent 100%);
+    }
+
+    .cta h2 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-mid), var(--primary-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta .btn {
+      padding: 1.5rem 4rem;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+      color: white;
+      text-decoration: none;
+      border-radius: 16px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      display: inline-block;
+      transform-style: preserve-3d;
+    }
+
+    .cta .btn:hover {
+      transform: translateZ(30px) scale(1.05);
+      box-shadow: 0 30px 80px rgba(139, 92, 246, 0.5);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .testimonial-carousel {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .layer-1, .layer-2, .layer-3 {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Elements -->
+  <div class="gradient-bg"></div>
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <svg class="nav-logo" viewBox="0 0 300 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/>
+      <rect x="1" y="1" width="62" height="62" rx="14" stroke="url(#grad)" stroke-width="2"/>
+      <text x="7" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#6366f1">C</text>
+      <text x="32" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="#FFFFFF">F</text>
+      <text x="80" y="42" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFFFFF">Carton</tspan><tspan fill="#d946ef">Flow</tspan></text>
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#6366f1"/>
+          <stop offset="100%" style="stop-color:#d946ef"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Stories</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://app.cartonflow.io/login" class="btn-outline">Log in</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-primary">Start trial</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-layers">
+      <div class="hero-layer layer-1"></div>
+      <div class="hero-layer layer-2"></div>
+      <div class="hero-layer layer-3"></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1>Your freight. Fully under <span class="accent">control</span>.</h1>
+      <p class="hero-sub">Connect with 3PLs, forwarders, and distributors — solving shipping, the biggest pain point in logistics.</p>
+      <div class="hero-cta">
+        <a href="https://app.cartonflow.io/signup" class="btn btn-primary">Start 14-day free trial</a>
+        <a href="https://app.cartonflow.io/login" class="btn btn-outline">Log in</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <h2>Powerful features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>Real-time Tracking</h3>
+        <p>Monitor every shipment across all carriers and 3PLs from one dashboard.</p>
+        <div class="feature-screenshot" style="background: url/screenshots/admin-tracking.png') center/cover; opacity: 0.8;"></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>RFQ Automation</h3>
+        <p>Post requests to multiple 3PLs and compare bids instantly.</p>
+        <div class="feature-screenshot" style="background: url/screenshots/3pl-rfq-auction.png') center/cover; opacity: 0.8;"></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <h3>Live Map View</h3>
+        <p>Visualize your entire supply chain on an interactive global map.</p>
+        <div class="feature-screenshot" style="background: url/screenshots/live-map.png') center/cover; opacity: 0.8;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <h2>Simple pricing</h2>
+    <p class="pricing-sub">3PLs always free. No hidden fees.</p>
+
+    <div class="pricing-toggle">
+      <button class="active" onclick="setPricing('monthly')">Monthly</button>
+      <button onclick="setPricing('annual')">Annual (Save 20%)</button>
+    </div>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <div class="price" id="basic-price">$79<small>/mo</small></div>
+        <p class="period" id="basic-period">or $63/mo annual ($756/yr)</p>
+        <ul>
+          <li>Unlimited shipment tracking</li>
+          <li>5 active RFQs per month</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn btn-outline">Start free trial</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3 style="color: var(--primary-mid);">Pro</h3>
+        <div class="price" id="pro-price">$129<small>/mo</small></div>
+        <p class="period" id="pro-period">or $103/mo annual ($1,236/yr)</p>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>Unlimited RFQs</li>
+          <li>Advanced analytics</li>
+          <li>API access</li>
+        </ul>
+        <a href="https://app.cartonflow.io/signup" class="btn">Start free trial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <h2>What customers say</h2>
+    <div class="testimonial-carousel">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"CartonFlow saved us $47,000 in the first quarter alone. We finally have visibility across our entire supply chain."</p>
+        <p class="testimonial-author">— Sarah Chen, TechStyle</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The RFQ feature alone pays for itself. We cut our shipping costs by 35% in three months."</p>
+        <p class="testimonial-author">— Mike Rodriguez, Amazon Seller</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Finally, a platform that actually understands logistics. This is what we've been waiting for."</p>
+        <p class="testimonial-author">— Lisa Park, Operations Lead</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Ready to take control?</h2>
+    <a href="https://app.cartonflow.io/signup" class="btn">Start your 14-day free trial</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 CartonFlow. All rights reserved. · 14-day free trial · 3PLs always free</p>
+  </footer>
+
+  <script>
+    // 3D Parallax on scroll
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const layers = document.querySelectorAll('.hero-layer');
+      
+      layers.forEach((layer, i) => {
+        const speed = 0.1 * (i + 1);
+        layer.style.transform = `translate(-50%, -50%) translateZ(${-100 - i * 100}px) scale(${1.5 - i * 0.2}) translateY(${scrolled * speed}px)`;
+      });
+
+      // Fade in elements on scroll
+      document.querySelectorAll('.feature-card, .pricing-card').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    });
+
+    // Pricing toggle
+    let pricingType = 'monthly';
+    
+    function setPricing(type) {
+      pricingType = type;
+      document.querySelectorAll('.pricing-toggle button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === (type === 'monthly' ? 0 : 1));
+      });
+      
+      const basicPrice = type === 'monthly' ? '$79' : '$63';
+      const proPrice = type === 'monthly' ? '$129' : '$103';
+      
+      document.getElementById('basic-price').innerHTML = basicPrice + '<small>/mo</small>';
+      document.getElementById('basic-period').textContent = type === 'monthly' ? 'Monthly billing' : 'or $63/mo annual ($756/yr)';
+      document.getElementById('pro-price').innerHTML = proPrice + '<small>/mo</small>';
+      document.getElementById('pro-period').textContent = type === 'monthly' ? 'Monthly billing' : 'or $103/mo annual ($1,236/yr)';
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Initial check for visible elements
+    window.dispatchEvent(new Event('scroll'));
+  </script>
+</body>
+</html>
