@@ -80,10 +80,9 @@ footer-bar a{color:rgba(238,242,255,0.35);font-size:12px}.footer-bar a:hover{col
   <h1>CartonFlow is<br/><span class="g">free for your 3PL.</span></h1>
   <p>Your brand clients are using CartonFlow to manage shipments, invoices, and RFQs. Your portal is waiting — no subscription, no setup fee, no catch.</p>
   <div class="hero-cta">
-    <a href="https://app.cartonflow.io/signup" class="btn-fill">Get your free portal →</a>
-    <a href="https://app.cartonflow.io/login" class="btn-ghost">Already have an account</a>
+    <a href="https://app.cartonflow.io/login" class="btn-fill">Log into your portal →</a>
   </div>
-  <p class="free-note" style="margin-top:14px">Free forever for 3PLs, freight forwarders, and logistics providers · No credit card required</p>
+  <p class="free-note" style="margin-top:14px">Access is by invitation from your brand client · Already invited? Log in above</p>
 </div>
 
 <div class="cards">

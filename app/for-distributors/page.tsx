@@ -80,10 +80,9 @@ footer-bar a{color:rgba(238,242,255,0.35);font-size:12px}.footer-bar a:hover{col
   <h1>Visibility into<br/><span class="g">your inventory — free.</span></h1>
   <p>Your brand suppliers are using CartonFlow to manage their supply chain. Your distributor portal gives you real-time visibility into shipments coming your way — at no cost.</p>
   <div class="hero-cta">
-    <a href="https://app.cartonflow.io/signup" class="btn-fill">Get your free portal →</a>
-    <a href="https://app.cartonflow.io/login" class="btn-ghost">Already have an account</a>
+    <a href="https://app.cartonflow.io/login" class="btn-fill">Log into your portal →</a>
   </div>
-  <p class="free-note" style="margin-top:14px">Free forever for distributors and wholesalers · No credit card required</p>
+  <p class="free-note" style="margin-top:14px">Access is by invitation from your brand supplier · Already invited? Log in above</p>
 </div>
 
 <div class="cards">
