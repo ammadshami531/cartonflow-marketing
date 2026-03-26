@@ -226,7 +226,6 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   .ba-divider{flex-direction:row;padding:16px 0}
   .ba-line{width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(79,70,229,0.3),transparent)}
   .collage{height:320px}
-  .collage-win{display:none}
   .cf-panel{width:100% !important;position:relative !important;top:auto !important;left:auto !important;right:auto !important;transform:none !important;max-width:100% !important}
   .pricing{padding:60px 20px}
   .plans{grid-template-columns:1fr}
@@ -674,7 +673,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   <div class="footer-top">
     <div class="founder-note">
       <h4>Why we built this</h4>
-      <p>Most Amazon sellers and e-commerce brands are managing 6-figure freight operations over <strong>WhatsApp threads, WeChat groups, and spreadsheets</strong>. Invoices arrive as blurry PDFs. Delivery window deadlines get missed because the 3PL's update came 25 hours too late.<br><br>We built CartonFlow because this problem is real, it's expensive, and it's completely solvable. <strong>Your 3PLs join free. You get visibility you've never had. That's the deal.</strong></p>
+      <p>Most Amazon sellers and e-commerce brands are managing 6-figure freight operations over <strong>WhatsApp threads, WeChat groups, and spreadsheets</strong>. Updates come too late to act on FBA windows. Everything lives in separate threads with no single source of truth.<br><br>We built CartonFlow because this problem is real, it's expensive, and it's completely solvable. <strong>Your 3PLs join free. You get visibility you've never had. That's the deal.</strong></p>
     </div>
     <div class="footer-nav">
       <a href="/features" class="footer-deep-link">→ Deep dive: all features</a>
