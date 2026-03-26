@@ -521,6 +521,15 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
           <li class="lock"><span class="lock-ic">🔒</span> 10 user seats</li>
         </ul>
       </div>
+      <div class="plan-section">
+        <div class="plan-section-title">AI Command Center</div>
+        <ul class="feat-list">
+          <li class="lock"><span class="lock-ic">🔒</span> AI Daily Brief + Draft Messages</li>
+          <li class="lock"><span class="lock-ic">🔒</span> Predictive ETA + Smart Delay Alerts</li>
+          <li class="lock"><span class="lock-ic">🔒</span> Freight Cost Intelligence + ROI Dashboard</li>
+          <li class="lock"><span class="lock-ic">🔒</span> FBA Window Warning + 3PL Intelligence</li>
+        </ul>
+      </div>
     </div>
     <div class="plan pro">
       <div class="pro-label">Most Popular</div>
@@ -557,6 +566,19 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
           <li class="inc"><span class="chk">✓</span> <strong>Priority support</strong></li>
         </ul>
       </div>
+      <div class="plan-section">
+        <div class="plan-section-title">AI Command Center</div>
+        <ul class="feat-list">
+          <li class="inc"><span class="chk">✓</span> <strong>AI Daily Brief</strong> — morning plain-English rundown</li>
+          <li class="inc"><span class="chk">✓</span> <strong>AI Draft Messages</strong> — one-click 3PL &amp; supplier comms</li>
+          <li class="inc"><span class="chk">✓</span> <strong>Predictive ETA Engine</strong> — AI-adjusted arrival estimates</li>
+          <li class="inc"><span class="chk">✓</span> <strong>Smart Delay Alerts</strong> — proactive before you have to ask</li>
+          <li class="inc"><span class="chk">✓</span> <strong>FBA Window Warning</strong> — flags at-risk receive windows</li>
+          <li class="inc"><span class="chk">✓</span> <strong>3PL Intelligence</strong> — AI partner performance insights</li>
+          <li class="inc"><span class="chk">✓</span> <strong>Freight Cost Intelligence</strong> — live market rate benchmarking</li>
+          <li class="inc"><span class="chk">✓</span> <strong>ROI Dashboard</strong> — track savings, hours reclaimed, &amp; ROI</li>
+        </ul>
+      </div>
     </div>
   </div>
   <p class="p-footer">14-day free trial · Card required at signup · Cancel anytime · Your 3PLs join free</p>
@@ -569,7 +591,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>What happens after the 14-day trial?</span><span class="faq-icon">▾</span></button><div class="faq-body">At the end of your trial, your card on file is charged for the plan you selected. You can cancel any time before the trial ends from your account settings and you won't be charged.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>Can I connect my own FedEx and UPS accounts?</span><span class="faq-icon">▾</span></button><div class="faq-body">Yes. You connect your own FedEx and UPS developer credentials — CartonFlow uses them to pull tracking data. Your rates, your accounts, no middleman markup.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>How does the RFQ bidding work for my 3PLs?</span><span class="faq-icon">▾</span></button><div class="faq-body">You create an RFQ for a shipment and select which 3PLs to invite. They each submit DDP rate bids per service combo directly in the platform. You compare side-by-side and award with one click. 3PLs typically respond within 24 hours.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>What's the difference between Basic and Pro?</span><span class="faq-icon">▾</span></button><div class="faq-body">Basic covers domestic shipment tracking, invoicing, and messaging — solid for brands focused on domestic logistics. Pro adds live ocean tracking with AIS vessel maps, the competitive RFQ bidding system, distributor management, and advanced analytics. Pro is where most growing brands end up.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>What's the difference between Basic and Pro?</span><span class="faq-icon">▾</span></button><div class="faq-body">Basic covers shipment tracking, invoicing, and 3PL messaging — solid for brands focused on domestic and air logistics. Pro unlocks the full platform: live ocean tracking with AIS vessel maps, competitive RFQ bidding, distributor management, advanced analytics, and the full AI Command Center (Daily Brief, Predictive ETA, Freight Cost Intelligence, Smart Delay Alerts, and more). Pro is where most scaling brands end up.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>Can I cancel anytime?</span><span class="faq-icon">▾</span></button><div class="faq-body">Yes. No contracts, no cancellation fees. Cancel any time from your account settings. Annual plans are refunded prorated after the first 30 days.</div></div>
   </div>
 </div>
