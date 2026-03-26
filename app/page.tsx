@@ -263,7 +263,11 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   .ba-title{font-size:18px;margin-bottom:20px}
   .ba-panels{gap:16px}
   .ba-panel{padding:16px}
-  .collage{display:none}
+  .collage{height:260px;overflow:hidden}
+  .collage-win{width:200px !important}
+  .cw-wa{width:180px !important}
+  .cw-wc{width:175px !important;left:130px !important}
+  .cw-em{width:195px !important}
   .pricing{padding:40px 16px}
   .p-hd{margin-bottom:32px}
   .p-hd h2{font-size:clamp(26px,7vw,40px)}
@@ -382,7 +386,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <div class="fp-num rn">04</div>
       <div class="fp-tag">All Plans</div>
       <h2>Invoice portal.<br><span class="g">No email chaos.</span></h2>
-      <p>3PLs submit invoices in the platform — line items, totals, everything. You review and mark paid. No PDFs over email, no lost attachments, ever.</p>
+      <p>3PLs submit invoices directly in the platform — line items, totals, everything. You review and mark paid. One place, always organized.</p>
       <ul class="fp-list">
         <li>Line-item detail on every invoice</li>
         <li>Mark paid — 3PL sees status instantly</li>
@@ -484,7 +488,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
         <div class="ba-points">
           <div class="ba-point bad-pt"><span class="pt-dot">✕</span> Updates scattered across WhatsApp, WeChat groups, and email chains</div>
           <div class="ba-point bad-pt"><span class="pt-dot">✕</span> ETAs are guesses — you find out too late to act on Amazon windows</div>
-          <div class="ba-point bad-pt"><span class="pt-dot">✕</span> Invoices arrive as multi-PDF chains with missing line items</div>
+          <div class="ba-point bad-pt"><span class="pt-dot">✕</span> Invoices get lost in email threads — no single place to track what's paid</div>
         </div>
       </div>
 
