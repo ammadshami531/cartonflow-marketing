@@ -633,14 +633,14 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <div class="plan-section">
         <div class="plan-section-title">AI Command Center</div>
         <ul class="feat-list">
-          <li class="inc"><span class="chk">✓</span> <strong>AI Daily Brief</strong> — morning shipment summary</li>
-          <li class="inc"><span class="chk">✓</span> <strong>AI Draft Messages</strong> — auto-written 3PL comms</li>
-          <li class="inc"><span class="chk">✓</span> <strong>Predictive ETA</strong> — AI-adjusted arrival estimates</li>
-          <li class="inc"><span class="chk">✓</span> <strong>Smart Delay Alerts</strong> — proactive, not reactive</li>
-          <li class="inc"><span class="chk">✓</span> <strong>FBA Window Warning</strong> — never miss a receive window</li>
-          <li class="inc"><span class="chk">✓</span> <strong>3PL Intelligence</strong> — AI partner performance insights</li>
-          <li class="inc"><span class="chk">✓</span> <strong>Freight Cost Intelligence</strong> — live rate benchmarking</li>
-          <li class="inc"><span class="chk">✓</span> <strong>ROI Dashboard</strong> — see exactly what CartonFlow saves you</li>
+          <li class="inc"><span class="chk">✓</span> <strong>AI Daily Brief</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>AI Draft Messages</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>Predictive ETA</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>Smart Delay Alerts</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>FBA Window Warning</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>3PL Intelligence</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>Freight Cost Intelligence</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>ROI Dashboard</strong></li>
         </ul>
       </div>
     </div>
