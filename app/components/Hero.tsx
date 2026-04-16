@@ -32,7 +32,7 @@ export default function Hero() {
         </div>
         
         <p className="text-sm text-[#7c8fad] mt-6">
-          Starting at $79/mo · Your 3PLs join free
+          From $129/mo · Your 3PLs join free
         </p>
       </div>
     </section>

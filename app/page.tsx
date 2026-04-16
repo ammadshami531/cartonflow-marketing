@@ -552,7 +552,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
   </div>
   <div class="plans">
     <div class="plan pro">
-      <div class="pro-label">Best Value</div>
+      
       <div class="plan-name">Pro</div>
       <div class="plan-price"><sup>$</sup><span id="bp">129</span><span class="mo">/mo</span></div>
       <div class="plan-billed" id="bn">Billed monthly · Cancel anytime</div>
@@ -612,7 +612,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>What happens after the 14-day trial?</span><span class="faq-icon">▾</span></button><div class="faq-body">At the end of your trial, your card on file is charged for the plan you selected. You can cancel any time before the trial ends from your account settings and you won't be charged.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>Can I connect my own FedEx and UPS accounts?</span><span class="faq-icon">▾</span></button><div class="faq-body">Yes. You connect your own FedEx and UPS developer credentials — CartonFlow uses them to pull tracking data. Your rates, your accounts, no middleman markup.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>How does the RFQ bidding work for my 3PLs?</span><span class="faq-icon">▾</span></button><div class="faq-body">You create an RFQ for a shipment and select which 3PLs to invite. They each submit DDP rate bids per service combo directly in the platform. You compare side-by-side and award with one click. 3PLs typically respond within 24 hours.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>What's the difference between Basic and Pro?</span><span class="faq-icon">▾</span></button><div class="faq-body">Basic covers shipment tracking, invoicing, and 3PL messaging — solid for brands focused on domestic and air logistics. Pro unlocks the full platform: live ocean tracking with AIS vessel maps, competitive RFQ bidding, distributor management, advanced analytics, and the full AI Command Center (Daily Brief, Predictive ETA, Freight Cost Intelligence, Smart Delay Alerts, and more). Pro is where most scaling brands end up.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>What's included in the Pro plan?</span><span class="faq-icon">▾</span></button><div class="faq-body">Everything: unlimited shipments, live ocean vessel tracking with AIS maps, FedEx/UPS carton-level tracking, RFQ competitive bidding, distributor management, invoice portal, 3PL messaging, advanced analytics, SLA dashboard, weekly digest, anomaly alerts, and the full AI Command Center (Daily Brief, Predictive ETA, Freight Cost Intelligence, Smart Delay Alerts, and more). Your 3PLs and freight partners always join free.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span>Can I cancel anytime?</span><span class="faq-icon">▾</span></button><div class="faq-body">Yes. No contracts, no cancellation fees. Cancel any time from your account settings. Annual plans are refunded prorated after the first 30 days.</div></div>
   </div>
 </div>

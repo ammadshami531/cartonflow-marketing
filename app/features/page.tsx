@@ -151,7 +151,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
     <div class="feat-cta-group">
       <a href="https://app.cartonflow.io/signup" class="btn-feat">Start tracking free →</a>
-      <span class="feat-plan-note">Included in Basic and Pro</span>
+      <span class="feat-plan-note">Included</span>
     </div>
   </div>
 
@@ -213,7 +213,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
       <p class="feat-tagline">Real-time AIS satellite vessel positions on an interactive world map. Know where your container is before your 3PL sends the WhatsApp or WeChat message — or doesn't.</p>
     </div>
     <div class="feat-cta-group">
-      <a href="https://app.cartonflow.io/signup?plan=pro" class="btn-feat">Try Pro free →</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
       <span class="feat-plan-note">Pro plan only · 14-day free trial</span>
     </div>
   </div>
@@ -270,7 +270,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
       <p class="feat-tagline">Amazon fees are rising. E-commerce margins are under pressure. Freight is one of the few costs you can actually control — if you put your 3PLs in competition.</p>
     </div>
     <div class="feat-cta-group">
-      <a href="https://app.cartonflow.io/signup?plan=pro" class="btn-feat">Start saving →</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
       <span class="feat-plan-note">Pro plan only · 14-day free trial</span>
     </div>
   </div>
@@ -329,7 +329,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
     <div class="feat-cta-group">
       <a href="https://app.cartonflow.io/signup" class="btn-feat">See invoice portal →</a>
-      <span class="feat-plan-note">Included in Basic and Pro</span>
+      <span class="feat-plan-note">Included</span>
     </div>
   </div>
 
@@ -362,7 +362,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
     <div class="feat-cta-group">
       <a href="https://app.cartonflow.io/signup" class="btn-feat">Try it free →</a>
-      <span class="feat-plan-note">Included in Basic and Pro</span>
+      <span class="feat-plan-note">Included</span>
     </div>
   </div>
 
@@ -402,7 +402,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
       <p class="feat-tagline">See how your 3PLs are actually performing. On-time delivery rates, transit time trends, anomaly detection, and a weekly digest delivered to your inbox.</p>
     </div>
     <div class="feat-cta-group">
-      <a href="https://app.cartonflow.io/signup?plan=pro" class="btn-feat">Try Pro free →</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
       <span class="feat-plan-note">Pro plan only</span>
     </div>
   </div>
@@ -432,7 +432,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
       <p class="feat-tagline">Give your distributors a portal to track their shipments, view documents, and communicate — without adding them to your internal WhatsApp groups.</p>
     </div>
     <div class="feat-cta-group">
-      <a href="https://app.cartonflow.io/signup?plan=pro" class="btn-feat">Try Pro free →</a>
+      <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
       <span class="feat-plan-note">Pro plan only · Distributors join free</span>
     </div>
   </div>

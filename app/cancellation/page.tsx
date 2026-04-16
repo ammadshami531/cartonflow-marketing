@@ -81,7 +81,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 
 <h2>5. Annual Plan Refunds</h2>
 <p>Annual plans are eligible for a prorated refund of unused months if you cancel after the first 30 days. To request a refund, email <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a> with your account email. Refunds are processed within 5–10 business days via the original payment method.</p>
-<p>Example: If you paid $756 for an annual Basic plan and cancel after 4 months, you are eligible for a refund of 8/12 × $756 = $504.</p>
+<p>Example: If you paid $1,236 for an annual Pro plan and cancel after 4 months, you are eligible for a refund of 8/12 × $1,236 = $824.</p>
 
 <h2>6. Refunds for Service Outages</h2>
 <p>If CartonFlow experiences a verified outage exceeding 24 consecutive hours, we will provide a prorated credit for the affected period upon request.</p>

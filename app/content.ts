@@ -8,47 +8,31 @@ export const SITE = {
 }
 
 export const PRICING = {
-  basic: {
-    name: "Basic",
-    monthly: 79,
-    annual: 63,
-    annualTotal: 756,
-    features: [
-      "Shipment tracking + status updates",
-      "FedEx / UPS carton tracking",
-      "Multi-destination routing (FBA + custom)",
-      "Document hub + invoice portal",
-      "3PL messaging + push notifications",
-      "3 internal user seats",
-      "Unlimited 3PL / partner seats",
-    ],
-    locked: [
-      "Ocean freight + AIS maps",
-      "RFQ competitive bidding",
-    ],
-  },
   pro: {
     name: "Pro",
     monthly: 129,
     annual: 103,
     annualTotal: 1236,
     features: [
-      "Everything in Basic",
+      "Unlimited shipments + real-time tracking",
+      "FedEx / UPS carton-level tracking",
+      "Multi-destination routing (FBA + custom)",
       "Live ocean tracking + AIS vessel maps",
-      "RFQ system — competitive 3PL bidding",
+      "RFQ competitive 3PL bidding",
       "Distributor management portal",
+      "Document hub + invoice portal",
+      "3PL messaging + push notifications",
       "Advanced analytics + SLA dashboard",
       "Weekly digest + anomaly alerts",
-      "10 internal user seats",
+      "Unlimited user seats",
       "Priority support",
     ],
-    locked: [],
   },
 }
 
 export const FEATURES = [
-  { icon: "🗺️", title: "Live Ocean Tracking", desc: "Real-time AIS vessel positions on an interactive world map. Port ETAs, transit progress, and vessel details — updated every few minutes.", badge: "PRO" },
-  { icon: "🏷️", title: "Competitive Bidding (RFQ)", desc: "Post shipment RFQs to your trusted 3PLs. They bid on DDP rates, you compare side-by-side and award in one click. One bid cycle pays for months of subscription.", badge: "PRO" },
+  { icon: "🗺️", title: "Live Ocean Tracking", desc: "Real-time AIS vessel positions on an interactive world map. Port ETAs, transit progress, and vessel details — updated every few minutes.", badge: null },
+  { icon: "🏷️", title: "Competitive Bidding (RFQ)", desc: "Post shipment RFQs to your trusted 3PLs. They bid on DDP rates, you compare side-by-side and award in one click. One bid cycle pays for months of subscription.", badge: null },
   { icon: "📦", title: "Carton-Level Tracking", desc: "FedEx and UPS tracking per carton, with real scan events and geocoded positions. Know which box is where, not just the shipment.", badge: null },
   { icon: "💬", title: "Built-in Messaging", desc: "Threaded messages tied to each shipment, shared between your team, 3PLs, and distributors. No more digging through email threads.", badge: null },
   { icon: "🧾", title: "Invoice Portal", desc: "3PLs submit invoices directly in the platform. Review line items, approve, and mark paid. Billing history always one click away.", badge: null },
@@ -71,16 +55,16 @@ export const TESTIMONIALS = [
 export const FAQ = [
   { q: "Do my 3PLs and freight partners have to pay?", a: "No — your 3PLs, forwarders, and distributors join CartonFlow for free. They get a portal to update shipments, respond to messages, submit invoices, and place bids. You pay, they benefit, everyone wins." },
   { q: "Can I bring my own FedEx and UPS accounts?", a: "Yes. You connect your own FedEx and UPS developer credentials — CartonFlow uses them to pull tracking data on your behalf. Your rates, your accounts, no middleman markup." },
-  { q: "What is the difference between Basic and Pro?", a: "Basic covers domestic and land-route tracking, document management, invoicing, and messaging. Pro adds ocean freight tracking with live AIS vessel maps, the competitive RFQ bidding system, distributor management, and advanced analytics." },
+  { q: "What's the pricing?", a: "Pro plan is $129/month or $1,236/year (save 20%). Your 3PLs, forwarders, and distributors always join free." },
   { q: "How long does setup take?", a: "Quick. The onboarding wizard walks you through adding your products, suppliers, 3PLs, and delivery destinations step by step. Most users create their first shipment the same session." },
   { q: "Can I cancel anytime?", a: "Yes. No contracts, no cancellation fees. Cancel any time from your account settings. Annual plan refunds are prorated after the first 30 days." },
   { q: "Is my data secure?", a: "All data is encrypted in transit (TLS) and at rest. Your tenant data is fully isolated from other customers — no data commingling. We never share your shipment or partner data with third parties." },
 ]
 
 export const COMPARISON = [
-  { feature: "Starting price", cartonflow: "$79/mo", flexport: "Custom / $$$$", shipstation: "$30/mo", spreadsheets: "Free" },
-  { feature: "Ocean vessel tracking (AIS)", cartonflow: "✅ Pro", flexport: "✅", shipstation: "❌", spreadsheets: "❌" },
-  { feature: "RFQ competitive bidding", cartonflow: "✅ Pro", flexport: "❌ (they are the 3PL)", shipstation: "❌", spreadsheets: "❌" },
+  { feature: "Starting price", cartonflow: "$129/mo", flexport: "Custom / $$$$", shipstation: "$30/mo", spreadsheets: "Free" },
+  { feature: "Ocean vessel tracking (AIS)", cartonflow: "✅", flexport: "✅", shipstation: "❌", spreadsheets: "❌" },
+  { feature: "RFQ competitive bidding", cartonflow: "✅", flexport: "❌ (they are the 3PL)", shipstation: "❌", spreadsheets: "❌" },
   { feature: "Carton-level FedEx/UPS tracking", cartonflow: "✅", flexport: "Partial", shipstation: "✅", spreadsheets: "❌" },
   { feature: "3PL messaging + portal", cartonflow: "✅", flexport: "Limited", shipstation: "❌", spreadsheets: "❌" },
   { feature: "Invoice portal", cartonflow: "✅", flexport: "Partial", shipstation: "❌", spreadsheets: "❌" },
