@@ -314,7 +314,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <a href="https://app.cartonflow.io/signup" class="btn-xl btn-fill">Start free trial →</a>
       <a href="/features" class="btn-xl btn-ghost">See all features</a>
     </div>
-    <p class="hero-note">Starting at $79/mo · Your 3PLs always join free · Cancel anytime</p>
+    <p class="hero-note">From $129/mo · Your 3PLs always join free · Cancel anytime</p>
   </div>
   <div class="scroll-ind"><span>Scroll</span><span>↓</span></div>
 </div>
@@ -551,56 +551,12 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
   </div>
   <div class="plans">
-    <div class="plan">
-      <div class="plan-name">Basic</div>
-      <div class="plan-price"><sup>$</sup><span id="bp">79</span><span class="mo">/mo</span></div>
-      <div class="plan-billed" id="bn">Billed monthly</div>
-      <a href="https://app.cartonflow.io/signup?plan=basic" class="plan-btn btn-basic">Start 14-day free trial</a>
-      <div class="plan-section">
-        <div class="plan-section-title">Tracking &amp; Visibility</div>
-        <ul class="feat-list">
-          <li class="inc"><span class="chk">✓</span> Shipment status + milestone tracking</li>
-          <li class="inc"><span class="chk">✓</span> FedEx + UPS carton-level tracking</li>
-          <li class="inc"><span class="chk">✓</span> Multi-destination routing (FBA + custom)</li>
-          <li class="lock"><span class="lock-ic">🔒</span> Live ocean tracking + AIS vessel maps</li>
-        </ul>
-      </div>
-      <div class="plan-section">
-        <div class="plan-section-title">Communication &amp; Finance</div>
-        <ul class="feat-list">
-          <li class="inc"><span class="chk">✓</span> 3PL messaging + push notifications</li>
-          <li class="inc"><span class="chk">✓</span> Invoice portal (line-item detail)</li>
-          <li class="inc"><span class="chk">✓</span> Document hub</li>
-          <li class="lock"><span class="lock-ic">🔒</span> RFQ competitive bidding</li>
-          <li class="lock"><span class="lock-ic">🔒</span> Distributor management portal</li>
-        </ul>
-      </div>
-      <div class="plan-section">
-        <div class="plan-section-title">Team &amp; Analytics</div>
-        <ul class="feat-list">
-          <li class="inc"><span class="chk">✓</span> 3 internal user seats</li>
-          <li class="inc"><span class="chk">✓</span> Unlimited 3PL seats (always free)</li>
-          <li class="lock"><span class="lock-ic">🔒</span> Advanced analytics + SLA dashboard</li>
-          <li class="lock"><span class="lock-ic">🔒</span> Weekly digest + anomaly alerts</li>
-          <li class="lock"><span class="lock-ic">🔒</span> 10 user seats</li>
-        </ul>
-      </div>
-      <div class="plan-section">
-        <div class="plan-section-title">AI Command Center</div>
-        <ul class="feat-list">
-          <li class="lock"><span class="lock-ic">🔒</span> AI Daily Brief + Draft Messages</li>
-          <li class="lock"><span class="lock-ic">🔒</span> Predictive ETA + Smart Delay Alerts</li>
-          <li class="lock"><span class="lock-ic">🔒</span> Freight Cost Intelligence + ROI Dashboard</li>
-          <li class="lock"><span class="lock-ic">🔒</span> FBA Window Warning + 3PL Intelligence</li>
-        </ul>
-      </div>
-    </div>
     <div class="plan pro">
-      <div class="pro-label">Most Popular</div>
+      <div class="pro-label">Best Value</div>
       <div class="plan-name">Pro</div>
-      <div class="plan-price"><sup>$</sup><span id="pp">129</span><span class="mo">/mo</span></div>
-      <div class="plan-billed" id="pn">Billed monthly</div>
-      <a href="https://app.cartonflow.io/signup?plan=pro" class="plan-btn btn-pro">Start 14-day free trial</a>
+      <div class="plan-price"><sup>$</sup><span id="bp">129</span><span class="mo">/mo</span></div>
+      <div class="plan-billed" id="bn">Billed monthly · Cancel anytime</div>
+      <a href="https://app.cartonflow.io/signup" class="plan-btn btn-pro">Start 14-day free trial</a>
       <div class="plan-section">
         <div class="plan-section-title">Tracking &amp; Visibility</div>
         <ul class="feat-list">
@@ -623,7 +579,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <div class="plan-section">
         <div class="plan-section-title">Team &amp; Analytics</div>
         <ul class="feat-list">
-          <li class="inc"><span class="chk">✓</span> <strong>10 internal user seats</strong></li>
+          <li class="inc"><span class="chk">✓</span> <strong>Unlimited user seats</strong></li>
           <li class="inc"><span class="chk">✓</span> Unlimited 3PL seats (always free)</li>
           <li class="inc"><span class="chk">✓</span> <strong>Advanced analytics + SLA dashboard</strong></li>
           <li class="inc"><span class="chk">✓</span> <strong>Weekly digest + anomaly alerts</strong></li>
@@ -640,10 +596,11 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
           <li class="inc"><span class="chk">✓</span> <strong>FBA Window Warning</strong></li>
           <li class="inc"><span class="chk">✓</span> <strong>3PL Intelligence</strong></li>
           <li class="inc"><span class="chk">✓</span> <strong>Freight Cost Intelligence</strong></li>
-          <li class="inc"><span class="chk">✓</span> <strong>ROI Dashboard</strong></li>
         </ul>
       </div>
     </div>
+  </div>
+    
   </div>
   <p class="p-footer">14-day free trial · Card required at signup · Cancel anytime · Your 3PLs join free</p>
 </div>
@@ -698,10 +655,8 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40));
 function sp(m){
   const a=m==='a';
-  document.getElementById('bp').textContent=a?'63':'79';
-  document.getElementById('pp').textContent=a?'103':'129';
-  document.getElementById('bn').textContent=a?'Billed $756/yr · Save 20%':'Billed monthly';
-  document.getElementById('pn').textContent=a?'Billed $1,236/yr · Save 20%':'Billed monthly';
+  document.getElementById('bp').textContent=a?'1240':'129';
+  document.getElementById('bn').textContent=a?'Billed annually · Save 20%':'Billed monthly · Cancel anytime';
   document.getElementById('tm').classList.toggle('on',!a);
   document.getElementById('ta').classList.toggle('on',a);
 }
