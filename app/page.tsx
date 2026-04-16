@@ -345,7 +345,6 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <div class="fp-glow right"></div>
     <div class="fp-content ra fade-up">
       <div class="fp-num rn">02</div>
-      <div class="fp-tag">Pro</div>
       <h2>Live ocean<br><span class="g">tracking.</span></h2>
       <p>Real-time AIS vessel positions on an interactive world map. Port ETAs, transit progress — before your 3PL sends a WhatsApp or WeChat message.</p>
       <ul class="fp-list">
@@ -354,7 +353,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
         <li>Delay alerts with enough time to update FBA delivery windows</li>
         <li>Filter by status: In Transit, Last Mile, Customs, Delayed</li>
       </ul>
-      <a href="https://app.cartonflow.io/signup" class="fp-btn">Try Pro free →</a>
+      <a href="https://app.cartonflow.io/signup" class="fp-btn">Start free trial →</a>
     </div>
   </div>
 
@@ -364,7 +363,6 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <div class="fp-glow left"></div>
     <div class="fp-content fade-up">
       <div class="fp-num">03</div>
-      <div class="fp-tag">Pro</div>
       <h2>Competitive<br><span class="g">RFQ bidding.</span></h2>
       <p>As Amazon and e-commerce fees keep rising, freight is one of the few costs you can actually control. Put your 3PLs in competition and take back margin.</p>
       <ul class="fp-list">
