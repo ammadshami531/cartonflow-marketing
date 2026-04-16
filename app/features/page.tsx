@@ -145,7 +145,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <div class="feat-block fade-up" id="tracking">
   <div class="feat-block-header">
     <div class="feat-title-group">
-      <div class="feat-plan-badge badge-all">All Plans</div>
+      
       <h2>Shipment Tracking<br><span class="g">& Visibility</span></h2>
       <p class="feat-tagline">Every shipment, every carton, every scan — tracked in real time across all your 3PLs, forwarders, and destinations. No more "just checking in" messages.</p>
     </div>
@@ -208,13 +208,13 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <div class="feat-block fade-up" id="ocean">
   <div class="feat-block-header">
     <div class="feat-title-group">
-      <div class="feat-plan-badge badge-pro">Pro Only</div>
+      
       <h2>Live Ocean Tracking<br><span class="g">+ AIS Vessel Maps</span></h2>
       <p class="feat-tagline">Real-time AIS satellite vessel positions on an interactive world map. Know where your container is before your 3PL sends the WhatsApp or WeChat message — or doesn't.</p>
     </div>
     <div class="feat-cta-group">
       <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
-      <span class="feat-plan-note">Pro plan only · 14-day free trial</span>
+      <span class="feat-plan-note">All plans included · 14-day free trial</span>
     </div>
   </div>
 
@@ -265,13 +265,13 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <div class="feat-block fade-up" id="rfq">
   <div class="feat-block-header">
     <div class="feat-title-group">
-      <div class="feat-plan-badge badge-pro">Pro Only</div>
+      
       <h2>Competitive RFQ<br><span class="g">Bidding System</span></h2>
       <p class="feat-tagline">Amazon fees are rising. E-commerce margins are under pressure. Freight is one of the few costs you can actually control — if you put your 3PLs in competition.</p>
     </div>
     <div class="feat-cta-group">
       <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
-      <span class="feat-plan-note">Pro plan only · 14-day free trial</span>
+      <span class="feat-plan-note">All plans included · 14-day free trial</span>
     </div>
   </div>
 
@@ -323,7 +323,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <div class="feat-block fade-up" id="invoices">
   <div class="feat-block-header">
     <div class="feat-title-group">
-      <div class="feat-plan-badge badge-all">All Plans</div>
+      
       <h2>Invoice Portal<br><span class="g">& Billing Management</span></h2>
       <p class="feat-tagline">3PLs submit invoices directly in the platform — line items, totals, due date, everything. You review and mark paid. No PDFs over email, no lost attachments, ever again.</p>
     </div>
@@ -356,7 +356,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <div class="feat-block fade-up" id="messaging">
   <div class="feat-block-header">
     <div class="feat-title-group">
-      <div class="feat-plan-badge badge-all">All Plans</div>
+      
       <h2>Shipment Messaging<br><span class="g">& Notifications</span></h2>
       <p class="feat-tagline">Threaded messages tied to each shipment, shared between your team and 3PLs. Every update, every question, every decision — in one place, searchable forever.</p>
     </div>
@@ -397,13 +397,13 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <div class="feat-block fade-up" id="analytics">
   <div class="feat-block-header">
     <div class="feat-title-group">
-      <div class="feat-plan-badge badge-pro">Pro Only</div>
+      
       <h2>Analytics, Scorecard<br><span class="g">& SLA Dashboard</span></h2>
       <p class="feat-tagline">See how your 3PLs are actually performing. On-time delivery rates, transit time trends, anomaly detection, and a weekly digest delivered to your inbox.</p>
     </div>
     <div class="feat-cta-group">
       <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
-      <span class="feat-plan-note">Pro plan only</span>
+      <span class="feat-plan-note">All plans included</span>
     </div>
   </div>
 
@@ -427,13 +427,13 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <div class="feat-block fade-up" id="distributors">
   <div class="feat-block-header">
     <div class="feat-title-group">
-      <div class="feat-plan-badge badge-pro">Pro Only</div>
+      
       <h2>Distributor<br><span class="g">Management Portal</span></h2>
       <p class="feat-tagline">Give your distributors a portal to track their shipments, view documents, and communicate — without adding them to your internal WhatsApp groups.</p>
     </div>
     <div class="feat-cta-group">
       <a href="https://app.cartonflow.io/signup" class="btn-feat">Start free trial →</a>
-      <span class="feat-plan-note">Pro plan only · Distributors join free</span>
+      <span class="feat-plan-note">All plans included · Distributors join free</span>
     </div>
   </div>
 

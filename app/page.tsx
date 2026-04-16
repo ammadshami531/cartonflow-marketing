@@ -149,8 +149,8 @@ h2{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-hei
 .t-bg{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:4px;display:flex;gap:4px}
 .t-b{padding:8px 22px;border-radius:7px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:transparent;color:rgba(238,242,255,0.4);font-family:'Inter',sans-serif;transition:all .15s}
 .t-b.on{background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;box-shadow:0 2px 10px rgba(79,70,229,0.4)}
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto}
-.plan{border-radius:20px;padding:44px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07)}
+.plans{display:grid;grid-template-columns:1fr;gap:20px;max-width:600px;margin:0 auto}
+.plan{border-radius:20px;padding:44px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);width:100%;box-sizing:border-box}
 .plan.pro{border-color:rgba(79,70,229,0.45);background:rgba(79,70,229,0.05);position:relative}
 .pro-label{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap;box-shadow:0 4px 12px rgba(79,70,229,0.4)}
 .plan-name{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(238,242,255,0.4);margin-bottom:14px}
@@ -326,7 +326,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <div class="fp-glow left"></div>
     <div class="fp-content fade-up">
       <div class="fp-num">01</div>
-      <div class="fp-tag">All Plans</div>
+      
       <h2>Full shipment<br><span class="g">visibility.</span></h2>
       <p>Every shipment, every carton, every scan — tracked in real time across all your 3PLs, forwarders, and destinations.</p>
       <ul class="fp-list">
@@ -383,7 +383,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     <div class="fp-glow right"></div>
     <div class="fp-content ra fade-up">
       <div class="fp-num rn">04</div>
-      <div class="fp-tag">All Plans</div>
+      
       <h2>Invoice portal.<br><span class="g">No email chaos.</span></h2>
       <p>3PLs submit invoices directly in the platform — line items, totals, everything. You review and mark paid. One place, always organized.</p>
       <ul class="fp-list">
