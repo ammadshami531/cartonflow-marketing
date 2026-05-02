@@ -104,13 +104,13 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 
   <div class="tldr">
     <h3>TL;DR</h3>
-    <p>Email <code>security@cartonflow.io</code> with details. Don't access data that isn't yours. We'll respond within 2 business days, work with you on a fix, and won't pursue legal action against good-faith research conducted within this policy.</p>
+    <p>Email <code>support@cartonflow.io</code> with details. Don't access data that isn't yours. We'll respond within 2 business days, work with you on a fix, and won't pursue legal action against good-faith research conducted within this policy.</p>
   </div>
 
   <h2>1. How to report</h2>
   <p>The fastest way to reach the security team is by email:</p>
   <div class="contact-card">
-    <div class="row"><span class="key">Primary contact</span><span class="val"><a href="mailto:security@cartonflow.io">security@cartonflow.io</a></span></div>
+    <div class="row"><span class="key">Primary contact</span><span class="val"><a href="mailto:support@cartonflow.io">support@cartonflow.io</a></span></div>
     <div class="row"><span class="key">PGP key</span><span class="val"><a href="/.well-known/security.txt">security.txt</a></span></div>
     <div class="row"><span class="key">Response SLA</span><span class="val">2 business days</span></div>
     <div class="row"><span class="key">Languages</span><span class="val">English</span></div>
@@ -204,7 +204,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
   <p>A formal bounty program is on our roadmap as we grow.</p>
 
   <h2>9. Contact</h2>
-  <p>For all security-related correspondence: <a href="mailto:security@cartonflow.io">security@cartonflow.io</a></p>
+  <p>For all security-related correspondence: <a href="mailto:support@cartonflow.io">support@cartonflow.io</a></p>
   <p>For non-security questions, please use <a href="/support">support</a>.</p>
 </div>
 

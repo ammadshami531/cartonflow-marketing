@@ -1,7 +1,7 @@
 # CartonFlow Security Contact
 # https://cartonflow.io/security-disclosure
 
-Contact: mailto:security@cartonflow.io
+Contact: mailto:support@cartonflow.io
 Contact: https://cartonflow.io/security-disclosure
 Expires: 2027-05-02T00:00:00.000Z
 Preferred-Languages: en

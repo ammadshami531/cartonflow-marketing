@@ -104,7 +104,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 
   <div class="notice">
     <h3>Notification of changes</h3>
-    <p>We notify customers via email <strong style="color:#eef2ff;font-weight:700">at least 30 days before adding a new subprocessor</strong> that processes customer data. To subscribe to subprocessor change alerts, email <a href="mailto:security@cartonflow.io">security@cartonflow.io</a> from your account email.</p>
+    <p>We notify customers via email <strong style="color:#eef2ff;font-weight:700">at least 30 days before adding a new subprocessor</strong> that processes customer data. To subscribe to subprocessor change alerts, email <a href="mailto:support@cartonflow.io">support@cartonflow.io</a> from your account email.</p>
   </div>
 
   <!-- ─── INFRASTRUCTURE ─── -->
@@ -278,7 +278,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
       </div>
       <div class="faq-card">
         <h3>Can I request a sub-list of vendors that touch <em>my</em> data?</h3>
-        <p>Yes. Email <a href="mailto:security@cartonflow.io">security@cartonflow.io</a> and we'll generate a tenant-specific report based on which integrations you've enabled.</p>
+        <p>Yes. Email <a href="mailto:support@cartonflow.io">support@cartonflow.io</a> and we'll generate a tenant-specific report based on which integrations you've enabled.</p>
       </div>
       <div class="faq-card">
         <h3>What happens if a subprocessor has a breach?</h3>
@@ -291,7 +291,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
     <h2>Need a Data Processing Agreement?</h2>
     <p>DPAs available for any customer who needs one for procurement, GDPR, or internal compliance.</p>
     <div class="cta-actions">
-      <a href="mailto:legal@pevarasystems.com" class="cta-primary">Request a DPA</a>
+      <a href="mailto:support@cartonflow.io" class="cta-primary">Request a DPA</a>
       <a href="/security" class="cta-secondary">Trust Center</a>
     </div>
   </div>

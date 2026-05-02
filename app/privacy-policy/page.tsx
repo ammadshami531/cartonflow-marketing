@@ -63,7 +63,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <div class="highlight"><p><strong>Short version:</strong> CartonFlow collects only what it needs to operate. We don't sell your data. Ever. We don't use your logistics data to train AI models. Privacy Mode tenants can encrypt their most sensitive fields client-side so even our staff can't read them.</p></div>
 
 <h2>1. Who We Are</h2>
-<p>CartonFlow is operated by Pevara Systems. When we say "CartonFlow," "we," "us," or "our," we mean Pevara Systems. Questions? <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a> · For security and privacy specifics: <a href="mailto:security@cartonflow.io">security@cartonflow.io</a></p>
+<p>CartonFlow is operated by Pevara Systems. When we say "CartonFlow," "we," "us," or "our," we mean Pevara Systems. Questions? <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a> · For security and privacy specifics: <a href="mailto:support@cartonflow.io">support@cartonflow.io</a></p>
 
 <h2>2. What We Collect</h2>
 <h3>Account information</h3>
@@ -113,11 +113,11 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <h2>6. Your Rights</h2>
 <p>You have the right to access, correct, export, or delete your data at any time. Email <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a> and we'll respond within 5 business days.</p>
 <h3>GDPR (EU residents)</h3>
-<p>If you live in the European Economic Area or the UK, you have specific rights under the General Data Protection Regulation, including: the right to access your personal data, the right to rectification, the right to erasure ("right to be forgotten"), the right to restrict processing, the right to data portability, and the right to object to processing. We honor these requests within 30 days. To exercise your rights, email <a href="mailto:security@cartonflow.io">security@cartonflow.io</a>. You also have the right to lodge a complaint with your local data protection authority.</p>
+<p>If you live in the European Economic Area or the UK, you have specific rights under the General Data Protection Regulation, including: the right to access your personal data, the right to rectification, the right to erasure ("right to be forgotten"), the right to restrict processing, the right to data portability, and the right to object to processing. We honor these requests within 30 days. To exercise your rights, email <a href="mailto:support@cartonflow.io">support@cartonflow.io</a>. You also have the right to lodge a complaint with your local data protection authority.</p>
 <h3>CCPA (California residents)</h3>
-<p>California residents have the right to know what personal information we collect, the right to delete it, the right to correct it, and the right to opt out of the "sale" or "sharing" of personal information. We do not sell your personal information. To exercise your rights, email <a href="mailto:security@cartonflow.io">security@cartonflow.io</a>.</p>
+<p>California residents have the right to know what personal information we collect, the right to delete it, the right to correct it, and the right to opt out of the "sale" or "sharing" of personal information. We do not sell your personal information. To exercise your rights, email <a href="mailto:support@cartonflow.io">support@cartonflow.io</a>.</p>
 <h3>Data Processing Agreement</h3>
-<p>We make a Data Processing Agreement (DPA) available to any customer who needs one for procurement, GDPR compliance, or internal review. Email <a href="mailto:legal@pevarasystems.com">legal@pevarasystems.com</a> to request the current DPA template.</p>
+<p>We make a Data Processing Agreement (DPA) available to any customer who needs one for procurement, GDPR compliance, or internal review. Email <a href="mailto:support@cartonflow.io">support@cartonflow.io</a> to request the current DPA template.</p>
 
 <h2>7. Security</h2>
 <p>All data is encrypted in transit (TLS 1.3) and at rest (AES-256). Passwords are hashed using Argon2id (the OWASP-recommended algorithm). We use JWT-based authentication with short-lived access tokens and longer-lived refresh tokens stored securely. Two-factor authentication is available for all accounts. Privacy Mode tenants additionally get client-side AES-GCM encryption for the most sensitive fields.</p>
@@ -127,7 +127,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <p>If we discover a security incident affecting your data, we will notify you by email within <strong>72 hours</strong> of confirmation, with a follow-up post-incident report within 7 days describing what happened, what data was affected, and what we did about it. This applies to incidents at any of our subprocessors that affect customer data as well.</p>
 
 <h3>Reporting a vulnerability</h3>
-<p>Found a security issue? Please report it to <a href="mailto:security@cartonflow.io">security@cartonflow.io</a>. Our coordinated disclosure policy and safe harbor terms are at <a href="/security-disclosure">cartonflow.io/security-disclosure</a>.</p>
+<p>Found a security issue? Please report it to <a href="mailto:support@cartonflow.io">support@cartonflow.io</a>. Our coordinated disclosure policy and safe harbor terms are at <a href="/security-disclosure">cartonflow.io/security-disclosure</a>.</p>
 
 <h2>8. Cookies</h2>
 <p>We use session cookies for authentication only. We do not use advertising or tracking cookies. See our <a href="/cookies">Cookie Policy</a> for details.</p>
@@ -142,8 +142,8 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <p>Pevara Systems</p>
 <ul>
   <li>General questions: <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a></li>
-  <li>Security and privacy: <a href="mailto:security@cartonflow.io">security@cartonflow.io</a></li>
-  <li>Legal &amp; DPA: <a href="mailto:legal@pevarasystems.com">legal@pevarasystems.com</a></li>
+  <li>Security and privacy: <a href="mailto:support@cartonflow.io">support@cartonflow.io</a></li>
+  <li>Legal &amp; DPA: <a href="mailto:support@cartonflow.io">support@cartonflow.io</a></li>
 </ul>
 
 </div>

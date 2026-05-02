@@ -642,7 +642,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <a href="/for-logistics-partners">For Logistics Partners</a>
       <a href="/for-distributors">For Distributors</a>
       <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a>
-      <a href="mailto:security@cartonflow.io">security@cartonflow.io</a>
+      <a href="mailto:support@cartonflow.io">support@cartonflow.io</a>
     </div>
   </div>
   <div class="footer-bottom">

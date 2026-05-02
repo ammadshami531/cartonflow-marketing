@@ -29,6 +29,9 @@ nav{position:sticky;top:0;z-index:100;height:60px;display:flex;align-items:cente
 .hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#818cf8;background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.2);border-radius:4px;padding:5px 12px;margin-bottom:24px}
 .hero-title{font-size:clamp(40px,6vw,68px);font-weight:900;letter-spacing:-2.5px;line-height:1.05;margin-bottom:20px}
 .hero-sub{max-width:680px;margin:0 auto;font-size:17px;line-height:1.65;color:rgba(238,242,255,0.55)}
+.hero-quicklinks{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.hero-quicklinks a{font-size:13px;font-weight:700;color:#a5b4fc;padding:7px 14px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);transition:all .15s ease}
+.hero-quicklinks a:hover{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.3);color:#c4b5fd}
 
 /* ── Pillars: 3-up feature row ─────────────── */
 .pillars{max-width:1100px;margin:32px auto 64px;padding:0 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -107,6 +110,8 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 @media(max-width:900px){
   nav{padding:0 20px}
   .hero{padding:48px 20px 32px}
+  .hero-quicklinks{gap:8px;margin-top:22px}
+  .hero-quicklinks a{font-size:12px;padding:6px 11px}
   .pillars{grid-template-columns:1fr;gap:12px;padding:0 20px;margin-bottom:48px}
   .spotlight{padding:0 20px;margin-bottom:56px}
   .spotlight-card{grid-template-columns:1fr;padding:28px 24px;gap:20px;text-align:center}
@@ -146,6 +151,12 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
   <div class="hero-badge">Trust Center</div>
   <h1 class="hero-title">Security <span class="g">built for supply chains.</span></h1>
   <p class="hero-sub">Your supplier list, product catalog, purchase orders, and shipment data are some of your most sensitive operational assets. We built CartonFlow assuming a competitor could be on the other side of the wall.</p>
+  <div class="hero-quicklinks">
+    <a href="/security-disclosure">Report a vulnerability →</a>
+    <a href="/subprocessors">Subprocessor list →</a>
+    <a href="/privacy-policy">Privacy policy →</a>
+    <a href="mailto:support@cartonflow.io">Email security team →</a>
+  </div>
 </section>
 
 <!-- ─── 3-UP PILLARS ─── -->
@@ -332,7 +343,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
       <div class="proc-num">04</div>
       <div class="proc-body">
         <h3>Responsible disclosure</h3>
-        <p>Found a vulnerability? Report it safely to <a href="mailto:security@cartonflow.io">security@cartonflow.io</a>. We respond within 2 business days and won't pursue legal action against good-faith research.</p>
+        <p>Found a vulnerability? Report it safely to <a href="mailto:support@cartonflow.io">support@cartonflow.io</a>. We respond within 2 business days and won't pursue legal action against good-faith research. <a href="/security-disclosure" style="font-weight:700">Read the full disclosure policy →</a></p>
       </div>
     </div>
     <div class="proc">
@@ -346,7 +357,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
       <div class="proc-num">06</div>
       <div class="proc-body">
         <h3>Data Processing Agreement</h3>
-        <p>DPA available on request for any customer needing one for GDPR, CCPA, or internal procurement. Email <a href="mailto:legal@pevarasystems.com">legal@pevarasystems.com</a>.</p>
+        <p>DPA available on request for any customer needing one for GDPR, CCPA, or internal procurement. Email <a href="mailto:support@cartonflow.io">support@cartonflow.io</a>.</p>
       </div>
     </div>
   </div>
@@ -382,7 +393,8 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
   <h2>Have a security question we didn't answer?</h2>
   <p>Or need a DPA, security questionnaire response, or pen-test report under NDA?</p>
   <div class="cta-actions">
-    <a href="mailto:security@cartonflow.io" class="cta-primary">Email security@cartonflow.io</a>
+    <a href="mailto:support@cartonflow.io" class="cta-primary">Email support@cartonflow.io</a>
+    <a href="/security-disclosure" class="cta-secondary">Disclosure policy</a>
     <a href="/subprocessors" class="cta-secondary">View subprocessors</a>
   </div>
 </section>
