@@ -93,6 +93,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <footer-bar>
   <a href="/">&#169; 2026 CartonFlow by Pevara Systems</a>
   <div class="f-links">
+    <a href="/security">Security</a>
     <a href="/privacy-policy">Privacy</a>
     <a href="/terms-of-service">Terms</a>
     <a href="/cancellation">Cancellation</a>

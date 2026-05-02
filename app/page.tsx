@@ -632,6 +632,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
     </div>
     <div class="footer-nav">
       <a href="/features" class="footer-deep-link">→ Deep dive: all features</a>
+      <a href="/security" class="footer-deep-link" style="border-color:rgba(34,197,94,0.3);color:#86efac">→ Trust Center · Security</a>
       <a href="/privacy-policy">Privacy Policy</a>
       <a href="/terms-of-service">Terms of Service</a>
       <a href="/cancellation">Cancellation &amp; Refunds</a>
@@ -641,6 +642,7 @@ footer .copy{font-size:13px;color:rgba(238,242,255,0.22)}
       <a href="/for-logistics-partners">For Logistics Partners</a>
       <a href="/for-distributors">For Distributors</a>
       <a href="mailto:info@pevarasystems.com">info@pevarasystems.com</a>
+      <a href="mailto:security@cartonflow.io">security@cartonflow.io</a>
     </div>
   </div>
   <div class="footer-bottom">

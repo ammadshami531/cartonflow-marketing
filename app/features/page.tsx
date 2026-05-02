@@ -459,7 +459,7 @@ footer p{font-size:13px;color:rgba(238,242,255,0.22)}
 <footer>
   <svg width="120" height="26" viewBox="0 0 300 64" fill="none"><rect x="1" y="1" width="62" height="62" rx="14" fill="#0A0F1E"/><rect x="1" y="1" width="62" height="62" rx="14" stroke="#4F46E5" stroke-width="2"/><text x="7" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#4F46E5">C</text><text x="32" y="47" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#FFF">F</text><text x="80" y="42" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5"><tspan fill="#FFF">Carton</tspan><tspan fill="#4F46E5">Flow</tspan></text></svg>
   <p>© 2026 CartonFlow. All rights reserved.</p>
-  <div class="f-links"><a href="https://cartonflow.io/privacy-policy">Privacy</a><a href="https://cartonflow.io/terms-of-service">Terms</a><a href="https://cartonflow.io/support">Support</a></div>
+  <div class="f-links"><a href="https://cartonflow.io/security">Security</a><a href="https://cartonflow.io/privacy-policy">Privacy</a><a href="https://cartonflow.io/terms-of-service">Terms</a><a href="https://cartonflow.io/support">Support</a></div>
 </footer>
 
 <script>
