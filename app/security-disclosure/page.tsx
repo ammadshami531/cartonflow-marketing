@@ -199,8 +199,8 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
   </ul>
   <p>If a third party brings legal action against you for activities conducted within this policy, we will make our position public on your behalf.</p>
 
-  <h2>8. Bounty</h2>
-  <p>We're a small company without a formal paid bounty program yet, but we offer discretionary thank-you payments for confirmed, well-documented vulnerabilities. Critical findings have historically received <strong>$500–$2,000</strong>; high-severity findings <strong>$200–$500</strong>. Amounts are at our discretion based on severity, exploitability, and report quality.</p>
+  <h2>8. Recognition</h2>
+  <p>We don't currently run a formal paid bounty program, but we offer discretionary recognition for confirmed, well-documented vulnerabilities — based on severity, exploitability, and report quality. Researchers who follow this policy are also publicly credited (with their consent) on our <a href="/security">Trust Center</a>.</p>
   <p>A formal bounty program is on our roadmap as we grow.</p>
 
   <h2>9. Contact</h2>

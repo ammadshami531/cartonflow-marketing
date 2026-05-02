@@ -366,24 +366,24 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
 <!-- ─── COMPLIANCE STATUS ─── -->
 <section class="section">
   <div class="section-label">Layer 5 · Compliance</div>
-  <h2>Where we are on the compliance roadmap.</h2>
-  <p class="section-lead">We're an early-stage company with security-first DNA. We're being upfront about what's done and what's coming.</p>
+  <h2>Compliance status, plainly stated.</h2>
+  <p class="section-lead">We'd rather tell you exactly where we are than imply we have certifications we don't. Here's the honest picture.</p>
   <div class="feature-grid">
     <div class="feature" style="border-color:rgba(34,197,94,0.25);background:rgba(34,197,94,0.03)">
       <div class="feature-h"><span class="feature-dot" style="background:linear-gradient(135deg,#10B981,#22C55E)"></span><h3>GDPR-aligned</h3></div>
-      <p>Data subject rights honored: access, correction, export, deletion. EU customers fully supported.</p>
+      <p>Data subject rights honored: access, correction, export, deletion. EU customers supported with SCCs in our DPA.</p>
     </div>
     <div class="feature" style="border-color:rgba(34,197,94,0.25);background:rgba(34,197,94,0.03)">
-      <div class="feature-h"><span class="feature-dot" style="background:linear-gradient(135deg,#10B981,#22C55E)"></span><h3>CCPA compliant</h3></div>
-      <p>California consumer privacy rights honored. Data not sold; opt-out tooling provided on request.</p>
+      <div class="feature-h"><span class="feature-dot" style="background:linear-gradient(135deg,#10B981,#22C55E)"></span><h3>CCPA aligned</h3></div>
+      <p>California consumer privacy rights honored. We don't sell your data and never have.</p>
     </div>
-    <div class="feature" style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.03)">
-      <div class="feature-h"><span class="feature-dot" style="background:linear-gradient(135deg,#F59E0B,#EA580C)"></span><h3>SOC 2 — in progress</h3></div>
-      <p>SOC 2 Type I report scheduled. Targeting Type II observation period in 2026 H2.</p>
+    <div class="feature">
+      <div class="feature-h"><span class="feature-dot" style="background:rgba(238,242,255,0.4)"></span><h3>SOC 2 — on the roadmap</h3></div>
+      <p>We're not yet SOC 2 certified. If your procurement requires it, talk to us — we'll share our timeline and the controls we've already implemented from the framework.</p>
     </div>
-    <div class="feature" style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.03)">
-      <div class="feature-h"><span class="feature-dot" style="background:linear-gradient(135deg,#F59E0B,#EA580C)"></span><h3>Penetration test — scheduled</h3></div>
-      <p>Annual third-party penetration test scheduled. Report available to enterprise prospects under NDA.</p>
+    <div class="feature">
+      <div class="feature-h"><span class="feature-dot" style="background:rgba(238,242,255,0.4)"></span><h3>Pentest — on the roadmap</h3></div>
+      <p>No third-party pen test report yet. Enterprise customers can request our internal security review and threat model under NDA.</p>
     </div>
   </div>
 </section>

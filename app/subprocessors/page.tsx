@@ -216,19 +216,19 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
       <div class="sub-row">
         <div class="sub-name">OpenAI<a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">policies →</a></div>
         <div class="sub-purpose">AI assistant (Cody) inference for fast queries</div>
-        <div class="sub-data">User questions and decrypted context shown to assistant. Zero-retention via API; not used to train models.</div>
+        <div class="sub-data">User questions and decrypted context. Per OpenAI's API data-usage policy, API inputs are not used to train OpenAI models.</div>
         <div class="sub-region">US</div>
       </div>
       <div class="sub-row">
-        <div class="sub-name">Anthropic<a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">privacy →</a></div>
+        <div class="sub-name">Anthropic<a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">terms →</a></div>
         <div class="sub-purpose">AI assistant (Cody) inference for complex reasoning</div>
-        <div class="sub-data">User questions and decrypted context shown to assistant. Zero-retention via API; not used to train models.</div>
+        <div class="sub-data">User questions and decrypted context. Per Anthropic's commercial terms, API inputs are not used to train Anthropic models.</div>
         <div class="sub-region">US</div>
       </div>
       <div class="sub-row">
-        <div class="sub-name">Google AI<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy →</a></div>
+        <div class="sub-name">Google AI<a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">terms →</a></div>
         <div class="sub-purpose">AI assistant (Cody) inference for high-volume tier-1 queries</div>
-        <div class="sub-data">User questions and decrypted context shown to assistant. Zero-retention via API; not used to train models.</div>
+        <div class="sub-data">User questions and decrypted context. Per Google's paid-tier Gemini API terms, prompts and responses are not used to improve their models.</div>
         <div class="sub-region">US</div>
       </div>
     </div>
@@ -270,7 +270,7 @@ footer-bar a:hover{color:rgba(238,242,255,0.7)}
     <div class="faq-grid">
       <div class="faq-card">
         <h3>Do AI vendors train on my data?</h3>
-        <p>No. We use zero-retention API tiers across OpenAI, Anthropic, and Google AI. Your data is not retained, logged for human review, or used to train future models.</p>
+        <p>No. Per the published API terms of OpenAI, Anthropic, and Google's paid-tier Gemini API, prompts and responses sent through their APIs are not used to train their models. We link to each vendor's terms in the table above so you can verify.</p>
       </div>
       <div class="faq-card">
         <h3>How does Privacy Mode change this list?</h3>
