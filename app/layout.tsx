@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CartonFlow — Your freight, fully under control",
-  description: "The logistics platform that connects Amazon sellers and e-commerce brands with their 3PLs, forwarders, and distributors — in one place, in real time.",
+  title: "CartonFlow — The supply chain platform built for Amazon brands",
+  description: "From supplier PO to FBA receipt — in one workspace your team can use and your competitors can't see. Privacy Mode encryption, freight RFQ marketplace, live container tracking, shipper scorecards, brand-to-brand partnerships.",
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
