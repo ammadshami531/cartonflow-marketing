@@ -477,10 +477,10 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
       <div class="feature-text">
         <div class="feature-eyebrow"><svg class="icon-sm"><use href="#i-map"/></svg> Live Map</div>
         <h2 class="feature-title">See every vessel, every container,<br>every last mile.</h2>
-        <p class="feature-desc">Real-time AIS positions for every ocean shipment, carton-level scan events for FedEx and UPS, and warehouse drop-offs on one interactive globe. Filter by status, click any pin for live ETA. Updated every few minutes &mdash; no refresh.</p>
+        <p class="feature-desc">Real-time AIS positions for every ocean shipment, carton-level scan events from 100+ carriers via Shippo (FedEx, UPS, USPS, DHL, regional last-mile), and warehouse drop-offs on one interactive globe. Filter by status, click any pin for live ETA. Updated every few minutes &mdash; no refresh.</p>
         <ul class="feature-bullets">
           <li><svg class="icon-sm"><use href="#i-arrow-right"/></svg>AIS vessel tracking with port ETAs</li>
-          <li><svg class="icon-sm"><use href="#i-arrow-right"/></svg>FedEx and UPS carton-level scan geolocation</li>
+          <li><svg class="icon-sm"><use href="#i-arrow-right"/></svg>100+ carriers worldwide via Shippo &mdash; carton-level scan geolocation</li>
           <li><svg class="icon-sm"><use href="#i-arrow-right"/></svg>Status filters: in transit, at customs, last mile, delivered</li>
           <li><svg class="icon-sm"><use href="#i-arrow-right"/></svg>Click any pin for shipment detail without leaving the map</li>
         </ul>
