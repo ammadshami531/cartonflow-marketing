@@ -279,7 +279,6 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
     </a>
     <div class="nav-links">
       <a href="/features">Features</a>
-      <a href="/for-distributors">For brands</a>
       <a href="/for-logistics-partners">For 3PLs</a>
       <a href="#pricing">Pricing</a>
       <a href="/security">Security</a>
@@ -470,7 +469,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
         <div class="feature-roi">Brands save an average of 14% on first auction</div>
       </div>
       <div class="feature-image">
-        <img src="/screenshots-v8/rfq-marketing.png" alt="Freight auction marketplace in CartonFlow" loading="lazy">
+        <img src="/screenshots-v8/fresh-rfq-modal.png" alt="Launch RFQ modal with AI freight intelligence and service combo picker" loading="lazy">
       </div>
     </div>
 
@@ -758,7 +757,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
       </div>
       <div class="footer-col">
         <h4>For</h4>
-        <a href="/for-distributors">Brands &amp; distributors</a>
+        <a href="/features">Amazon brands</a>
         <a href="/for-logistics-partners">3PLs &amp; shippers</a>
         <a href="https://app.cartonflow.io/signup">Start free trial</a>
       </div>
