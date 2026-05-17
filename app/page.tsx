@@ -16,8 +16,8 @@
 // product screenshot once the layout shrinks.
 //
 // Links: every nav / footer href points at an existing page on this site;
-// the sandbox + book-a-demo CTAs are stubbed to "#" because those flows
-// are still in build per Ammad's spec.
+// the public sandbox CTA points at the isolated demo app. Book-a-demo CTAs
+// remain anchored to the evaluation section until that scheduling flow ships.
 // ════════════════════════════════════════════════════════════════════════════
 
 export default function Home() {
@@ -301,7 +301,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
       <p class="hero-sub">From supplier PO to FBA receipt &mdash; in one workspace your team can use and your competitors can&rsquo;t see. Replace the patchwork of forecasting, freight, and inventory tools with the operating system serious brands actually run on.</p>
       <div class="hero-ctas">
         <a href="https://app.cartonflow.io/signup" class="btn btn-primary btn-lg">Start 14-day free trial</a>
-        <a href="#demo" class="btn btn-ghost btn-lg">Try the sandbox <svg class="icon-sm"><use href="#i-arrow-right"/></svg></a>
+        <a href="https://demo.cartonflow.io/demo" class="btn btn-ghost btn-lg">Try the sandbox <svg class="icon-sm"><use href="#i-arrow-right"/></svg></a>
       </div>
       <div class="hero-meta">
         <span class="hero-meta-item"><span class="check-dot"><svg class="icon-sm" style="width:9px;height:9px"><use href="#i-check"/></svg></span> No card required</span>
@@ -617,7 +617,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
         <div class="demo-icon"><svg class="icon-lg"><use href="#i-play"/></svg></div>
         <div class="demo-title">Try the sandbox</div>
         <div class="demo-desc">Pre-seeded brand workspace. Click through the actual product with realistic data. No signup, no card.</div>
-        <span class="demo-cta disabled">Coming soon <span class="demo-soon">In build</span></span>
+        <a href="https://demo.cartonflow.io/demo" class="demo-cta">Open sandbox <svg class="icon-sm"><use href="#i-arrow-right"/></svg></a>
       </div>
       <div class="demo-card recommended">
         <span class="demo-recommended-badge">Most popular</span>
