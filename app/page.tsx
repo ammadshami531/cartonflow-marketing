@@ -400,7 +400,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
     <div class="solution-card">
       <div class="solution-left">One workspace. PO to FBA. Same view for your team, your distributor, and your 3PL.</div>
       <div class="solution-right">
-        <span class="solution-price">$149/mo</span>
+        <span class="solution-price">$249/mo</span>
         <span class="solution-saving">Save the stack</span>
       </div>
     </div>
@@ -647,7 +647,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--border);background:var(--b
     <div class="pricing-card">
       <div class="pricing-name">CartonFlow Pro</div>
       <div class="pricing-headline">
-        <span class="pricing-price">$149</span>
+        <span class="pricing-price">$249</span>
         <span class="pricing-period">/ month per workspace</span>
       </div>
       <div class="pricing-sub">Everything you need to run a single brand&rsquo;s end-to-end supply chain.</div>
